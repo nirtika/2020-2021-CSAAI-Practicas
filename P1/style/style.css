@@ -1,0 +1,73 @@
+* {
+    /*box-sizing: border-box;*/
+    margin: 0px;
+}
+
+/* Style for header*/
+.header {
+  background-image:url('/P1/img/headerimg.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  padding: 80px;
+  min-height: 500px;
+}
+h1 , h2{
+  text-align: center;
+  margin-top: 100px;
+}
+.header-text{
+  background: rgba(141, 139, 139, 0.5); 
+  color: #131212;  
+  padding: 30px;
+  text-align: center;
+  max-height: 400px;
+}
+.header-img{
+  margin-top: 50px;
+  height: 200px;
+}
+  /*Style for menu*/
+.menu {
+  background: rgba(141, 139, 139, 0.5); 
+  padding: 15px;
+  font-size: 15px;
+  text-align: center;
+  bottom: 0px;
+}
+.menu a {
+  padding:20px;
+  text-decoration: none;
+  color:black;
+  line-height: 40px;   
+}
+a.active{
+  background-color:  #86808062;
+  font-weight: bold;
+}
+a:hover{
+  background-color: rgb(140, 133, 231);
+  font-style: italic;
+  font-weight: bold;
+}
+/*Style for contents*/
+.container{
+  overflow: auto;
+}
+.main {
+  float: left;
+  width:60%;
+  padding: 30px;
+  margin-top: 50px;
+}
+.div-section p{
+  padding: 30px;
+  margin-top: 50px;
+  margin-bottom: 15px;
+}
+#aboutme{
+  margin-top: 80px;
+}
+.section-colu{
+  box-shadow:5px 15px 20px rgb(80 78 78 / 34%);
+}  
