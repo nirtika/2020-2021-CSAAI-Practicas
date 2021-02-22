@@ -5,7 +5,7 @@
 
 /* Style for header*/
 .header {
-  background-image:url('/P1/img/headerimg.jpg');
+  background-image:url('/img/headerimg.jpg');
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -14,14 +14,18 @@
 }
 h1 , h2{
   text-align: center;
-  margin-top: 100px;
+
 }
+h1{
+  margin-top: 150px;
+}
+
 .header-text{
   background: rgba(141, 139, 139, 0.5); 
   color: #131212;  
   padding: 30px;
   text-align: center;
-  max-height: 400px;
+  min-height: 400px;
 }
 .header-img{
   margin-top: 50px;
@@ -29,7 +33,7 @@ h1 , h2{
 }
   /*Style for menu*/
 .menu {
-  background: rgba(141, 139, 139, 0.5); 
+  background: rgb(224, 235, 235);
   padding: 15px;
   font-size: 15px;
   text-align: center;
@@ -42,11 +46,11 @@ h1 , h2{
   line-height: 40px;   
 }
 a.active{
-  background-color:  #86808062;
+  background-color: #afcfec;
   font-weight: bold;
 }
 a:hover{
-  background-color: rgb(140, 133, 231);
+  background-color: #ccebff;
   font-style: italic;
   font-weight: bold;
 }
@@ -60,14 +64,28 @@ a:hover{
   padding: 30px;
   margin-top: 50px;
 }
-.div-section p{
-  padding: 30px;
-  margin-top: 50px;
-  margin-bottom: 15px;
-}
-#aboutme{
-  margin-top: 80px;
-}
 .section-colu{
   box-shadow:5px 15px 20px rgb(80 78 78 / 34%);
-}  
+} 
+.div-section{margin-top: 70px;}
+.div-section p{
+  padding: 30px;
+  margin-top: 50px;  
+}
+#aboutme{
+  margin-top: 50px;
+}
+.section-formacion,.section-laboral{
+  width: 60%;
+  margin: 5% 20% 0 20%;
+}
+.section-trabajo h2{margin-bottom: 50px;}
+ 
+/*.section-formacion{
+  width: 60%;
+  margin-left: 20%;
+}*/
+.img-trabajos img{
+  height: 200px;
+  width: 300px;
+}
