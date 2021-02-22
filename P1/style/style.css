@@ -2,7 +2,14 @@
     /*box-sizing: border-box;*/
     margin: 0px;
 }
-
+ul{
+  list-style: none;
+}
+i.fas {
+  font-size: 1.5em;
+  padding: 5px;
+  margin-right: 15px;
+}
 /* Style for header*/
 .header {
   background-image:url('/img/headerimg.jpg');
@@ -37,7 +44,7 @@ h1{
   padding: 15px;
   font-size: 15px;
   text-align: center;
-  bottom: 0px;
+  margin-bottom: 100px;;
 }
 .menu a {
   padding:20px;
@@ -45,11 +52,11 @@ h1{
   color:black;
   line-height: 40px;   
 }
-a.active{
+.menu a.active{
   background-color: #afcfec;
   font-weight: bold;
 }
-a:hover{
+.menu a:hover{
   background-color: #ccebff;
   font-style: italic;
   font-weight: bold;
@@ -60,20 +67,30 @@ a:hover{
 }
 .main {
   float: left;
-  width:60%;
-  padding: 30px;
+  width:50%;
+  padding: 10px;
   margin-top: 50px;
+  margin-left: 150px;
+}
+.lista a{
+  text-decoration: none;
+  color: black;
+}
+.lista li{
+  font-size: 1.2em;
 }
 .section-colu{
   box-shadow:5px 15px 20px rgb(80 78 78 / 34%);
 } 
 .div-section{margin-top: 70px;}
+
 .div-section p{
   padding: 30px;
   margin-top: 50px;  
 }
-#aboutme{
-  margin-top: 50px;
+#aboutme img{
+  height: 300px;
+  margin-right: 150px;
 }
 .section-formacion,.section-laboral{
   width: 60%;
