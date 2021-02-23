@@ -18,7 +18,7 @@
     <!-- Header with image-->
     <header class="header">
         <div class="header-text">
-            <h1>COMMING SOON............</h1>
+            <h1 >..........COMMING SOON............</h1>
             
             <!--<img class="header-img" src="/P1/img/hello_foto.png" alt="header_img">-->
         </div>
@@ -36,12 +36,12 @@
     <!-- Contents-->
     <div class="container"> 
         <!-- Sobre mí--> 
-        <div class="section-colu" id="aboutme">
+        <div id="aboutme">
             <h2>Sobre mí </h2>     
-            <p style="text-align: center; font-size: 1.5em;"> <i class="far fa-address-book"></i></p>
+            <p style="text-align: center; font-size: 1.5em;"><i class="far fa-address-book"></i></p>
             <div class="main">  
                 <ul class="lista">
-                    <li><i class="fas fa-globe"></i>Lugar de nacimiento: La Luna  </li>
+                    <li><i class="fas fa-globe-europe"></i>Lugar de nacimiento: La Luna  </li>
                     <li><i class="fas fa-birthday-cake"></i>Fecha de nacimiento: 00/00/0000</li>
                     <li><i class="fas fa-map-marker-alt"></i>Dirección: No se donde vivo</li>
                     <li><i class="fas fa-envelope-open-text"></i>Correo electrónico: <a href = "mailto:abc@noseque.com">abc@noseque.com</a></li>
@@ -53,30 +53,28 @@
             </div>
         </div>     
         <!-- Formación -->
-        <div id="formacion" class="div-section section-formacion">   
-            <h2>Formación Académica</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipiscing elit non.
-                    Habitant nibh vel laoreet, quis praesent donec, netus non.
-                    Tortor vehicula lobortis senectus montes tempor, accumsan pulvinar quisque.
-                    Per ridiculus turpis nulla ultrices commodo, vivamus risus egestas malesuada.
-                    Non ad orci cubilia nullam dignissim facilisis, mattis pellentesque ligula porttitor.
-                </p>
-        </div> 
-        <div class="">
-        </div>
-        <!-- Exp Laboral -->
-        <div id="exp-lab" class="div-section section-laboral">   
-            <h2>Experiencia Laboral</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipiscing elit non.
-                    Habitant nibh vel laoreet, quis praesent donec, netus non.
-                    Tortor vehicula lobortis senectus montes tempor, accumsan pulvinar quisque.
-                    Per ridiculus turpis nulla ultrices commodo, vivamus risus egestas malesuada.
-                    Non ad orci cubilia nullam dignissim facilisis, mattis pellentesque ligula porttitor.
-                </p>
-        </div> 
-        <div class="">
+        <div class="sub-caja-backimg">
+            <div id="formacion" class="div-section section-formacion">   
+                <h2>Formación Académica</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipiscing elit non.
+                        Habitant nibh vel laoreet, quis praesent donec, netus non.
+                        Tortor vehicula lobortis senectus montes tempor, accumsan pulvinar quisque.
+                        Per ridiculus turpis nulla ultrices commodo, vivamus risus egestas malesuada.
+                        Non ad orci cubilia nullam dignissim facilisis, mattis pellentesque ligula porttitor.
+                    </p>
+            </div> 
+            <!-- Exp Laboral -->
+            <div id="exp-lab" class="div-section section-laboral">   
+                <h2>Experiencia Laboral</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipiscing elit non.
+                        Habitant nibh vel laoreet, quis praesent donec, netus non.
+                        Tortor vehicula lobortis senectus montes tempor, accumsan pulvinar quisque.
+                        Per ridiculus turpis nulla ultrices commodo, vivamus risus egestas malesuada.
+                        Non ad orci cubilia nullam dignissim facilisis, mattis pellentesque ligula porttitor.
+                    </p>
+            </div> 
         </div>
         <!-- Trabajos-->
         <div id="trabajos" class="div-section section-trabajo">   
@@ -91,12 +89,30 @@
             </div> 
         </div> 
         <!-- Contact details -->
-        <div id="contact" class="div-section">   
-            <h2>Contacto</h2>
-                <p>
-                    Contacto
-                </p>
-        </div>
+        <div id="contact" class="div-section sub-caja-backimg">
+            <!--Para poner imagen de fondo-->
+            <div class="data-contact">
+                <h2>Contacto</h2>     
+                <div class="contact-info">  
+                    <i class="fab fa-github"></i>
+                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-youtube-square"></i>
+                    <i class="fab fa-facebook-square"></i>
+                    <i class="fab fa-instagram"></i>
+                    <br>
+                    <form class="form">
+                        <label for="fname">First name:</label>
+                        <input type="text" id="fname" name="fname"><br><br>
+                        <label for="lname">Last name:</label>
+                        <input type="text" id="lname" name="lname"><br><br>
+                        <button class="button"><span>Click me! </span></button>
+                    </form>
+                </div> 
+                <div class="contact-info-img">
+                    <img src="/img/hello_foto.png" alt="">
+                </div>
+            </div>
+        </div>     
     </div> 
         
     <!-- Footer -->
