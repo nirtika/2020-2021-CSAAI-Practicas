@@ -1,12 +1,14 @@
 * {
     /*box-sizing: border-box;*/
     margin: 0px;
+    
 }
 ul{list-style: none;}
 i.fas {
   font-size: 1.5em;
   padding: 5px;
   margin-right: 15px;
+  color: rgb(50 53 149);
 }
 /* Style for header*/
 .header {
@@ -17,7 +19,7 @@ i.fas {
   padding: 80px;
   min-height: 500px;
 }
-h1 , h2{ text-align: center;}
+h1 , h2{ text-align: center; padding: 20px;}
 h1{ margin-top: 120px;}
 
 .header-text{
@@ -81,13 +83,21 @@ h1{ margin-top: 120px;}
 .section-formacion,.section-laboral{
   width: 60%;
   margin: 5% 20% 0 20%;
+  min-height: 400px;
+}
+.section-formacion{
+  border-left: rgb(80, 80, 238) solid;
+  border-radius: 15px;
+  box-shadow:5px 5px 15px 10px rgb(80  80 238 / 34%);
+  border-width: 0px 0px 0px 20px;
 }
 .section-trabajo h2{margin-bottom: 50px;}
- 
-/*.section-formacion{
-  width: 60%;
-  margin-left: 20%;
-}*/
+.section-laboral{
+  border-right: rgb(53, 240, 131) solid;
+  border-radius: 15px;
+  box-shadow:0px 0px 30px rgb(53  240 131 / 34%);
+  border-width: 0px 20px 0px 0px;
+}
 .img-trabajos img{
   height: 200px;
   width: 300px;
