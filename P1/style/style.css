@@ -1,8 +1,10 @@
 * {
-    box-sizing: border-box;
-    margin: 0px;    
+  box-sizing: border-box;
+  margin: 0px;
 }
+/*style unordered list*/
 ul{list-style: none;}
+/*style icon in general*/
 i.fas{
   font-size: 1.5em;
   padding: 5px;
@@ -25,18 +27,24 @@ i.fas{
   background-size: cover;
   padding: 25px;
 }
-
-h1 , h2{ text-align: center; padding: 20px;}
+/*styles for headers*/
 h1{ margin-top: 120px;}
-
+h1 , h2{ /* same styles for h1 and h2*/
+  text-align: center; 
+  padding: 20px;
+  font-style: oblique;
+  font-family: serif;
+  font-size: 2.5em;
+} 
+/*styles header text*/
 .header-text{
-  background: rgba(141, 139, 139, 0.5); 
-  color: #131212;  
+  background: rgba(141, 139, 139, 0.5);
+  color: #131212;
   padding: 30px;
   text-align: center;
   min-height: 400px;
 }
-  /*Style for menu*/
+/*Style for menu*/
 .menu {
   background: rgb(224, 235, 235);
   padding: 15px;
@@ -48,7 +56,7 @@ h1{ margin-top: 120px;}
   padding:20px;
   text-decoration: none;
   color:black;
-  line-height: 40px;   
+  line-height: 40px;
 }
 .menu a.active{
   background-color: #afcfec;
@@ -59,11 +67,10 @@ h1{ margin-top: 120px;}
   font-style: italic;
   font-weight: bold;
 }
-/*Style for contents*/
+/*style container*/
 .container{overflow: auto;}
-#aboutme {
-  min-height: 400px;
-}
+/*Style for contents*/
+#aboutme {min-height: 400px;}
 .main {
   float: right;
   width: 60%;
@@ -75,27 +82,28 @@ h1{ margin-top: 120px;}
 }
 .lista li{font-size: 1.2em;}
 .img-aboutme {
-  margin: 0px 0px 0px 150px;
-}
-.img-aboutme img {
- /* margin-top: -50px;*/
-}
+  width: 20%;
+  float: right;
+  /*margin: 0px 0px 0px 150px;*/}
 .div-section p{
   padding: 30px;
-  margin-top: 50px;  
+  margin-top: 50px;
 }
+/*mismo estilo para formacion laboral y contacto*/
 .section-formacion,.section-laboral,.section-contact{
   width: 60%;
   margin: 5% 20% 0 20%;
   min-height: 400px;
   background: #ffffff;
 }
+/*style section formacion*/
 .section-formacion{
   border-left: rgb(80, 80, 238) solid;
   border-radius: 15px;
   box-shadow:5px 5px 15px 10px rgb(80  80 238 / 34%);
   border-width: 0px 0px 0px 20px;
 }
+/*style section trabajos*/
 .section-trabajo h2{margin-bottom: 50px;}
 .section-trabajo{background-color:rgba(183, 206, 231, 0.61);}
 .section-laboral{
@@ -108,13 +116,13 @@ h1{ margin-top: 120px;}
   height: 200px;
   width: 300px;
 }
+/*una caja vacia*/
 .empty{
   background-color:rgba(183, 206, 231, 0.61);
   min-height: 250px;
 }
-.sub-caja-contact {
-  padding: 50px;
-}
+/*style section contactos*/
+.sub-caja-contact { padding: 50px;}
 .section-contact{
   margin-top: -150px;
   min-height: 500px;
@@ -130,37 +138,22 @@ h1{ margin-top: 120px;}
   border-right: rgb(51, 204, 204) solid;
   height: 350px;
 }
-.form{
-  padding: 30px;
-}
-label {
-  padding: 15px;
-  font-size: 1.2em;
-}
-.box{
-  width: 30%;
-  height: 40px;
-}
+/*styles formulario contacto*/
+.form{padding: 30px;}
+label {padding: 15px;font-size: 1.2em;}
+.box{width: 30%;height: 40px;}
+/*styles iconos redes sociales*/
 i.fab{
   font-size: 2.5em;
   padding: 8px;
 }
-i.fab.fa-linkedin {
-  color: rgb(33,115,205);;
-}
-i.fab.fa-youtube-square {
-  color: rgb(255, 0, 0);
-}
-i.fab.fa-facebook-square {
-  color: rgb(26,119,240);
-}
-i.fab.fa-twitter {
-  color: rgb(29, 161, 242);
-}
-i.fab.fa-instagram {
-  color: rgb(225,48,108);
-}
-
+i.fab.fa-linkedin {color: rgb(33,115,205);}
+i.fab.fa-youtube-square {color: rgb(255, 0, 0);}
+i.fab.fa-facebook-square {color: rgb(26,119,240);}
+i.fab.fa-twitter {color: rgb(29, 161, 242);}
+i.fab.fa-instagram {color: rgb(225,48,108);}
+i.fab.fa-github{color: rgb(8, 8, 8);}
+/*styles button contacto*/
 .button {
   border-radius: 4px;
   background-color: #4eecab;
@@ -172,9 +165,8 @@ i.fab.fa-instagram {
   cursor: pointer;
   margin: 5px;
 }
-.button:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
+.button:hover {box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);}
+/*styles footer*/
 footer{
   background-color: rgba(165, 207, 218, 0.5);
   padding: 20px;
