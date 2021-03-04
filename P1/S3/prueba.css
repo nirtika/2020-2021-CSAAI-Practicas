@@ -1,0 +1,17 @@
+h1 {
+    border: black solid;
+    text-align: center;
+    padding: 15px;
+}
+p {
+    padding: 15px;
+    color: #421ed2;
+    font-size: 1.5em;   
+}
+div{
+    padding: 15px;
+    color: #d21e1e;
+    font-size: 1.5em;
+    border: #3a1edb solid;
+    text-align: center;
+}
