@@ -13,7 +13,7 @@ i.fas{
 }
 /* Style for header*/
 .header {
-  background-image:url('img/header.png');
+  background-image:url('../img/header.png');
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -21,7 +21,7 @@ i.fas{
   min-height: 500px;
 }
 .sub-caja-backimg{
-  background-image:url('img/sectionimg.png');
+  background-image:url('../img/sectionimg.png');
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
