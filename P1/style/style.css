@@ -13,7 +13,7 @@ i.fas{
 }
 /* Style for header*/
 .header {
-  background-image:url('../img/headerimg.jpg');
+  background-image:url('img/header.png');
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -21,24 +21,25 @@ i.fas{
   min-height: 500px;
 }
 .sub-caja-backimg{
-  background-image:url('../img/prueba.png');
+  background-image:url('img/sectionimg.png');
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
   padding: 25px;
 }
 /*styles for headers*/
-h1{ margin-top: 120px;}
+h1{ margin-top: 120px; color: rgb(250, 250, 250); font-size: 4.5em;}
+h2{font-size: 2.5em;}
 h1 , h2{ /* same styles for h1 and h2*/
   text-align: center; 
   padding: 20px;
   font-style: oblique;
   font-family: serif;
-  font-size: 2.5em;
+  
 } 
 /*styles header text*/
 .header-text{
-  background: rgba(141, 139, 139, 0.5);
+  background: rgb(138 164 202 / 45%);;
   color: #131212;
   padding: 30px;
   text-align: center;
@@ -84,10 +85,7 @@ h1 , h2{ /* same styles for h1 and h2*/
 .img-aboutme {
   width: 25%;
   float: right;
-  /*margin: 0px 0px 0px 150px;*/}
-.div-section p{
-  padding: 30px;
-  margin-top: 50px;
+  /*margin: 0px 0px 0px 150px;*/
 }
 /*mismo estilo para formacion laboral y contacto*/
 .section-formacion,.section-laboral,.section-contact{
@@ -103,6 +101,17 @@ h1 , h2{ /* same styles for h1 and h2*/
   box-shadow:5px 5px 15px 10px rgb(80  80 238 / 34%);
   border-width: 0px 0px 0px 20px;
 }
+/*experiencia laboral*/
+.section-laboral p{
+  padding: 20px;
+  margin: 10px 0 10px 0;
+  color: white; 
+  text-align: center;
+  font-size: 1.2em;
+}
+.exp-laboral{padding: 20px;}
+.exp-up {width: 50%; background-color: #4CAF50; float:left; }
+.exp-down {width: 50%; background-color: #2196F3; float: right;}
 /*style section trabajos*/
 .section-trabajo h2{margin-bottom: 50px;}
 .section-trabajo{background-color:rgba(183, 206, 231, 0.61);}
