@@ -1,17 +1,52 @@
+body{ background: linear-gradient(to bottom, #ccffff 0%, #999966 100%); background-attachment: fixed;}
 .box{
     border: black solid;
-    width: 50%;
-    margin-left: 30%;
-    margin-right: 30%;
+    border-radius: 5px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 15px;
     min-height: 320px;
+    box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.75);
+    
 }
+h1{text-align: center;}
 .display{
-    border: solid;
-    padding: 15px;
+    padding: 10px;
     margin: 15px;
+    max-height: 50px;
+    border-radius: 3px;
+    background-color: black;
 }
-button{padding: 15px; margin: 5px; width: 60px;}
+.resultado{
+    color: white;
+    margin-right: 15px;
+    text-align: right;
+    font-size: 1.2em;
+}
+button{
+    padding: 10px; 
+    margin: 5px; 
+    width: 60px;
+    font-weight: bold; 
+    font-size: 1.2em;
+    border-radius: 2px;
+    cursor:pointer;
+}
 .caja_numeros{
     float: left;
+    margin-left: 20px;
+}
+.caja_opciones button,.opc{
+    background-color: rgba(146, 158, 175, 0.548);
+}
+
+.numeros button,.nums{
+    background-color: rgba(147, 199, 147, 0.644);
+}
+.numeros button:hover ,.nums:hover{
+    background-color: rgb(186, 240, 209);
+}
+.opc:hover, .caja_opciones button:hover{
+    background-color: rgb(187, 204, 206);
 }
