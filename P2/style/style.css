@@ -1,4 +1,8 @@
 body{ background: linear-gradient(to bottom, #ccffff 0%, #999966 100%); background-attachment: fixed;}
+@font-face {
+    font-family: 'Digital';
+    src: url(../fonts/DS-DIGI.TTF);
+  }
 .box{
     border: black solid;
     border-radius: 5px;
@@ -12,18 +16,19 @@ body{ background: linear-gradient(to bottom, #ccffff 0%, #999966 100%); backgrou
 }
 h1{text-align: center;}
 .display{
-    padding: 10px;
-    margin: 15px;
-    max-height: 50px;
-    border-radius: 3px;
-    background-color: black;
-}
-.resultado{
+    overflow: hidden;
+    margin: 0px 10px 15px 10px;
     color: white;
-    margin-right: 15px;
     text-align: right;
-    font-size: 1.2em;
+    font-family: Digital;
+    background-color: black;
+    border-radius: 3px;
+    padding: 5px;
+    min-height: 80px;
+    font-size: 40px;
+    text-overflow: ellipsis;
 }
+#display_digitos{font-size: 32px;}
 button{
     padding: 10px; 
     margin: 5px; 

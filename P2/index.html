@@ -6,48 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
     <link rel="stylesheet" href="style/style.css">
+    <script src="js/script.js" defer></script>
 </head>
 <body>
     <h1>Calculadora</h1>
     <div class="box">
         <div class="display">
-            <p class="resultado">0</p>
+            <span id="display_digitos"></span><br>
+            <span id="display_resultado"></span>
+            
         </div>
         <div class="caja_numeros">
             <div class="numeros">
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
+                <button class="digits" value="7">7</button>
+                <button class="digits" value="8">8</button>
+                <button class="digits" value="9">9</button>
             </div>
             <div class="numeros">
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
+                <button class="digits" value="4">4</button>
+                <button class="digits" value="5">5</button>
+                <button class="digits" value="6">6</button>
             </div>
             <div class="numeros">
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
+                <button class="digits" value="1">1</button>
+                <button class="digits" value="2">2</button>
+                <button class="digits" value="3">3</button>
             </div>
             <div>
-                <button class="nums">0</button>
-                <button class="opc">.</button>
-                <button class="opc">&pi;</button>
+                <button class="nums digits" value="0">0</button>
+                <button class="opc digits" value=".">.</button>
+                <button class="opc" value="&pi;">&pi;</button>
                 
             </div>
         </div>
         <div class="caja_opciones">
             <div class="del">
-                <button>C</button>
-                <button>AC</button>
+                <button id="clear">C</button>
+                <button id="reset">AC</button>
             </div>
             <div class="opciones">
-                <button>*</button>
-                <button>/</button>
-                <button>+</button>
-                <button>-</button> 
-                <button>Ans</button>
-                <button>=</button>    
+                <button id="multiplicar" class="digits" value="*">*</button>
+                <button id="dividir" class="digits" value="/">/</button>
+                <button id="suma" class="digits" value="+">+</button>
+                <button id="resta"  class="digits" value="-">-</button> 
+                <button id="ans">Ans</button>
+                <button id="igual">=</button>    
             </div>
         </div>        
     </div>
