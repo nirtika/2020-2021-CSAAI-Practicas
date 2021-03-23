@@ -1,0 +1,17 @@
+.box{
+    border: black solid;
+    width: 50%;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 15px;
+    min-height: 320px;
+}
+.display{
+    border: solid;
+    padding: 15px;
+    margin: 15px;
+}
+button{padding: 15px; margin: 5px; width: 60px;}
+.caja_numeros{
+    float: left;
+}
