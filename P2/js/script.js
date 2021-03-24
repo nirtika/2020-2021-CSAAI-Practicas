@@ -13,7 +13,6 @@ reset = document.getElementById("reset")
 
 let digitos = document.getElementsByClassName("digits")
 
-
 for(i=0; i<digitos.length; i++){
   digitos[i].onclick = (ev) =>{  //digitos[i] es el boton
     digito(ev.target) // ev=evento, ev.target=me da el valor del boton que ha sido pulsado
@@ -22,10 +21,26 @@ for(i=0; i<digitos.length; i++){
 
 function digito(boton){
   if (display.innerHTML=="0"){
-    display.innerHTML=boton.value;
-
+    display.innerHTML=boton.innerHTML;
   } else{
-    display.innerHTML += boton.value;
-    display_res.innerHTML ='1';
+    display.innerHTML += boton.innerHTML;
+    display_res.innerHTML ='';
   }
+  console.log(boton.value)
 }
+
+// hacer operaciones
+igual.onclick = () => {
+  display_res.innerHTML = eval(display.innerHTML.replace(/π/g, 'Math.PI'));
+}
+
+//-- limpiar (boton AC)
+reset.onclick = () => {
+  display.innerHTML = "";
+  display_res.innerHTML=""
+}
+//-- borrar (boton C)
+clear.onclick = () => {
+  display.innerHTML= display.innerHTML.slice(0, -1);
+}
+
