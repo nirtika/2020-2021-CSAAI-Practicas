@@ -16,7 +16,7 @@ i.fas{
   background: linear-gradient(to top, #669999 0%, #ccccff 68%);
   background-position: center;
   background-size: cover;
-  padding: 10px;
+  padding: 30px;
   /*min-height: 500px;*/
 }
 .sub-caja-backimg{
@@ -39,7 +39,7 @@ h2{font-size: 2.5em;}
 /*styles header text*/
 .header-text{
   background: rgb(162 165 169 / 45%);
-  padding: 10px;
+  padding: 50px;
   text-align: center;
   min-height: 400px;
   margin: 15px auto;
