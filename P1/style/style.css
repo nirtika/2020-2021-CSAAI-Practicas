@@ -13,14 +13,14 @@ i.fas{
 }
 /* Style for header*/
 .header {
-  background-image:url('../img/header.png');
+  background: linear-gradient(to top, #669999 0%, #ccccff 68%);
   background-position: center;
   background-size: cover;
-  padding: 80px;
-  min-height: 500px;
+  padding: 10px;
+  /*min-height: 500px;*/
 }
 .sub-caja-backimg{
-  background-image:url('../img/sectionimg.png');
+  background: linear-gradient(to bottom, #669999 0%, #99ccff 95%);
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -38,10 +38,11 @@ h2{font-size: 2.5em;}
  
 /*styles header text*/
 .header-text{
-  background: rgb(138 164 202 / 45%);
+  background: rgb(162 165 169 / 45%);
   padding: 10px;
   text-align: center;
   min-height: 400px;
+  margin: 15px auto;
 }
 .profile-pic{width:150px; height:150px;}
 /*Style for menu*/
@@ -133,7 +134,7 @@ h2{font-size: 2.5em;}
 .section-laboral{
   border-right: rgb(53, 240, 131) solid;
   border-radius: 0px 15px 15px 0px;
-  box-shadow:0px 0px 30px rgb(53  240 131 / 34%);
+  box-shadow:0px 0px 30px rgb(53 240 131 / 81%);;
   border-width: 0px 20px 0px 0px;
 }
 .img-trabajos img{
