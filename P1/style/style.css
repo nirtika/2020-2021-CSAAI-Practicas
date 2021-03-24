@@ -14,7 +14,7 @@ i.fas{
 /* Style for header*/
 .header {
   background: linear-gradient(to top, #669999 0%, #ccccff 68%);
-  padding: 40px;
+  padding: 50px 150px;
   /*min-height: 500px;*/
 }
 .sub_container{
@@ -116,8 +116,9 @@ h2{font-size: 2.5em;}
   margin: -225px -83px;
 }
 .exp-laboral{padding: 20px;}
-.exp-up {width: 50%; background-color: #4CAF50; float:left; }
-.exp-down {width: 50%; background-color: #2196F3; float: right;}
+.exp-1 {width: 35%; background-color: #4CAF50; float:left;border-radius: 15px 0px 0px 15px;}
+.exp-2 {width: 26%; background-color: #668f99; float:left;}
+.exp-3 {width: 35%; background-color: #217cf3; float: left;border-radius: 0px 15px 15px 0px;}
 .sub-laboral{padding: 25px;}
 .sub-laboral hr{   
   width: 70%;
