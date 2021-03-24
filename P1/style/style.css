@@ -14,16 +14,12 @@ i.fas{
 /* Style for header*/
 .header {
   background: linear-gradient(to top, #669999 0%, #ccccff 68%);
-  background-position: center;
-  background-size: cover;
   padding: 40px;
   /*min-height: 500px;*/
 }
-.sub-caja-backimg{
+.sub_container{
   background: linear-gradient(to bottom, #669999 0%, #99ccff 95%);
   background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
   padding: 25px;
 }
 /*styles for headers*/
@@ -47,9 +43,8 @@ h2{font-size: 2.5em;}
 .profile-pic{width:150px; height:150px;}
 /*Style for menu*/
 .menu {
-  background: rgb(224, 235, 235);
-  padding: 15px;
-  font-size: 15px;
+  box-shadow: 7px 9px 15px 10px rgb(102 153 153 / 40%);
+  padding: 12px;
   text-align: center;
 }
 .menu a {
@@ -59,11 +54,11 @@ h2{font-size: 2.5em;}
   line-height: 40px;
 }
 .menu a.active{
-  background-color: #afcfec;
   font-weight: bold;
+  border: #bddcd3 solid;
 }
 .menu a:hover{
-  background-color: #ccebff;
+  background-color: #bddcd3;
   font-style: italic;
   font-weight: bold;
 }
@@ -128,9 +123,9 @@ h2{font-size: 2.5em;}
   width: 70%;
   margin: 15px;
 }
+.section-trabajo,.empty{background-color:rgba(183, 206, 231, 0.15); min-height: 250px;}
 /*style section trabajos*/
 .section-trabajo h2{margin-bottom: 50px;}
-.section-trabajo{background-color:rgba(183, 206, 231, 0.61);}
 .section-laboral{
   border-right: rgb(53, 240, 131) solid;
   border-radius: 0px 15px 15px 0px;
@@ -141,20 +136,16 @@ h2{font-size: 2.5em;}
   height: 200px;
   width: 300px;
 }
-/*una caja vacia*/
-.empty{
-  background-color:rgba(183, 206, 231, 0.61);
-  min-height: 250px;
-}
+
 /*style section contactos*/
-.sub-caja-contact { padding: 50px;}
+.sub-caja-contact { padding: 50px; background: linear-gradient(to bottom, #669999 0%, #99ccff 95%);}
 .section-contact{
   margin-top: -150px;
   min-height: 500px;
   text-align: center;
   border-top: rgb(51, 204, 204) solid;
   border-radius: 120px 30px;
-  box-shadow: 5px 5px 20px 15px rgb(51 204 204 / 34%);
+  box-shadow: 5px 5px 20px 15px rgb(51 204 204 / 60%);
   border-width: 20px 0px 0px 0px;
 }
 .contact-info {
@@ -194,7 +185,6 @@ i.fab.fa-github{color: rgb(8, 8, 8);}
 .button:hover {box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);}
 /*styles footer*/
 footer{
-  background-color: rgba(165, 207, 218, 0.5);
   padding: 20px;
   text-align:center;
   font-size: 1.1em;
