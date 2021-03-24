@@ -20,7 +20,7 @@ i.fas{
 .sub_container{
   background: linear-gradient(to bottom, #669999 0%, #99ccff 95%);
   background-attachment: fixed;
-  padding: 25px;
+  padding: 25px 0px 80px;
 }
 /*styles for headers*/
 h1 , h2{ /* same styles for h1 and h2*/
