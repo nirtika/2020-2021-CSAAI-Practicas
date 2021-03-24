@@ -44,3 +44,9 @@ clear.onclick = () => {
   display.innerHTML= display.innerHTML.slice(0, -1);
 }
 
+// mostrar syntax error
+window.onerror = function() {
+  //alert('Syntax Error');
+  display_res.innerHTML="Syntax Error"
+  return true;
+}
