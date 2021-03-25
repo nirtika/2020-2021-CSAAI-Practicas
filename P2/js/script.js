@@ -1,23 +1,27 @@
+console.log("Ejecutando JS...");
 //-- Elementos de la interfaz de la calculadora
 const display = document.getElementById("display_res")
+const display_err= document.getElementById("display_err")
 const igual = document.getElementById("igual")
 const reset = document.getElementById("reset")
 const clear = document.getElementById("clear")
-const punto = document.getElementById("punto");
-const display_err= document.getElementById("display_err")
-const ans = document.getElementById("ans");
+const punto = document.getElementById("punto")
+const ans = document.getElementById("ans")
+
 // todos los 'digits' que hay en el html
 let digitos = document.getElementsByClassName("digits")
 //-- array con todos los elementos de la clase operacion
-let operacion = document.getElementsByClassName("operaciones"); 
+let operacion = document.getElementsByClassName("operaciones")
 
 var ans_2 =ans.value; // valor de ans
+
 //-- Estados de la calculadora
 const ESTADO = {
     INIT: 0,
     OP1: 1,
     OPERATION: 2,
     OP2: 3,
+    COMA: false,
   }
 
 //--Variable del estados
@@ -37,7 +41,8 @@ function digito(boton) {
     }else if (estado == ESTADO.OP1 || estado == ESTADO.OP2 || estado == ESTADO.OPERATION){
       display.innerHTML += boton;
       if (estado == ESTADO.OPERATION) {
-          estado = ESTADO.OP2;
+        estado = ESTADO.OP2;
+        ESTADO.COMA = false;
       }
     }
   }
@@ -46,8 +51,9 @@ function digito(boton) {
 for (i=0; i<operacion.length; i++){
   operacion[i].onclick = (ev)=> {
     if(estado == ESTADO.OP1){
-           display.innerHTML += ev.target.value;
-           estado = ESTADO.OPERATION;
+      display.innerHTML += ev.target.value;
+      estado = ESTADO.OPERATION;
+      ESTADO.COMA = true;
     }
   }
 }
@@ -55,12 +61,23 @@ for (i=0; i<operacion.length; i++){
 //-- Calculos
 igual.onclick = () => {
   if(estado == ESTADO.OP1 ||  estado == ESTADO.OP2){
-      resultado = eval(display.innerHTML.replace('π', 'Math.PI'));
-      display.innerHTML = resultado
-      estado = ESTADO.OP1;
-      ans_2 = resultado;
+    resultado = eval(display.innerHTML.replace('π', 'Math.PI'));
+    display.innerHTML = resultado
+    estado = ESTADO.OP1;
+    ans_2 = resultado;
+    ESTADO.COMA = true;
   }
 }
+
+//-- evitar dos comas seguidas
+punto.onclick = (ev) => {
+    if(ESTADO.COMA){
+      console.log("Error dos comas");
+    }else{
+      display.innerHTML += ev.target.value;
+      ESTADO.COMA = true;
+    }
+  }
 
 
 //-- limpiar (boton AC)
@@ -69,14 +86,13 @@ reset.onclick = () => {
     display_err.innerHTML=""
 }
   
-//-- /-- Borra el ultimo digito(C)
+//-- Borra el ultimo digito(C)
 clear.onclick = () => {
     display.innerHTML= display.innerHTML.slice(0, -1);
     display_err.innerHTML="";
 }
 
-
-  //-- boton ans
+//-- boton ans
 ans.onclick = () =>{
     if( ans_2 != 'ans'){
       display.innerHTML = ans_2;
