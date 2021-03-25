@@ -12,9 +12,8 @@
     <h1>Calculadora</h1>
     <div class="box">
         <div class="display">
-            <span id="display_digitos"></span><br>
-            <span id="display_resultado"></span>
-            
+            <span id="display_err"></span><br>
+            <span id="display_res"></span>
         </div>
         <div class="caja_numeros">
             <div class="numeros">
@@ -34,7 +33,7 @@
             </div>
             <div>
                 <button class="nums digits" value="0">0</button>
-                <button class="opc digits" value=".">.</button>
+                <button id ="punto" class="opc digits" value=".">.</button>
                 <button class="opc digits pi" value="&pi;">&pi;</button>
                 
             </div>
@@ -45,10 +44,10 @@
                 <button id="reset">AC</button>
             </div>
             <div class="opciones">
-                <button id="multiplicar" class="digits" value="*">*</button>
-                <button id="dividir" class="digits" value="/">&div;</button>
-                <button id="suma" class="digits" value="+">+</button>
-                <button id="resta"  class="digits" value="-">-</button> 
+                <button id="multiplicar" class="operaciones" value="*">*</button>
+                <button id="dividir" class="operaciones" value="/">&div;</button>
+                <button id="suma" class="operaciones" value="+">+</button>
+                <button id="resta"  class="operaciones" value="-">-</button> 
                 <button id="ans" value ='ans'>Ans</button>
                 <button id="igual">=</button>    
             </div>
