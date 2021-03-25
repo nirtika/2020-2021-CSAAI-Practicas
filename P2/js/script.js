@@ -13,7 +13,7 @@ let digitos = document.getElementsByClassName("digits")
 //-- array con todos los elementos de la clase operacion
 let operacion = document.getElementsByClassName("operaciones")
 
-var ans_2 =ans.value; // valor de ans
+var resultado; // valor de resultado
 
 //-- Estados de la calculadora
 const ESTADO = {
@@ -21,7 +21,7 @@ const ESTADO = {
     OP1: 1,
     OPERATION: 2,
     OP2: 3,
-    COMA: false,
+    comprobarcoma: false,
   }
 
 //--Variable del estados
@@ -42,7 +42,7 @@ function digito(boton) {
       display.innerHTML += boton;
       if (estado == ESTADO.OPERATION) {
         estado = ESTADO.OP2;
-        ESTADO.COMA = false;
+        ESTADO.comprobarcoma = false;
       }
     }
   }
@@ -53,10 +53,11 @@ for (i=0; i<operacion.length; i++){
     if(estado == ESTADO.OP1){
       display.innerHTML += ev.target.value;
       estado = ESTADO.OPERATION;
-      ESTADO.COMA = true;
+      ESTADO.comprobarcoma = true;
     }
   }
 }
+
 
 //-- Calculos
 igual.onclick = () => {
@@ -64,18 +65,16 @@ igual.onclick = () => {
     resultado = eval(display.innerHTML.replace('π', 'Math.PI'));
     display.innerHTML = resultado
     estado = ESTADO.OP1;
-    ans_2 = resultado;
-    ESTADO.COMA = true;
   }
 }
 
 //-- evitar dos comas seguidas
 punto.onclick = (ev) => {
-    if(ESTADO.COMA){
+    if(ESTADO.comprobarcoma){
       console.log("Error dos comas");
     }else{
       display.innerHTML += ev.target.value;
-      ESTADO.COMA = true;
+      ESTADO.comprobarcoma = true;
     }
   }
 
@@ -94,9 +93,10 @@ clear.onclick = () => {
 
 //-- boton ans
 ans.onclick = () =>{
-    if( ans_2 != 'ans'){
-      display.innerHTML = ans_2;
-    }
+  if(estado != ESTADO.INIT){
+    display.innerHTML += resultado;
+    estado = ESTADO.OP1;
+  }
 }
   
   // mostrar syntax error
