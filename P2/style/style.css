@@ -63,3 +63,4 @@ button:active {
 .opc:hover, .caja_opciones button:hover{
     background-color: rgb(187, 204, 206);
 }
+#igual{min-width:135px;padding: 11px;}

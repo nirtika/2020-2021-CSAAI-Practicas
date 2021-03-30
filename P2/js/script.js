@@ -34,6 +34,17 @@ for (i=0; i<digitos.length; i++){
   }
 }
 
+//-- el array de los operadores: sumar, restar, multiplicar, dividir,
+for (i=0; i<operacion.length; i++){
+  operacion[i].onclick = (ev)=> {
+    if(estado == ESTADO.OP1){
+      display.innerHTML += ev.target.value;
+      estado = ESTADO.OPERATION;
+      ESTADO.comprobarcoma = true;
+    }
+  }
+}
+
 function digito(boton) {
   if(estado == ESTADO.INIT) {
       display.innerHTML = boton;
@@ -46,23 +57,16 @@ function digito(boton) {
       }
     }
   }
-
-//-- el array de los operadores: sumar, restar, multiplicar, dividir,
-for (i=0; i<operacion.length; i++){
-  operacion[i].onclick = (ev)=> {
-    if(estado == ESTADO.OP1){
-      display.innerHTML += ev.target.value;
-      estado = ESTADO.OPERATION;
-      ESTADO.comprobarcoma = true;
-    }
-  }
+const porcentaje = document.getElementById('porcentaje')
+porcentaje.onclick =() =>{
+    estado == ESTADO.OP1
+    display.innerHTML+= porcentaje.value;
 }
-
 
 //-- Calculos
 igual.onclick = () => {
   if(estado == ESTADO.OP1 ||  estado == ESTADO.OP2){
-    resultado = eval(display.innerHTML.replace('π', 'Math.PI'));
+    resultado = eval(display.innerHTML.replace('π', 'Math.PI').replace('%','*0.01'));
     display.innerHTML = resultado
     estado = ESTADO.OP1;
   }
@@ -83,6 +87,7 @@ punto.onclick = (ev) => {
 reset.onclick = () => {
     display.innerHTML = "";
     display_err.innerHTML=""
+    estado = ESTADO.INIT
 }
   
 //-- Borra el ultimo digito(C)
