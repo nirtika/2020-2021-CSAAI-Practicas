@@ -60,7 +60,9 @@ button[disabled]{
   background-color: #cccccc;
   color: #666666;
 }
-
+sup{
+    font-size: 0.6em;
+}
 
 button:active {
     border: none;
