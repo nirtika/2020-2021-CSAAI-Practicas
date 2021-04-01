@@ -17,8 +17,25 @@
             <span id="display_err"></span><br>
             <span id="display_res"></span>
         </div>
+        <div class="tab">
+            <button id="normal">Normal</button>
+            <button id="scientific">Scientific</button>
+        </div>
+        <div id ="sci" class="numeros_sci">
+            <button id="abs" class="operaciones" value="abs">Abs</button>
+            <button id="power" class="operaciones" value ="^">^</button> 
+            <button id="power_2" class="operaciones" value ="^">x<sup>2</sup></button> 
+            <button id ="raiz" class="operaciones" value ="&Sqrt;">&Sqrt;</button>
+            <button id="ln" class="operaciones" value ="ln">ln</button> 
+            <button id="log" class="operaciones" value ="log">log</button> 
+            <button id="sin"class="digits" value="sin">sin</button>
+            <button id="cos"class="digits" value="cos">cos</button>
+            <button id="tan"class="digits" value="tan">tan</button> 
+            <button class="operaciones pi" value="&pi;">&pi;</button>
+            <button id ="fact" class="" value="fact">!</button>
+            
+        </div>
         <div class="caja_numeros">
-            <br><br><br>
             <div class="numeros">
                 <button class="digits" value="7">7</button>
                 <button class="digits" value="8">8</button>
@@ -34,27 +51,23 @@
                 <button class="digits" value="2">2</button>
                 <button class="digits" value="3">3</button>
             </div>
-            <div>
+            <div class="numeros">
+                <button id="porcentaje" class="operaciones" value ="%">%</button>
                 <button class="nums digits" value="0">0</button>
-                <button id ="punto" class="opc digits" value=".">.</button>
-                <button class="opc digits pi" value="&pi;">&pi;</button>
-                
+                <button id ="punto" class="opc digits" value=".">.</button> 
             </div>
         </div>
-        <div class="caja_opciones">
-            <div class="del">
-                <button id="clear">C</button>
-                <button id="reset">AC</button>
-            </div>
-            <div class="opciones">
-                <button id="multiplicar" class="operaciones" value="*">x</button>
-                <button id="dividir" class="operaciones" value="/">&div;</button>
-                <button id="suma" class="operaciones" value="+">+</button>
-                <button id="resta"  class="operaciones" value="-">-</button> 
-                <button id="porcentaje" class="operaciones" value ="%">%</button>
-                <button id="ans" value ='ans'>Ans</button>
-                <button id="igual">=</button>    
-            </div>
+        <div class="del">
+            <button id="clear">C</button>
+            <button id="reset">AC</button>
+        </div>
+        <div class="operadores">
+            <button id="multiplicar" class="operaciones" value="*">x</button>
+            <button id="dividir" class="operaciones" value="/">&div;</button>
+            <button id="suma" class="operaciones" value="+">+</button>
+            <button id="resta"  class="operaciones" value="-">-</button> 
+            <button id="ans" value ='ans'>Ans</button>
+            <button id="igual">=</button>    
         </div>        
     </div>
     
