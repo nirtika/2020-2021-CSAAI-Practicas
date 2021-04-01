@@ -159,7 +159,17 @@ ans.onclick = () =>{
     //estado = ESTADO.OP1;
   }
 }
+const factorial = document.getElementById('fact')
 
+factorial.onclick =()=>{
+  var dato = display.innerHTML;
+  let x = 1;
+  for(let i = dato; i>0; i--){
+      x *= i;
+      resultado = x
+      display.innerHTML= resultado
+  }
+}
 
   // mostrar syntax error
   /*window.onerror = function() {
