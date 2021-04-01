@@ -160,7 +160,7 @@ ans.onclick = () =>{
   }
 }
 const factorial = document.getElementById('fact')
-
+//factorial
 factorial.onclick =()=>{
   var dato = display.innerHTML;
   let x = 1;
@@ -171,6 +171,19 @@ factorial.onclick =()=>{
   }
 }
 
+//ln
+const ln = document.getElementById('ln')
+ln.onclick =()=>{
+  resultado = Math.log(display.innerHTML)
+  display.innerHTML= resultado
+}
+
+//log
+const log = document.getElementById('log')
+log.onclick =()=>{
+  resultado = Math.log10(display.innerHTML)
+  display.innerHTML= resultado
+}
   // mostrar syntax error
   /*window.onerror = function() {
     //alert('Syntax Error');
