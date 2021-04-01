@@ -184,6 +184,19 @@ log.onclick =()=>{
   resultado = Math.log10(display.innerHTML)
   display.innerHTML= resultado
 }
+
+// abs
+const abs = document.getElementById('abs')
+abs.onclick =()=>{
+  resultado = Math.abs(display.innerHTML)
+  display.innerHTML= resultado
+}
+// abs
+const pow_2 = document.getElementById('power_2')
+pow_2.onclick =()=>{
+  resultado = Math.pow(display.innerHTML,2)
+  display.innerHTML= resultado
+}
   // mostrar syntax error
   /*window.onerror = function() {
     //alert('Syntax Error');
