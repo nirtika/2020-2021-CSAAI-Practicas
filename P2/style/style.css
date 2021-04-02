@@ -4,15 +4,14 @@ body{ background: linear-gradient(to bottom, #ccffff 0%, #999966 100%); backgrou
     src: url(../fonts/DS-DIGI.TTF);
   }
 .box{
-    border: black solid;
-    border-radius: 5px;
+    border-radius: 25px;
     width: 400px;
     margin-left: auto;
     margin-right: auto;
     padding: 15px;
     overflow: auto;
-    box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.75);
-    
+    box-shadow: 10px 10px 5px -2px rgb(103, 105, 107);
+    background-color: rgb(196, 202, 206);
 }
 h1{text-align: center;}
 .display{
@@ -33,9 +32,10 @@ h1{text-align: center;}
 .tab{margin-left: 20px;border-bottom: 3px solid #ccc ;font-size: 0.9rem;}
 .tab button{ 
     cursor:pointer;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    background-color: rgba(130, 151, 181, 0.55);
     width: auto;
+    font-weight: normal;
+    padding: 5px;
 }
 .hide{display: none;}
 button{
@@ -46,43 +46,35 @@ button{
     font-size: 1.2em;
     border: none;
     border-radius: 3px;
-    box-shadow: 0 3px #918e8ebe;
+    box-shadow: 0 4px #918e8ebe;
     cursor:pointer;
 }
-button[disabled]{ /*button:disabled*/
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
-}
-
-button[disabled]{
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
-}
-sup{
-    font-size: 0.6em;
-}
-
+sup{font-size: 0.6em;}
 button:active {
     border: none;
-    box-shadow: 0 5px #918e8e;
+    box-shadow: 0 6px #918e8e;
     transform: translateY(3px);
 }
 .caja_numeros,.numeros_sci{
     float: left;
     margin-left: 20px;
 }
-.operadores button,.opc{
-    background-color: rgba(146, 158, 175, 0.548);
+.operadores button{
+    background-color: rgba(146, 158, 175);
 }
 
 .numeros button,.nums{
     background-color: rgba(147, 199, 147, 0.644);
 }
-.numeros button:hover ,.nums:hover{
+.numeros button:hover{
     background-color: rgb(186, 240, 209);
 }
-.opc:hover, .caja_opciones button:hover{
-    background-color: rgb(187, 204, 206);
+.operadores button:hover{
+    background-color: rgba(149, 173, 206, 0.856);
+}
+.numeros_sci button{
+    background-color: rgba(141, 154, 190, 0.788);
+}
+.numeros_sci button:hover{
+    background-color: rgba(184, 194, 221, 0.986);
 }

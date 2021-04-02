@@ -222,14 +222,14 @@ inv.onclick =()=>{
 }
 
 //mostrar syntax error
-/*window.onerror = function() {
+window.onerror = function() {
     alert('Syntax Error');
     display_res.innerHTML="Syntax Error"
     return true;
-}*/
+}
 
 //tabs
-document.getElementById('normal').onclick= () =>{
+document.getElementById('basic').onclick= () =>{
     document.getElementById('sci').classList.add('hide')
     reset.onclick()
     estado= ESTADO.INIT
