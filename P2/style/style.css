@@ -37,6 +37,9 @@ h1{text-align: center;}
     font-weight: normal;
     padding: 5px;
 }
+.tab button:hover{
+    background-color: rgba(194, 202, 229, 0.55);
+}
 .hide{display: none;}
 button{
     padding: 10px 5px; 

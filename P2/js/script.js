@@ -72,9 +72,9 @@ function digito(boton) {
 
 //-- Calculos
 igual.onclick = () => {
-  display_res.innerHTML=display.innerHTML.replace('*0.01','%')
+  display_res.innerHTML=display.innerHTML
   if(estado == ESTADO.OP1 ||  estado == ESTADO.OP2){
-    resultado = eval(display.innerHTML.replace('π', '*Math.PI').replace('^','**'))
+    resultado = eval(display.innerHTML.replace('π', 'Math.PI').replace('^','**'))
     display.innerHTML = resultado
     estado = ESTADO.OP1;
   }
@@ -115,7 +115,7 @@ ans.onclick = () =>{
 
 //porcentaje
 porcentaje.onclick =() =>{  
-  display.innerHTML += porcentaje.value.replace('%','*0.01')
+  display.innerHTML += porcentaje.value
   //estado == ESTADO.OP1
 }
 
@@ -173,12 +173,15 @@ factorial.onclick =()=>{
 
 //ln
 ln.onclick =()=>{
+  display_res.innerHTML = 'ln ('.concat(display.innerHTML).concat(')')
   resultado = Math.log(display.innerHTML)
   display.innerHTML= resultado
+  //console.log(resultado)
 }
 
 //log
 log.onclick =()=>{
+  display_res.innerHTML = 'log ('.concat(display.innerHTML).concat(')')
   resultado = Math.log10(display.innerHTML)
   display.innerHTML= resultado
 }
@@ -223,7 +226,7 @@ inv.onclick =()=>{
 
 //mostrar syntax error
 window.onerror = function() {
-    alert('Syntax Error');
+    //alert('Syntax Error');
     display_res.innerHTML="Syntax Error"
     return true;
 }
