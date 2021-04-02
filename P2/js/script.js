@@ -72,9 +72,9 @@ function digito(boton) {
 
 //-- Calculos
 igual.onclick = () => {
-  display_res.innerHTML=display.innerHTML
+  display_res.innerHTML=display.innerHTML.replace('*0.01','%')
   if(estado == ESTADO.OP1 ||  estado == ESTADO.OP2){
-    resultado = eval(display.innerHTML.replace('π', '*Math.PI').replace('%','*0.01').replace('^','**'))
+    resultado = eval(display.innerHTML.replace('π', '*Math.PI').replace('^','**'))
     display.innerHTML = resultado
     estado = ESTADO.OP1;
   }
@@ -109,14 +109,14 @@ clear.onclick = () => {
 ans.onclick = () =>{
   if(estado != ESTADO.INIT){
     display.innerHTML += resultado;
-    //estado = ESTADO.OP1;
+    estado = ESTADO.OP1;
   }
 }
 
 //porcentaje
-porcentaje.onclick =() =>{
-  estado == ESTADO.OP1
-  display.innerHTML+= porcentaje.value;
+porcentaje.onclick =() =>{  
+  display.innerHTML += porcentaje.value.replace('%','*0.01')
+  //estado == ESTADO.OP1
 }
 
 //raiz cuadrada
@@ -125,11 +125,17 @@ document.getElementById('raiz').onclick =() =>{
   resultado= Math.sqrt(display.innerHTML);
   display.innerHTML=resultado
 }
+//raiz cubica
+document.getElementById('raiz_cub').onclick =() =>{  
+  display_res.innerHTML= '&#8731;'.concat(display.innerHTML)
+  resultado= Math.cbrt(display.innerHTML);
+  display.innerHTML=resultado
+}
 
 //seno
 sin.onclick =()=>{
   display_res.innerHTML = 'sin ('.concat(display.innerHTML).concat(')')
-  var valor_disp = eval(display.innerHTML.replace('π', 'Math.PI'))
+  var valor_disp = eval(display.innerHTML.replace('π', '*Math.PI'))
   resultado_sin= valor_disp * Math.PI/180
   resultado = Math.sin(resultado_sin)
   display.innerHTML= resultado
@@ -138,7 +144,7 @@ sin.onclick =()=>{
 //coseno
 cos.onclick =()=>{
   display_res.innerHTML = 'cos ('.concat(display.innerHTML).concat(')')
-  var valor_disp_cos = eval(display.innerHTML.replace('π', 'Math.PI'))
+  var valor_disp_cos = eval(display.innerHTML.replace('π', '*Math.PI'))
   resultado_coseno= valor_disp_cos* Math.PI/180
   resultado = Math.cos(resultado_coseno)
   display.innerHTML= resultado
@@ -147,7 +153,7 @@ cos.onclick =()=>{
 //tan
 tan.onclick =()=>{
   display_res.innerHTML = 'tan('.concat(display.innerHTML).concat(')')
-  var valor_disp = eval(display.innerHTML.replace('π', 'Math.PI'))
+  var valor_disp = eval(display.innerHTML.replace('π', '*Math.PI'))
   resultado_tan= valor_disp * Math.PI / 180;
   resultado = Math.tan(resultado_tan);
   display.innerHTML= resultado
@@ -216,11 +222,11 @@ inv.onclick =()=>{
 }
 
 //mostrar syntax error
-window.onerror = function() {
+/*window.onerror = function() {
     alert('Syntax Error');
     display_res.innerHTML="Syntax Error"
     return true;
-}
+}*/
 
 //tabs
 document.getElementById('normal').onclick= () =>{
