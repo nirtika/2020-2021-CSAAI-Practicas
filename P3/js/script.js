@@ -13,7 +13,7 @@ let vely = -2;
 // anchura y altura de la paleta
 var paddleHeight = 10;
 var paddleWidth = 65;
-var paddleX = (canvas.width-10)/2; //posicion X de la paleta
+var paddleX = (canvas.width-60)/2; //posicion X de la paleta
 
 // mover la paleta
 var rightpress= false;
@@ -76,7 +76,7 @@ function keyUpHandler(e) {
         leftpress = false;
     }
 }
-
+draw();
 
 //-- Funcion principal de animacion
 function update() {
@@ -106,6 +106,10 @@ function update() {
     //-- 4) Volver a ejecutar update cuando toque
     requestAnimationFrame(update);
 }
-//-- ¡Que empiece la función!
-update();
 
+
+const button_play = document.getElementById('button_play')
+button_play.onclick= () =>{
+    //-- ¡Que empiece la función!
+    update();
+}
