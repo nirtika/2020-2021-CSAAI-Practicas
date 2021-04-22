@@ -10,6 +10,15 @@ let y = canvas.height-25;
 let velx = 2;
 let vely = -2;
 
+// anchura y altura de la paleta
+var paddleHeight = 10;
+var paddleWidth = 65;
+var paddleX = (canvas.width-10)/2; //posicion X de la paleta
+
+// mover la paleta
+var rightpress= false;
+var leftpress = false;
+
 //dibujar elementos
 function draw(){
         
@@ -29,7 +38,7 @@ function draw(){
 
     // dibujar palo
     ctx.beginPath();
-        ctx.rect(250, canvas.height-15, 50, 8);
+        ctx.rect(paddleX, canvas.height-15, paddleWidth, paddleHeight);
         ctx.fillStyle = "#FFFFFF";
         ctx.fill();
     ctx.closePath();
@@ -45,10 +54,34 @@ function draw(){
 }
 
 
+//// funcion leer tecla derecha y izq
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+
+// evento teclado
+function keyDownHandler(e) {
+    if(e.keyCode == 39) {
+        rightpress = true;
+    }
+    else if(e.keyCode == 37) {
+        leftpress = true;
+    }
+}
+
+function keyUpHandler(e) {
+    if(e.keyCode == 39) {
+        rightpress = false;
+    }
+    else if(e.keyCode == 37) {
+        leftpress = false;
+    }
+}
+
+
 //-- Funcion principal de animacion
 function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
+    draw();
     //-- Condicion de rebote en extremos verticales del canvas
     if (x < 0 || x >= (canvas.width) ) {
         velx = -velx;
@@ -58,7 +91,15 @@ function update() {
     if (y <= 0 || y > canvas.height) {
         vely = -vely;
     }
-    draw();
+
+    // mover la paleta
+    if(rightpress && paddleX < canvas.width-paddleWidth) {
+        paddleX += 7;
+    }
+    else if(leftpress && paddleX > 0) {
+        paddleX -= 7;
+    }
+    
     //-- Actualizar la posición
     x = x + velx;
     y = y + vely;
@@ -67,3 +108,4 @@ function update() {
 }
 //-- ¡Que empiece la función!
 update();
+
