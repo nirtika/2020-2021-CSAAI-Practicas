@@ -1,7 +1,7 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 //-- Definir el tamaño del canvas
-canvas.width = 500;
+canvas.width = 490;
 canvas.height = 700;
 //-- Coordenadas del objeto
 let x = canvas.width/2;
@@ -10,33 +10,68 @@ let y = canvas.height-25;
 let velx = 2;
 let vely = -2;
 
-// anchura y altura de la paleta
+// anchura y altura de la raqueta
 var paddleHeight = 10;
 var paddleWidth = 65;
-var paddleX = (canvas.width-60)/2; //posicion X de la paleta
+var paddleX = (canvas.width-60)/2; //posicion X de la raqueta
 
-// mover la paleta
+// mover la raqueta
 var rightpress= false;
 var leftpress = false;
+
+//id del boton play
+const button_play = document.getElementById('button_play')
+
+// variables para ladrillos
+var filas = 5;
+var columnas = 9;
+// anchura, altura,padding, margin
+var brickWidth = 50; 
+var brickHeight = 15; 
+var brickPadding = 5;
+var marginTop = 160;
 
 //dibujar elementos
 function draw(){
         
     // Texto en canvas
     //-- Texto solido
+    ctx.font = "35px Arial";
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillText("BreakOut", canvas.width/2, 30);
+
+    
+    // Texto Vida
     ctx.font = "25px Arial";
     ctx.textAlign = 'center';
     ctx.fillStyle = '#FFFFFF';
-    ctx.fillText("BreakOut", canvas.width/2, 25);
+    ctx.fillText("Vida", canvas.width-60, 90);
+    ctx.fillText("3", canvas.width-60, 120);
 
-    // dibujar ladrillo
+    // Puntos
+    ctx.font = "25px Arial";
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillText("Puntos", 50, 90);
+    ctx.fillText("3", 50, 120);
+
+    
+    // draw a red line
     ctx.beginPath();
-        ctx.rect(2, 40, 50, 5);
-        ctx.fillStyle = "blue";
-        ctx.fill();
-    ctx.closePath();
+    ctx.moveTo(0, 50);
+    ctx.lineTo(500, 50);
+    ctx.moveTo(0, 140);
+    ctx.lineTo(500, 140);
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = 5;
+    ctx.stroke();
+    
 
-    // dibujar palo
+    // dibujar ladrillos
+    drawBricks();
+
+    // dibujar la raqueta
     ctx.beginPath();
         ctx.rect(paddleX, canvas.height-15, paddleWidth, paddleHeight);
         ctx.fillStyle = "#FFFFFF";
@@ -52,9 +87,23 @@ function draw(){
         ctx.fill();
     ctx.closePath();
 }
+draw();
 
+function drawBricks() {
+    for(c=0; c<columnas; c++) {
+        for(r=0; r<filas; r++) {
+            var brickX = (c*(brickWidth+brickPadding));
+            var brickY = (r*(brickHeight+brickPadding));
+            ctx.beginPath();
+            ctx.rect(brickX, brickY+marginTop, brickWidth, brickHeight);
+            ctx.fillStyle = "white";           
+            ctx.fill();
+            ctx.closePath();
+        }
+    }
+}
 
-//// funcion leer tecla derecha y izq
+// funcion leer tecla derecha y izq
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
@@ -76,7 +125,7 @@ function keyUpHandler(e) {
         leftpress = false;
     }
 }
-draw();
+
 
 //-- Funcion principal de animacion
 function update() {
@@ -92,7 +141,7 @@ function update() {
         vely = -vely;
     }
 
-    // mover la paleta
+    // mover la raqueta
     if(rightpress && paddleX < canvas.width-paddleWidth) {
         paddleX += 7;
     }
@@ -107,8 +156,6 @@ function update() {
     requestAnimationFrame(update);
 }
 
-
-const button_play = document.getElementById('button_play')
 button_play.onclick= () =>{
     //-- ¡Que empiece la función!
     update();
