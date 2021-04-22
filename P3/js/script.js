@@ -31,6 +31,10 @@ var brickHeight = 15;
 var brickPadding = 5;
 var marginTop = 160;
 
+
+let vida = 3;
+let puntos = 0;
+
 //dibujar elementos
 function draw(){
         
@@ -47,14 +51,12 @@ function draw(){
     ctx.textAlign = 'center';
     ctx.fillStyle = '#FFFFFF';
     ctx.fillText("Vida", canvas.width-60, 90);
-    ctx.fillText("3", canvas.width-60, 120);
+    ctx.fillText(vida, canvas.width-60, 120);
 
     // Puntos
-    ctx.font = "25px Arial";
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#FFFFFF';
     ctx.fillText("Puntos", 50, 90);
-    ctx.fillText("3", 50, 120);
+    ctx.fillText(puntos, 50, 120);
+    ctx.fillText('Time', canvas.width/2,120)
 
     
     // draw a red line
@@ -90,13 +92,14 @@ function draw(){
 draw();
 
 function drawBricks() {
+    
     for(c=0; c<columnas; c++) {
         for(r=0; r<filas; r++) {
             var brickX = (c*(brickWidth+brickPadding));
             var brickY = (r*(brickHeight+brickPadding));
             ctx.beginPath();
             ctx.rect(brickX, brickY+marginTop, brickWidth, brickHeight);
-            ctx.fillStyle = "white";           
+            ctx.fillStyle = 'white';           
             ctx.fill();
             ctx.closePath();
         }
@@ -159,4 +162,6 @@ function update() {
 button_play.onclick= () =>{
     //-- ¡Que empiece la función!
     update();
+    
 }
+
