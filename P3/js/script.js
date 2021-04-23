@@ -1,5 +1,5 @@
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
 //-- Definir el tamaño del canvas
 canvas.width = 490;
 canvas.height = 700;
@@ -31,7 +31,7 @@ const ladrillo = {
     width:50,
     height : 15,
     padding:5,
-    marginTop:160
+    marginTop:160,
 }
 
 const filas = 5;
@@ -44,22 +44,24 @@ let puntos = 0;
 for(c=0; c<columnas; c++) {
     bricks[c] = [];
     for(r=0; r<filas; r++) {
-        bricks[c][r] = { x: 0, y: 0};
+        bricks[c][r] = { x: 0, y: 0, visible:true};
     }
 }
 function drawBricks() {
     for(c=0; c<columnas; c++) {
        // bricks[c] = [];
         for(r=0; r<filas; r++) {
-            var brickX = (c*(ladrillo.width+ladrillo.padding));
-            var brickY = (r*(ladrillo.height+ladrillo.padding)+ladrillo.marginTop);
-            bricks[c][r].x = brickX;
-            bricks[c][r].y = brickY;
-            ctx.beginPath();
-            ctx.rect(brickX, brickY, ladrillo.width, ladrillo.height);
-            ctx.fillStyle = 'white';           
-            ctx.fill();
-            ctx.closePath();
+            if(bricks[c][r].visible){
+                const brickX = (c*(ladrillo.width+ladrillo.padding));
+                const brickY = (r*(ladrillo.height+ladrillo.padding)+ladrillo.marginTop);
+                bricks[c][r].x = brickX;
+                bricks[c][r].y = brickY;
+                ctx.beginPath();
+                ctx.rect(brickX, brickY, ladrillo.width, ladrillo.height);
+                ctx.fillStyle = 'white';           
+                ctx.fill();
+                ctx.closePath();
+            }
         }
     }
 }
@@ -68,10 +70,12 @@ function collisionDetection() {
     for(c=0; c<columnas; c++) {
         for(r=0; r<filas; r++) {
             const ladr = bricks[c][r];
+            if(ladr.visible){
                 if(ball.x > ladr.x && ball.x < ladr.x+ladrillo.width && ball.y > ladr.y && ball.y < ladr.y+ladrillo.height) {
                     vely = -vely;
-                    
+                    ladr.visible=false; //quitar el ladrillo
                 }
+            }               
         }
     }
 }
@@ -188,7 +192,8 @@ function update() {
         vida--;
         ball.x=(canvas.width)/2; //posición inicial
         ball.y=canvas.height-25;
-        
+        paddle.x=(canvas.width-65)/2;
+        paddle.y =canvas.height-15 
         
     }
     //detectar colision ladrillos
