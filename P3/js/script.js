@@ -7,16 +7,15 @@ canvas.height = 700;
 //-- Velocidades del objeto
 let velx = 2;
 let vely = -2;
-
 const paddle ={
     height : 10,
     width :65,
-    x:(canvas.width-60)/2, //posicion X de la raqueta
+    x:(canvas.width-65)/2, //posicion X de la raqueta
     y:canvas.height-15      //posicion y
 }
 const ball ={
-    x : (canvas.width-60)/2,
-    y: canvas.height-15 ,
+    x : (canvas.width)/2,
+    y: canvas.height-25 ,
     radius : 10
 }
 
@@ -42,18 +41,37 @@ const bricks = [];
 let vida = 3;
 let puntos = 0;
 
+for(c=0; c<columnas; c++) {
+    bricks[c] = [];
+    for(r=0; r<filas; r++) {
+        bricks[c][r] = { x: 0, y: 0};
+    }
+}
 function drawBricks() {
     for(c=0; c<columnas; c++) {
-        bricks[c] = [];
+       // bricks[c] = [];
         for(r=0; r<filas; r++) {
-            const brickX = (c*(ladrillo.width+ladrillo.padding));
-            const brickY = (r*(ladrillo.height+ladrillo.padding)+ladrillo.marginTop);
-            bricks[c][r] = {brickX, brickY};
+            var brickX = (c*(ladrillo.width+ladrillo.padding));
+            var brickY = (r*(ladrillo.height+ladrillo.padding)+ladrillo.marginTop);
+            bricks[c][r].x = brickX;
+            bricks[c][r].y = brickY;
             ctx.beginPath();
             ctx.rect(brickX, brickY, ladrillo.width, ladrillo.height);
             ctx.fillStyle = 'white';           
             ctx.fill();
             ctx.closePath();
+        }
+    }
+}
+
+function collisionDetection() {
+    for(c=0; c<columnas; c++) {
+        for(r=0; r<filas; r++) {
+            const ladr = bricks[c][r];
+                if(ball.x > ladr.x && ball.x < ladr.x+ladrillo.width && ball.y > ladr.y && ball.y < ladr.y+ladrillo.height) {
+                    vely = -vely;
+                    
+                }
         }
     }
 }
@@ -138,7 +156,9 @@ function keyUpHandler(e) {
 //-- Funcion principal de animacion
 function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     draw();
+
     //-- Condicion de rebote en extremos verticales del canvas
     if (ball.x < 0 || ball.x >= (canvas.width) ) {
         velx = -velx;
@@ -162,15 +182,23 @@ function update() {
         && ball.y + ball.radius > paddle.y) {
         vely = -vely;
     }
+
     // restar vidas
      if (ball.y > canvas.height) {
         vida--;
+        ball.x=(canvas.width)/2; //posición inicial
+        ball.y=canvas.height-25;
+        
+        
     }
+    //detectar colision ladrillos
+    collisionDetection();
 
     //-- Actualizar la posición
     ball.x = ball.x + velx;
     ball.y = ball.y + vely;
-    //-- 4) Volver a ejecutar update cuando toque
+
+    //) Volver a ejecutar update cuando toque
     requestAnimationFrame(update);
 }
 
