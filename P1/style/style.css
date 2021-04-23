@@ -34,7 +34,7 @@ h2{font-size: 2.5em;}
  
 /*styles header text*/
 .header-text{
-  background: rgb(162 165 169 / 45%);
+  background: rgb(162 165 169 / 50%);
   padding: 50px;
   text-align: center;
   min-height: 400px;
@@ -209,22 +209,18 @@ footer{
 }
 
 /*media queries*/
-/*ventana del navegador 600 px y/o 768px*/
-@media only screen and (max-width: 768px) and (max-width:600px){
-  .header {padding: 30px;min-height: auto;}
-  .menu {margin-bottom: 50px;display: grid;}
+/*ventana del navegador 600 px*/
+@media only screen and (max-width:600px) {
+  .header {padding: 10px;}
+  .header-text {background: rgb(58 59 62 / 45%);padding: 8px;margin: auto; }
+  .container {margin-top: 30px;}
+  .menu {display: grid;}
   .menu a {padding: 0px;}
-  .main {width: 100%; padding: 5px; }
-  .img-aboutme {
-    float: none;
-    margin-left:90px;
-  }
+  .main {width: 100%;}
+  .lista li {font-size: 17px;}
+  .img-aboutme {float: none; margin-left:90px; }
   .section-formacion, .section-laboral, .section-contact {width: 100%; margin: 0px 0px 30px 0px;}
   .section-contact {margin-top: -150px; border-radius: 65px;}
-  .contact-info {
-    padding: 30px;
-    height: auto;
-    border-right: none;
-  }
+  .contact-info {padding: 30px;height: auto;border-right: none;}
   .form img{width: 235px;}
 }
