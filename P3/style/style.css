@@ -8,18 +8,19 @@
 }
 div{
     position: absolute;
-    top: 50px;
-    left: 30px;
+    top: 10px;
+    left: 90px;
 }
 button{
     padding: 10px;  
-    width: 60px;
+    width: 120px;
+    font-family: monospace;
     font-weight: bold; 
-    font-size: 1.2em;
+    font-size: 1.5em;
     border: none;
     border-radius: 3px;
-    box-shadow: 0 4px #918e8ebe;
-    cursor:pointer;
+    background-color: rgb(116, 218, 187);
+    box-shadow: 0 4px #918d8de3;
 }
 button:active {
     border: none;

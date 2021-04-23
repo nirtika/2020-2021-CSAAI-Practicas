@@ -3,41 +3,62 @@ var ctx = canvas.getContext("2d");
 //-- Definir el tamaño del canvas
 canvas.width = 490;
 canvas.height = 700;
-//-- Coordenadas del objeto
-let x = canvas.width/2;
-let y = canvas.height-25;
 //-- Velocidades del objeto
 let velx = 2;
 let vely = -2;
 
-// anchura y altura de la raqueta
-var paddleHeight = 10;
-var paddleWidth = 65;
-var paddleX = (canvas.width-60)/2; //posicion X de la raqueta
+const paddle ={
+    height : 10,
+    width :65,
+    x:(canvas.width-60)/2, //posicion X de la raqueta
+    y:canvas.height-15      //posicion y
+}
+const ball ={
+    x : (canvas.width-60)/2,
+    y: canvas.height-15 ,
+    radius : 10
+}
 
 // mover la raqueta
-var rightpress= false;
-var leftpress = false;
+let rightpress= false;
+let leftpress = false;
 
 //id del boton play
 const button_play = document.getElementById('button_play')
 
 // variables para ladrillos
-var filas = 5;
-var columnas = 9;
-// anchura, altura,padding, margin
-var brickWidth = 50; 
-var brickHeight = 15; 
-var brickPadding = 5;
-var marginTop = 160;
+const ladrillo = {
+    width:50,
+    height : 15,
+    padding:5,
+    marginTop:160
+}
 
+const filas = 5;
+const columnas = 9;
+const bricks = [];
 
 let vida = 3;
 let puntos = 0;
 
+function drawBricks() {
+    for(c=0; c<columnas; c++) {
+        bricks[c] = [];
+        for(r=0; r<filas; r++) {
+            const brickX = (c*(ladrillo.width+ladrillo.padding));
+            const brickY = (r*(ladrillo.height+ladrillo.padding)+ladrillo.marginTop);
+            bricks[c][r] = {brickX, brickY};
+            ctx.beginPath();
+            ctx.rect(brickX, brickY, ladrillo.width, ladrillo.height);
+            ctx.fillStyle = 'white';           
+            ctx.fill();
+            ctx.closePath();
+        }
+    }
+}
+
 //dibujar elementos
-function draw(){
-        
+function draw(){        
     // Texto en canvas
     //-- Texto solido
     ctx.font = "35px Arial";
@@ -68,14 +89,13 @@ function draw(){
     ctx.strokeStyle = 'red';
     ctx.lineWidth = 5;
     ctx.stroke();
-    
 
     // dibujar ladrillos
     drawBricks();
 
     // dibujar la raqueta
     ctx.beginPath();
-        ctx.rect(paddleX, canvas.height-15, paddleWidth, paddleHeight);
+        ctx.rect(paddle.x, paddle.y, paddle.width, paddle.height);
         ctx.fillStyle = "#FFFFFF";
         ctx.fill();
     ctx.closePath();
@@ -84,27 +104,12 @@ function draw(){
     ctx.beginPath();
         //-- Dibujar un circulo: coordenadas x,y del centro
         //-- Radio, Angulo inicial y angulo final
-        ctx.arc(x, y, 10, 0, 2 * Math.PI);
+        ctx.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI);
         ctx.fillStyle = "red";
         ctx.fill();
     ctx.closePath();
 }
 draw();
-
-function drawBricks() {
-    
-    for(c=0; c<columnas; c++) {
-        for(r=0; r<filas; r++) {
-            var brickX = (c*(brickWidth+brickPadding));
-            var brickY = (r*(brickHeight+brickPadding));
-            ctx.beginPath();
-            ctx.rect(brickX, brickY+marginTop, brickWidth, brickHeight);
-            ctx.fillStyle = 'white';           
-            ctx.fill();
-            ctx.closePath();
-        }
-    }
-}
 
 // funcion leer tecla derecha y izq
 document.addEventListener("keydown", keyDownHandler, false);
@@ -129,35 +134,43 @@ function keyUpHandler(e) {
     }
 }
 
-
 //-- Funcion principal de animacion
 function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     draw();
     //-- Condicion de rebote en extremos verticales del canvas
-    if (x < 0 || x >= (canvas.width) ) {
+    if (ball.x < 0 || ball.x >= (canvas.width) ) {
         velx = -velx;
     }
 
     //-- Condición de rebote en extremos horizontales del canvas
-    if (y <= 0 || y > canvas.height) {
+    if (ball.y <= 0 || ball.y > canvas.height) {
+        vely = -vely;
+    }
+   
+    // mover la raqueta
+    if(rightpress && paddle.x < canvas.width-paddle.width) {
+        paddle.x += 5;
+    }
+    else if(leftpress && paddle.x > 0) {
+        paddle.x -= 5;
+    }
+
+    //rebote en la raqueta
+    if (ball.x - ball.radius > paddle.x && ball.x + ball.radius < paddle.x + paddle.width 
+        && ball.y + ball.radius > paddle.y) {
         vely = -vely;
     }
 
-    // mover la raqueta
-    if(rightpress && paddleX < canvas.width-paddleWidth) {
-        paddleX += 7;
-    }
-    else if(leftpress && paddleX > 0) {
-        paddleX -= 7;
-    }
-    
     //-- Actualizar la posición
-    x = x + velx;
-    y = y + vely;
+    ball.x = ball.x + velx;
+    ball.y = ball.y + vely;
     //-- 4) Volver a ejecutar update cuando toque
     requestAnimationFrame(update);
 }
+
+
+ 
 
 button_play.onclick= () =>{
     //-- ¡Que empiece la función!
