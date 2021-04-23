@@ -5,16 +5,16 @@ canvas.width = 490;
 canvas.height = 700;
 
 //-- Velocidades del objeto
-let velx = 2;
+let velx = 4;
 let vely = -2;
 const paddle ={
     height : 10,
-    width :65,
+    width :80,
     x:(canvas.width-65)/2, //posicion X de la raqueta
     y:canvas.height-15      //posicion y
 }
 const ball ={
-    x : (canvas.width)/2,
+    x : (canvas.width+15)/2,
     y: canvas.height-25 ,
     radius : 10
 }
@@ -31,7 +31,7 @@ const ladrillo = {
     width:50,
     height : 15,
     padding:5,
-    marginTop:160,
+    marginTop:165,
 }
 
 const filas = 5;
@@ -169,7 +169,7 @@ function update() {
     }
 
     //-- Condición de rebote en extremos horizontales del canvas
-    if (ball.y <= 0 || ball.y > canvas.height) {
+    if (ball.y <= 150 || ball.y > canvas.height) {
         vely = -vely;
     }
    
@@ -190,7 +190,7 @@ function update() {
     // restar vidas
      if (ball.y > canvas.height) {
         vida--;
-        ball.x=(canvas.width)/2; //posición inicial
+        ball.x=(canvas.width+15)/2; //posición inicial
         ball.y=canvas.height-25;
         paddle.x=(canvas.width-65)/2;
         paddle.y =canvas.height-15 
