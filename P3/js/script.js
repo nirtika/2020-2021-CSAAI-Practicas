@@ -3,6 +3,7 @@ var ctx = canvas.getContext("2d");
 //-- Definir el tamaño del canvas
 canvas.width = 490;
 canvas.height = 700;
+
 //-- Velocidades del objeto
 let velx = 2;
 let vely = -2;
@@ -160,6 +161,10 @@ function update() {
     if (ball.x - ball.radius > paddle.x && ball.x + ball.radius < paddle.x + paddle.width 
         && ball.y + ball.radius > paddle.y) {
         vely = -vely;
+    }
+    // restar vidas
+     if (ball.y > canvas.height) {
+        vida--;
     }
 
     //-- Actualizar la posición
