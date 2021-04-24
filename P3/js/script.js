@@ -7,6 +7,10 @@ canvas.height = 700;
 //-- Velocidades del objeto
 let velx = 4;
 let vely = -2;
+
+const juego={
+    jugando:false,
+}
 const paddle ={
     height : 10,
     width :80,
@@ -31,7 +35,7 @@ const ladrillo = {
     width:50,
     height : 15,
     padding:5,
-    marginTop:165,
+    marginTop:165
 }
 
 const filas = 5;
@@ -73,7 +77,7 @@ function collisionDetection() {
             if(ladr.visible){
                 if(ball.x > ladr.x && ball.x < ladr.x+ladrillo.width && ball.y > ladr.y && ball.y < ladr.y+ladrillo.height) {
                     vely = -vely;
-                    puntos++
+                    puntos++;
                     ladr.visible=false; //quitar el ladrillo
                 }
             }               
@@ -101,6 +105,7 @@ function draw(){
     // Puntos
     ctx.fillText("Puntos", 50, 90);
     ctx.fillText(puntos, 50, 120);
+    //tiempo
     ctx.fillText('Time', canvas.width/2,120)
 
     
@@ -160,10 +165,11 @@ function keyUpHandler(e) {
 
 //-- Funcion principal de animacion
 function update() {
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     draw();
-
+    
     //-- Condicion de rebote en extremos verticales del canvas
     if (ball.x < 0 || ball.x >= (canvas.width) ) {
         velx = -velx;
@@ -194,22 +200,36 @@ function update() {
         ball.x=(canvas.width+15)/2; //posición inicial
         ball.y=canvas.height-25;
         paddle.x=(canvas.width-65)/2;
-        paddle.y =canvas.height-15 
+        //paddle.y =canvas.height-15;
         
     }
     //detectar colision ladrillos
     collisionDetection();
-
+    gameOver();       
+    
     //-- Actualizar la posición
     ball.x = ball.x + velx;
     ball.y = ball.y + vely;
-
-    //) Volver a ejecutar update cuando toque
-    requestAnimationFrame(update);
+    
+    if (juego.jugando== true){
+        //) Volver a ejecutar update cuando toque
+        requestAnimationFrame(update);
+    }
 }
 
+function gameOver(){
+    if (vida==0){
+        juego.jugando=false;
+        ctx.strokeStyle = 'white';
+        ctx.font = "25px Arial";
+        ctx.strokeText('Game Over', canvas.width/2,canvas.height/2)      
+    }    
+}
 
 button_play.onclick= () =>{
+    juego.jugando=true;
+    puntos=0;
+    vida=3;
     //-- ¡Que empiece la función!
     update();
     
