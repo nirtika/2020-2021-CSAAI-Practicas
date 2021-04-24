@@ -73,6 +73,7 @@ function collisionDetection() {
             if(ladr.visible){
                 if(ball.x > ladr.x && ball.x < ladr.x+ladrillo.width && ball.y > ladr.y && ball.y < ladr.y+ladrillo.height) {
                     vely = -vely;
+                    puntos++
                     ladr.visible=false; //quitar el ladrillo
                 }
             }               
@@ -207,8 +208,6 @@ function update() {
     requestAnimationFrame(update);
 }
 
-
- 
 
 button_play.onclick= () =>{
     //-- ¡Que empiece la función!
