@@ -51,7 +51,7 @@ for(c=0; c<columnas; c++) {
         bricks[c][r] = { x: 0, y: 0, visible:true};
     }
 }
-function drawBricks() {
+function drawBricks() {    
     for(c=0; c<columnas; c++) {
        // bricks[c] = [];
         for(r=0; r<filas; r++) {
@@ -66,21 +66,6 @@ function drawBricks() {
                 ctx.fill();
                 ctx.closePath();
             }
-        }
-    }
-}
-
-function collisionDetection() {
-    for(c=0; c<columnas; c++) {
-        for(r=0; r<filas; r++) {
-            const ladr = bricks[c][r];
-            if(ladr.visible){
-                if(ball.x > ladr.x && ball.x < ladr.x+ladrillo.width && ball.y > ladr.y && ball.y < ladr.y+ladrillo.height) {
-                    vely = -vely;
-                    puntos++;
-                    ladr.visible=false; //quitar el ladrillo
-                }
-            }               
         }
     }
 }
@@ -140,26 +125,19 @@ function draw(){
 }
 draw();
 
-// funcion leer tecla derecha y izq
-document.addEventListener("keydown", keyDownHandler, false);
-document.addEventListener("keyup", keyUpHandler, false);
-
-// evento teclado
-function keyDownHandler(e) {
-    if(e.keyCode == 39) {
-        rightpress = true;
-    }
-    else if(e.keyCode == 37) {
-        leftpress = true;
-    }
-}
-
-function keyUpHandler(e) {
-    if(e.keyCode == 39) {
-        rightpress = false;
-    }
-    else if(e.keyCode == 37) {
-        leftpress = false;
+// detectar colision ladrilllos
+function collisionDetection() {
+    for(c=0; c<columnas; c++) {
+        for(r=0; r<filas; r++) {
+            const ladr = bricks[c][r];
+            if(ladr.visible){
+                if(ball.x > ladr.x && ball.x < ladr.x+ladrillo.width && ball.y > ladr.y && ball.y < ladr.y+ladrillo.height) {
+                    vely = -vely;
+                    puntos++;
+                    ladr.visible=false; //quitar el ladrillo
+                }
+            }               
+        }
     }
 }
 
@@ -217,12 +195,29 @@ function update() {
     }
 }
 
+function valorinicial(){ //volover a dibujar los ladrillos
+    for(c=0; c<columnas; c++) {
+        bricks[c] = [];
+        for(r=0; r<filas; r++) {
+            bricks[c][r] = { x: 0, y: 0, visible:true};
+        }
+    }
+}
+
 function gameOver(){
     if (vida==0){
+        valorinicial();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        draw();
         juego.jugando=false;
-        ctx.strokeStyle = 'white';
-        ctx.font = "25px Arial";
-        ctx.strokeText('Game Over', canvas.width/2,canvas.height/2)      
+        ctx.strokeStyle = 'red';
+        ctx.font = "78px Arial";
+        ctx.strokeText('Game Over..', canvas.width/2,canvas.height/2);
+        ctx.fillStyle = 'green';
+        ctx.font = "40px Arial";
+        ctx.fillText('Puntos:', canvas.width/2,canvas.height/2+100);
+        ctx.fillText(puntos, canvas.width/2+95,canvas.height/2+100);
+
     }    
 }
 
@@ -235,3 +230,25 @@ button_play.onclick= () =>{
     
 }
 
+// funcion leer tecla derecha y izq
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+
+// evento teclado
+function keyDownHandler(e) {
+    if(e.keyCode == 39) {
+        rightpress = true;
+    }
+    else if(e.keyCode == 37) {
+        leftpress = true;
+    }
+}
+
+function keyUpHandler(e) {
+    if(e.keyCode == 39) {
+        rightpress = false;
+    }
+    else if(e.keyCode == 37) {
+        leftpress = false;
+    }
+}
