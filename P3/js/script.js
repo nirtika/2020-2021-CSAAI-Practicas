@@ -12,7 +12,7 @@ canvas.width = 490;
 canvas.height = 700;
 
 //nivel
-let level;
+let level;//nivel facil pordefecto
 
 //-- Velocidades del objeto
 let velx = 4;
@@ -79,6 +79,7 @@ function drawBricks() {
 
 //dibujar elementos
 function draw(){        
+    setlevel();
     // Texto en canvas
     //-- Texto solido
     ctx.font = "35px Arial";
@@ -99,8 +100,11 @@ function draw(){
     ctx.fillText(puntos, 50, 120);
     //tiempo
     ctx.fillText('Time', canvas.width/2,120)
-
-    
+    //nivel
+    ctx.font = "20px Arial";
+    ctx.textAlign = 'center';
+    ctx.fillText('Nivel:', canvas.width/2-20,75)
+    ctx.fillText(level, canvas.width/2+50,75)
     // draw a red line
     ctx.beginPath();
     ctx.moveTo(0, 50);
@@ -158,7 +162,8 @@ level_op.addEventListener("change", setlevel);
 
 function setlevel(){
     level = level_op.options[level_op.selectedIndex].value;
-   console.log(level);
+    console.log(level);
+   
 }
 
 
@@ -196,7 +201,7 @@ function update() {
     // restar vidas
      if (ball.y > canvas.height) {
         vida--;
-        if(level ==1){valorinicial();}
+        if(level =='Difficult'){valorinicial();}
         play_sound(sound_tone);
         ball.x=(canvas.width+15)/2; //posición inicial
         ball.y=canvas.height-25;
@@ -211,7 +216,17 @@ function update() {
     //-- Actualizar la posición
     ball.x = ball.x + velx;
     ball.y = ball.y + vely;
-    
+
+    //deshabilitar button y opcion nivel
+    if(juego.jugando==true){
+        button_play.disabled=true;
+        level_op.disabled = true;
+    }else{
+        button_play.disabled=false;
+        level_op.disabled = false;
+        
+    }
+
     if (juego.jugando== true){
         //) Volver a ejecutar update cuando toque
         requestAnimationFrame(update);
@@ -251,8 +266,9 @@ button_play.onclick= () =>{
     vida=3;
     //-- ¡Que empiece la función!
     update();
-    
 }
+
+
 
 // funcion leer tecla derecha y izq
 document.addEventListener("keydown", keyDownHandler, false);

@@ -35,3 +35,7 @@ select{
     font-size: 20px;
 }
 .opt{padding: 15px;}
+button:disabled,button[disabled]{
+  background-color: rgb(138, 228, 223);
+  color: #080808;
+}
