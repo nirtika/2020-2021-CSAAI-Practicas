@@ -150,7 +150,13 @@ function collisionDetection() {
             if(ladr.visible){
                 if(ball.x > ladr.x && ball.x < ladr.x+ladrillo.width && ball.y > ladr.y && ball.y < ladr.y+ladrillo.height) {
                     vely = -vely;
-                    puntos++;
+                    if(r==2 || r==1){   // puntos según filas
+                        puntos+=5;
+                    }else if(r==0){
+                        puntos+=10;
+                    }else{
+                        puntos++;
+                    }                    
                     play_sound(sound_click);
                     ladr.visible=false; //quitar el ladrillo
                 }
@@ -243,7 +249,7 @@ function valorinicial(){ //volover a dibujar los ladrillos
 }
 
 function gameOver(){
-    if (vida==0){
+    if (vida==10){
         valorinicial();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         draw();
