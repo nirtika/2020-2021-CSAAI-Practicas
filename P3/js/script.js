@@ -180,7 +180,7 @@ level_op.addEventListener("change", setlevel);
 
 function setlevel(){
     level = level_op.options[level_op.selectedIndex].value;
-    console.log(level);
+    //console.log(level);
    
 }
 
@@ -285,7 +285,19 @@ button_play.onclick= () =>{
     //-- ¡Que empiece la función!
     update();
 }
+document.addEventListener("keydown", tecla_empezar);
+function tecla_empezar(ev) {
+    switch (ev.keyCode) {
+       case 32: //space
+        juego.jugando=true;
+        puntos=0;
+        vida=3;
+        //-- ¡Que empiece la función!
+        update();
+       break;
+    }
 
+}
 
 
 // funcion leer tecla derecha y izq
