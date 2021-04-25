@@ -29,7 +29,10 @@ let leftpress = false;
 
 //id del boton play
 const button_play = document.getElementById('button_play')
-
+//sonidos
+const sound_over = new Audio('/P3/finish.mp3');
+const sound_click= new Audio('/P3/bricks.mp3');
+const sound_tone= new Audio('/P3/tone.wav')
 // variables para ladrillos
 const ladrillo = {
     width:50,
@@ -125,6 +128,12 @@ function draw(){
 }
 draw();
 
+//sonido
+function play_sound(sound){
+    sound.currentTime = 0;
+    sound.play();
+}
+
 // detectar colision ladrilllos
 function collisionDetection() {
     for(c=0; c<columnas; c++) {
@@ -134,6 +143,7 @@ function collisionDetection() {
                 if(ball.x > ladr.x && ball.x < ladr.x+ladrillo.width && ball.y > ladr.y && ball.y < ladr.y+ladrillo.height) {
                     vely = -vely;
                     puntos++;
+                    play_sound(sound_click);
                     ladr.visible=false; //quitar el ladrillo
                 }
             }               
@@ -175,6 +185,7 @@ function update() {
     // restar vidas
      if (ball.y > canvas.height) {
         vida--;
+        play_sound(sound_tone);
         ball.x=(canvas.width+15)/2; //posición inicial
         ball.y=canvas.height-25;
         paddle.x=(canvas.width-65)/2;
@@ -205,11 +216,12 @@ function valorinicial(){ //volover a dibujar los ladrillos
 }
 
 function gameOver(){
-    if (vida==0){
+    if (vida==3){
         valorinicial();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         draw();
         juego.jugando=false;
+        play_sound(sound_over)
         ctx.strokeStyle = 'red';
         ctx.font = "78px Arial";
         ctx.strokeText('Game Over..', canvas.width/2,canvas.height/2);
