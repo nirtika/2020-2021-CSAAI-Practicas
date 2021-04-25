@@ -69,7 +69,7 @@ function drawBricks() {
                 bricks[c][r].y = brickY;
                 ctx.beginPath();
                 ctx.rect(brickX, brickY, ladrillo.width, ladrillo.height);
-                if(r==0){   // puntos según filas
+                if(r==0){   // pcolor según filas
                     ctx.fillStyle = '#28B463';
                 }else if(r==1){
                     ctx.fillStyle = '#FF5733';
@@ -78,7 +78,7 @@ function drawBricks() {
                 }else if(r==3){
                     ctx.fillStyle='#BB8FCE';
                 }else{
-                    ctx.fillStyle = 'white';
+                    ctx.fillStyle = '#FFFFFF';
                 }                           
                 ctx.fill();
                 ctx.closePath();
@@ -156,19 +156,21 @@ function play_sound(sound){
 function collisionDetection() {
     for(c=0; c<columnas; c++) {
         for(r=0; r<filas; r++) {
-            const ladr = bricks[c][r];
-            if(ladr.visible){
-                if(ball.x > ladr.x && ball.x < ladr.x+ladrillo.width && ball.y > ladr.y && ball.y < ladr.y+ladrillo.height) {
+            const brick = bricks[c][r];
+            if(brick.visible){
+                if(ball.x > brick.x && ball.x < brick.x+ladrillo.width && ball.y > brick.y && ball.y < brick.y+ladrillo.height) {
                     vely = -vely;
                     if(r==2 || r==1){   // puntos según filas
                         puntos+=5;
                     }else if(r==0){
                         puntos+=10;
+                    }else if(r==3){
+                        puntos+=2;
                     }else{
                         puntos++;
                     }                    
                     play_sound(sound_click);
-                    ladr.visible=false; //quitar el ladrillo
+                    brick.visible=false; //quitar el ladrillo
                 }
             }               
         }
@@ -259,7 +261,7 @@ function valorinicial(){ //volover a dibujar los ladrillos
 }
 
 function gameOver(){
-    if (vida==10){
+    if (vida==0){
         valorinicial();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         draw();
