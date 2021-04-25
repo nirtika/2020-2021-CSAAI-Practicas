@@ -69,7 +69,17 @@ function drawBricks() {
                 bricks[c][r].y = brickY;
                 ctx.beginPath();
                 ctx.rect(brickX, brickY, ladrillo.width, ladrillo.height);
-                ctx.fillStyle = 'white';           
+                if(r==0){   // puntos según filas
+                    ctx.fillStyle = '#28B463';
+                }else if(r==1){
+                    ctx.fillStyle = '#FF5733';
+                }else if(r==2){
+                    ctx.fillStyle='#2874A6';
+                }else if(r==3){
+                    ctx.fillStyle='#BB8FCE';
+                }else{
+                    ctx.fillStyle = 'white';
+                }                           
                 ctx.fill();
                 ctx.closePath();
             }
