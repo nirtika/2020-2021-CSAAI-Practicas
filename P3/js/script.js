@@ -1,8 +1,18 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
+const button_play = document.getElementById('button_play'); //id del boton play
+const level_op=document.getElementById("level");
+//sonidos
+const sound_over = new Audio('/P3/finish.mp3');
+const sound_click= new Audio('/P3/bricks.mp3');
+const sound_tone= new Audio('/P3/tone.wav');
+
 //-- Definir el tamaño del canvas
 canvas.width = 490;
 canvas.height = 700;
+
+//nivel
+let level;
 
 //-- Velocidades del objeto
 let velx = 4;
@@ -23,16 +33,10 @@ const ball ={
     radius : 10
 }
 
-// mover la raqueta
+// mover la raqueta(teclado)
 let rightpress= false;
 let leftpress = false;
 
-//id del boton play
-const button_play = document.getElementById('button_play')
-//sonidos
-const sound_over = new Audio('/P3/finish.mp3');
-const sound_click= new Audio('/P3/bricks.mp3');
-const sound_tone= new Audio('/P3/tone.wav')
 // variables para ladrillos
 const ladrillo = {
     width:50,
@@ -150,6 +154,13 @@ function collisionDetection() {
         }
     }
 }
+level_op.addEventListener("change", setlevel);
+
+function setlevel(){
+    level = level_op.options[level_op.selectedIndex].value;
+   console.log(level);
+}
+
 
 //-- Funcion principal de animacion
 function update() {
@@ -185,6 +196,7 @@ function update() {
     // restar vidas
      if (ball.y > canvas.height) {
         vida--;
+        if(level ==1){valorinicial();}
         play_sound(sound_tone);
         ball.x=(canvas.width+15)/2; //posición inicial
         ball.y=canvas.height-25;
@@ -216,7 +228,7 @@ function valorinicial(){ //volover a dibujar los ladrillos
 }
 
 function gameOver(){
-    if (vida==3){
+    if (vida==0){
         valorinicial();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         draw();

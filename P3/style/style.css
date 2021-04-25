@@ -27,3 +27,11 @@ button:active {
     box-shadow: 0 6px #918e8e;
     transform: translateY(3px);
 }
+label{font-size: 20px;}
+select{
+    background-color: rgb(138, 228, 223);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+.opt{padding: 15px;}
