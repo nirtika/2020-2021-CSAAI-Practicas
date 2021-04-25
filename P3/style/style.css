@@ -1,19 +1,22 @@
 /*estilo canvas*/
 *{cursor: pointer;}
 #myCanvas{
-    background-color: rgb(0, 0, 0);
+    background-color: rgba(7, 7, 7, 0.918);
     display: block;
     margin: auto;
     padding: 5px;
 }
-div{
-    position: absolute;
+#caja{
+    position: fixed;
     top: 10px;
     left: 90px;
+    padding: 15px;
+    border: 3px solid rgb(120, 146, 230);
+    border-radius: 5px;
 }
 button{
     padding: 10px;  
-    width: 120px;
+    width: auto;
     font-family: monospace;
     font-weight: bold; 
     font-size: 1.5em;
@@ -29,7 +32,7 @@ button:active {
 }
 label{font-size: 20px;}
 select{
-    background-color: rgb(138, 228, 223);
+    background-color: rgb(116, 218, 187);
     padding: 10px;
     border-radius: 5px;
     font-size: 20px;
@@ -38,4 +41,17 @@ select{
 button:disabled,button[disabled]{
   background-color: rgb(138, 228, 223);
   color: #080808;
+}
+.manual {
+    position: absolute;
+    background: rgb(224, 211, 211);
+    color: rgb(37, 35, 35);
+    width: 400px;
+    padding: 20px;
+    transform: translateX(-500px);
+    transition: transform 1s ease-in-out;
+    border-radius: 5px;
+}
+.manual.show{
+    transform: translateY(180px);
 }

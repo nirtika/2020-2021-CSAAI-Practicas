@@ -239,10 +239,11 @@ function update() {
     if(juego.jugando==true){
         button_play.disabled=true;
         level_op.disabled = true;
+        document.removeEventListener("keydown", tecla_empezar);
     }else{
         button_play.disabled=false;
         level_op.disabled = false;
-        
+        document.addEventListener("keydown", tecla_empezar);        
     }
 
     if (juego.jugando== true){
@@ -277,28 +278,33 @@ function gameOver(){
 
     }    
 }
-
-button_play.onclick= () =>{
+function start(){
     juego.jugando=true;
     puntos=0;
     vida=3;
     //-- ¡Que empiece la función!
     update();
 }
+button_play.onclick= () =>{
+   start();
+}
+
+const btn_inst = document.getElementById('btn_inst');
+const inst = document.getElementById('man');
+btn_inst.onclick= () =>{
+    inst.classList.toggle('show');
+    //inst.classList.add('show');
+}
+
 document.addEventListener("keydown", tecla_empezar);
 function tecla_empezar(ev) {
     switch (ev.keyCode) {
        case 32: //space
-        juego.jugando=true;
-        puntos=0;
-        vida=3;
-        //-- ¡Que empiece la función!
-        update();
+        start();
        break;
     }
 
 }
-
 
 // funcion leer tecla derecha y izq
 document.addEventListener("keydown", keyDownHandler, false);

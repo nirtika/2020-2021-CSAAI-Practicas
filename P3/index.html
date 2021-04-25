@@ -6,19 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BreakOut</title>
+    <link rel="icon" href="img.png" type="image/png"> 
     <link rel="stylesheet" href="style/style.css">
     <script src="js/script.js" defer></script>
 </head>
 <body>
-    <div> 
-        <button id="button_play">Play</button>
-        <br><br>
-        <label for="level">Level:</label>
-        <select id="level">
-            <option class="opt" value="Easy" selected>Easy</option>
-            <option class="opt" value="Difficult">Difficult</option>
-        </select>
+    <div>
+        <div id="caja"> 
+            <button id="btn_inst">Instrucciones</button>
+            <button id="button_play">Play</button>            
+            <br><br>
+            <label for="level">Level:</label>
+            <select id="level">
+                <option class="opt" value="Easy" selected>Easy</option>
+                <option class="opt" value="Difficult">Difficult</option>
+            </select>            
+        </div>
+        <div id="man" class="manual">
+                <h2>Instrucciones:</h2>
+                <p>Pulsa boton play o tecla espacio [space] para empezar.</p>
+        </div>
     </div>
+    
     <canvas id="myCanvas"></canvas>
 </body>
 </html>
