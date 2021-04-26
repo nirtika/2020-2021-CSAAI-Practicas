@@ -12,7 +12,7 @@ canvas.width = 490;
 canvas.height = 700;
 
 //nivel
-let level;//nivel facil pordefecto
+let level;//nivel fácil pordefecto
 
 //-- Velocidades del objeto
 let velx = 4;
@@ -21,15 +21,17 @@ let vely = -2;
 const juego={
     jugando:false,
 }
+// variables raqueta
 const paddle ={
-    height : 10,
-    width :80,
+    height : 15,
+    width :100,
     x:(canvas.width-65)/2, //posicion X de la raqueta
-    y:canvas.height-15      //posicion y
+    y:canvas.height-20      //posicion y
 }
+// variables bola
 const ball ={
-    x : (canvas.width+15)/2,
-    y: canvas.height-25 ,
+    x : (canvas.width+35)/2,
+    y: canvas.height-32 ,
     radius : 10
 }
 
@@ -52,13 +54,19 @@ const bricks = [];
 let vida = 3;
 let puntos = 0;
 
-for(c=0; c<columnas; c++) {
-    bricks[c] = [];
-    for(r=0; r<filas; r++) {
-        bricks[c][r] = { x: 0, y: 0, visible:true};
+//ladrillos
+function crearBricks(){ //crear
+    for(c=0; c<columnas; c++) {
+        bricks[c] = [];
+        for(r=0; r<filas; r++) {
+            bricks[c][r] = { x: 0, y: 0, visible:true};
+        }
     }
 }
-function drawBricks() {    
+crearBricks();
+
+//dibujar ladrillos
+function drawBricks() {        
     for(c=0; c<columnas; c++) {
        // bricks[c] = [];
         for(r=0; r<filas; r++) {
@@ -87,7 +95,7 @@ function drawBricks() {
     }
 }
 
-//dibujar elementos
+//dibujar elementos en canvas
 function draw(){        
     setlevel();
     // Texto en canvas
@@ -109,12 +117,12 @@ function draw(){
     ctx.fillText("Puntos", 50, 90);
     ctx.fillText(puntos, 50, 120);
     //tiempo
-    ctx.fillText('Time', canvas.width/2,120)
+    ctx.fillText('Time', canvas.width/2,120);
     //nivel
     ctx.font = "20px Arial";
     ctx.textAlign = 'center';
-    ctx.fillText('Nivel:', canvas.width/2-20,75)
-    ctx.fillText(level, canvas.width/2+50,75)
+    ctx.fillText('Nivel:', canvas.width/2-20,75);
+    ctx.fillText(level, canvas.width/2+50,75);
     // draw a red line
     ctx.beginPath();
     ctx.moveTo(0, 50);
@@ -177,13 +185,11 @@ function collisionDetection() {
     }
 }
 level_op.addEventListener("change", setlevel);
-
+//elegir nivel
 function setlevel(){
     level = level_op.options[level_op.selectedIndex].value;
-    //console.log(level);
-   
+    //console.log(level);   
 }
-
 
 //-- Funcion principal de animacion
 function update() {
@@ -219,10 +225,10 @@ function update() {
     // restar vidas
      if (ball.y > canvas.height) {
         vida--;
-        if(level =='Difficult'){valorinicial();}
+        if(level =='Difficult'){crearBricks();}
         play_sound(sound_tone);
-        ball.x=(canvas.width+15)/2; //posición inicial
-        ball.y=canvas.height-25;
+        ball.x=(canvas.width+35)/2; //posición inicial
+        ball.y=canvas.height-2;
         paddle.x=(canvas.width-65)/2;
         //paddle.y =canvas.height-15;
         
@@ -252,18 +258,11 @@ function update() {
     }
 }
 
-function valorinicial(){ //volover a dibujar los ladrillos
-    for(c=0; c<columnas; c++) {
-        bricks[c] = [];
-        for(r=0; r<filas; r++) {
-            bricks[c][r] = { x: 0, y: 0, visible:true};
-        }
-    }
-}
 
+// gameOver
 function gameOver(){
     if (vida==0){
-        valorinicial();
+        crearBricks();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         draw();
         juego.jugando=false;
@@ -274,10 +273,11 @@ function gameOver(){
         ctx.fillStyle = 'green';
         ctx.font = "40px Arial";
         ctx.fillText('Puntos:', canvas.width/2,canvas.height/2+100);
-        ctx.fillText(puntos, canvas.width/2+95,canvas.height/2+100);
+        ctx.fillText(puntos, canvas.width/2+100,canvas.height/2+100);
 
     }    
 }
+//empezar el juego
 function start(){
     juego.jugando=true;
     puntos=0;
@@ -285,18 +285,25 @@ function start(){
     //-- ¡Que empiece la función!
     update();
 }
+//boton play
 button_play.onclick= () =>{
    start();
 }
 
 const btn_inst = document.getElementById('btn_inst');
 const inst = document.getElementById('man');
+//boton instrucciones
 btn_inst.onclick= () =>{
     inst.classList.toggle('show');
     //inst.classList.add('show');
 }
-
+const close = document.getElementById('close');
+close.onclick= () =>{
+    inst.classList.remove('show');
+    //inst.classList.add('show');
+}
 document.addEventListener("keydown", tecla_empezar);
+//empezar el juego(tecla espacio)
 function tecla_empezar(ev) {
     switch (ev.keyCode) {
        case 32: //space
