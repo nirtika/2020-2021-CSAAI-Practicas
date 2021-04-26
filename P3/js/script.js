@@ -18,6 +18,7 @@ let level;//nivel fácil pordefecto
 let velx = 4;
 let vely = -2;
 
+
 const juego={
     jugando:false,
 }
@@ -44,7 +45,8 @@ const ladrillo = {
     width:50,
     height : 15,
     padding:5,
-    marginTop:165
+    marginTop:165,
+    total:45
 }
 
 const filas = 5;
@@ -179,11 +181,15 @@ function collisionDetection() {
                     }                    
                     play_sound(sound_click);
                     brick.visible=false; //quitar el ladrillo
+                    ladrillo.total--; // restar num del ladrillo
+                    win();// función ganador
+                    //console.log(ladrillo.total);
                 }
             }               
         }
     }
 }
+
 level_op.addEventListener("change", setlevel);
 //elegir nivel
 function setlevel(){
@@ -228,15 +234,14 @@ function update() {
         if(level =='Difficult'){crearBricks();}
         play_sound(sound_tone);
         ball.x=(canvas.width+35)/2; //posición inicial
-        ball.y=canvas.height-2;
+        ball.y=canvas.height-32;
         paddle.x=(canvas.width-65)/2;
         //paddle.y =canvas.height-15;
         
     }
     //detectar colision ladrillos
     collisionDetection();
-    gameOver();       
-    
+    gameOver();      
     //-- Actualizar la posición
     ball.x = ball.x + velx;
     ball.y = ball.y + vely;
@@ -256,6 +261,7 @@ function update() {
         //) Volver a ejecutar update cuando toque
         requestAnimationFrame(update);
     }
+    
 }
 
 
@@ -274,20 +280,43 @@ function gameOver(){
         ctx.font = "40px Arial";
         ctx.fillText('Puntos:', canvas.width/2,canvas.height/2+100);
         ctx.fillText(puntos, canvas.width/2+100,canvas.height/2+100);
-
-    }    
+        button_play.innerHTML='Restart';
+    }      
 }
+// gana => si distuye todos los ladrillos
+function win(){
+    if(ladrillo.total==0){
+        crearBricks();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        juego.jugando=false;
+        play_sound(sound_over)
+        ctx.strokeStyle = 'grey';
+        ctx.font = "80px Sans Serif ";
+        ctx.strokeText('Has Ganado..', canvas.width/2,canvas.height/2);
+        ctx.fillStyle = 'green';
+        ctx.font = "40px Arial";
+        ctx.fillText('Puntos:', canvas.width/2,canvas.height/2+100);
+        ctx.fillText(puntos, canvas.width/2+100,canvas.height/2+100);
+        ball.x=(canvas.width+35)/2; //posición inicial
+        ball.y=canvas.height-32;
+        paddle.x=(canvas.width-65)/2;
+        button_play.innerHTML='Restart';
+    } 
+}
+
 //empezar el juego
 function start(){
     juego.jugando=true;
     puntos=0;
     vida=3;
+    ladrillo.total=45;
     //-- ¡Que empiece la función!
     update();
 }
 //boton play
 button_play.onclick= () =>{
-   start();
+    //button_play.innerHTML='Play';
+    start();
 }
 
 const btn_inst = document.getElementById('btn_inst');
@@ -305,6 +334,7 @@ close.onclick= () =>{
 document.addEventListener("keydown", tecla_empezar);
 //empezar el juego(tecla espacio)
 function tecla_empezar(ev) {
+    //button_play.innerHTML='Play';
     switch (ev.keyCode) {
        case 32: //space
         start();
