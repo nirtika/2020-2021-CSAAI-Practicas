@@ -53,4 +53,5 @@ select{
 }
 .manual.show{transform: translateY(220px);}
 #btn_inst{cursor: help;}
-span{border: 2px solid black;border-radius: 5px;padding: 3px;float: right;font-size: 10px;}
+#close{float: right;font-size: 10px;}
+span{border: 2px solid black;border-radius: 5px;padding: 3px;font-size: 15px;font-weight: bold;}
