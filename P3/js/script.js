@@ -3,9 +3,9 @@ const ctx = canvas.getContext("2d");
 const button_play = document.getElementById('button_play'); //id del boton play
 const level_op=document.getElementById("level");
 //sonidos
-const sound_over = new Audio('/P3/finish.mp3');
-const sound_click= new Audio('/P3/bricks.mp3');
-const sound_tone= new Audio('/P3/tone.wav');
+const sound_over = new Audio('sound/finish.mp3');
+const sound_click= new Audio('sound/bricks.mp3');
+const sound_tone= new Audio('sound/tone.wav');
 
 //-- Definir el tamaño del canvas
 canvas.width = 490;
@@ -26,12 +26,12 @@ const paddle ={
     height : 15,
     width :100,
     x:(canvas.width-65)/2, //posicion X de la raqueta
-    y:canvas.height-20      //posicion y
+    y:canvas.height-30      //posicion y
 }
 // variables bola
 const ball ={
     x : (canvas.width+35)/2,
-    y: canvas.height-32 ,
+    y: canvas.height-42,
     radius : 10
 }
 
@@ -88,9 +88,9 @@ function drawBricks() {
                 }else if(r==1){
                     ctx.fillStyle = '#FF5733';
                 }else if(r==2){
-                    ctx.fillStyle='#2874A6';
+                    ctx.fillStyle='#999966';
                 }else if(r==3){
-                    ctx.fillStyle='#BB8FCE';
+                    ctx.fillStyle='#2874A6';
                 }else{
                     ctx.fillStyle = '#FFFFFF';
                 }                           
@@ -235,15 +235,14 @@ function update() {
     }
 
     // restar vidas
-     if (ball.y > canvas.height) {
+    if (ball.y > canvas.height) {
         vida--;
         if(level =='Difficult'){crearBricks();}
         play_sound(sound_tone);
         ball.x=(canvas.width+35)/2; //posición inicial
-        ball.y=canvas.height-32;
+        ball.y=canvas.height-42;
         paddle.x=(canvas.width-65)/2;
-        //paddle.y =canvas.height-15;
-        
+        //paddle.y =canvas.height-15;        
     }
     //detectar colision ladrillos
     collisionDetection();
@@ -328,7 +327,7 @@ function win(){
         ctx.fillText('Puntos:', canvas.width/2,canvas.height/2+100);
         ctx.fillText(puntos, canvas.width/2+100,canvas.height/2+100);
         ball.x=(canvas.width+35)/2; //posición inicial
-        ball.y=canvas.height-32;
+        ball.y=canvas.height-42;
         paddle.x=(canvas.width-65)/2;
         button_play.innerHTML='Restart';
     } 

@@ -10,7 +10,7 @@
 #caja{ /*caja botones*/
     position: fixed;
     top: 10px;
-    left: 100px;
+    left: 150px;
     padding: 15px;
     border: 3px solid rgb(120, 146, 230);
     border-radius: 5px;
