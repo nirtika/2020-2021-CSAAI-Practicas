@@ -134,7 +134,7 @@ function update() {
         vida--;        
     }
     // gmae over
-    if(vida==2){
+    if(vida==0){
         alert('Game Over')       
     }
     //-- Actualizar la posición
