@@ -18,7 +18,6 @@ let level;//nivel fácil pordefecto
 let velx = 4;
 let vely = -2;
 
-
 const juego={
     jugando:false,
 }
@@ -55,6 +54,11 @@ const bricks = [];
 
 let vida = 3;
 let puntos = 0;
+
+//contador tiempo
+let microseg = 0;
+let second = 0;
+let min = 0;
 
 //ladrillos
 function crearBricks(){ //crear
@@ -100,6 +104,7 @@ function drawBricks() {
 //dibujar elementos en canvas
 function draw(){        
     setlevel();
+    cronometro();
     // Texto en canvas
     //-- Texto solido
     ctx.font = "35px Arial";
@@ -119,7 +124,8 @@ function draw(){
     ctx.fillText("Puntos", 50, 90);
     ctx.fillText(puntos, 50, 120);
     //tiempo
-    ctx.fillText('Time', canvas.width/2,120);
+    ctx.fillText('Time:', canvas.width/2-20,120);
+    ctx.fillText(min+':'+second, canvas.width/2+50,120)
     //nivel
     ctx.font = "20px Arial";
     ctx.textAlign = 'center';
@@ -259,11 +265,35 @@ function update() {
 
     if (juego.jugando== true){
         //) Volver a ejecutar update cuando toque
+       // cronometro();
         requestAnimationFrame(update);
     }
     
 }
 
+//cronometro
+function cronometro(){
+    microseg ++;
+    
+    if (microseg === 100) {
+        microseg = 0;
+        second ++;
+        if (second < 10) {
+            second = "0" + second;
+        }
+        
+    }
+    if (second == 60) {
+        min ++;
+        second = 0;
+        if (min < 10) {
+            min = "0" + min;
+        }
+        if (second == 0) {
+            second = "0" + second;
+        }
+    }
+}
 
 // gameOver
 function gameOver(){
@@ -309,9 +339,13 @@ function start(){
     juego.jugando=true;
     puntos=0;
     vida=3;
+    microseg=0;
+    min=0;
+    second=0;
     ladrillo.total=45;
     //-- ¡Que empiece la función!
     update();
+    
 }
 //boton play
 button_play.onclick= () =>{
