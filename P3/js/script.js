@@ -16,7 +16,7 @@ let level;//nivel fácil pordefecto
 
 //-- Velocidades del objeto
 let velx = 4;
-let vely = -2;
+let vely = -3;
 
 const juego={
     jugando:false,
@@ -222,27 +222,30 @@ function update() {
    
     // mover la raqueta
     if(rightpress && paddle.x < canvas.width-paddle.width) {
-        paddle.x += 5;
+        paddle.x += 3;
     }
     else if(leftpress && paddle.x > 0) {
-        paddle.x -= 5;
+        paddle.x -= 3;
     }
 
     //rebote en la raqueta
-    if (ball.x - ball.radius > paddle.x && ball.x + ball.radius < paddle.x + paddle.width 
-        && ball.y + ball.radius > paddle.y) {
-        vely = -vely;
+    if (ball.x - ball.radius >= paddle.x && ball.x + ball.radius <= paddle.x + paddle.width 
+        && ball.y + ball.radius >= paddle.y) {
+        vely = Math.floor(Math.random() * -5 + (-2)); //random entre -2 y -5
+        //console.log(vely);
     }
 
     // restar vidas
-    if (ball.y > canvas.height) {
+    if (ball.y > paddle.y) {
         vida--;
         if(level =='Difficult'){crearBricks();}
         play_sound(sound_tone);
         ball.x=(canvas.width+35)/2; //posición inicial
         ball.y=canvas.height-42;
         paddle.x=(canvas.width-65)/2;
-        //paddle.y =canvas.height-15;        
+        //paddle.y =canvas.height-15; 
+        /*console.log(' ballx:',ball.x+ball.radius,' bally: ',ball.y);      
+        console.log(' paddle x: ',paddle.x,' paddle y: ',paddle.y);*/
     }
     //detectar colision ladrillos
     collisionDetection();
@@ -312,6 +315,7 @@ function gameOver(){
         button_play.innerHTML='Restart';
     }      
 }
+
 // gana => si distuye todos los ladrillos
 function win(){
     if(ladrillo.total==0){
