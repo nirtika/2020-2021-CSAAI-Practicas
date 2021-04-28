@@ -231,7 +231,7 @@ function update() {
     //rebote en la raqueta
     if (ball.x - ball.radius >= paddle.x && ball.x + ball.radius <= paddle.x + paddle.width 
         && ball.y + ball.radius >= paddle.y) {
-        vely = Math.floor(Math.random() * -5 + (-2)); //random entre -2 y -5
+        vely = Math.floor(Math.random() * -5 + (-1)); //random entre -1 y -5
         //console.log(vely);
     }
 
