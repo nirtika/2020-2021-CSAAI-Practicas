@@ -1,5 +1,9 @@
 /*estilo canvas*/
-*{cursor: pointer;}
+*{cursor: pointer;} 
+body{    
+    background-image: linear-gradient(to bottom left, #45457ee8 30%, #006666 100%);
+    background-attachment: fixed;
+}
 #myCanvas{
     background-color: rgba(7, 7, 7, 0.918);
     display: block;
