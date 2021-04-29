@@ -2,6 +2,10 @@ const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 const button_play = document.getElementById('button_play'); //id del boton play
 const level_op=document.getElementById("level");
+const inst = document.getElementById('man');
+const btn_inst = document.getElementById('btn_inst');//botón instrucciones
+const close_inst = document.getElementById('close');
+
 //sonidos
 const sound_over = new Audio('sound/finish.mp3');
 const sound_click= new Audio('sound/bricks.mp3');
@@ -14,7 +18,7 @@ canvas.height = 700;
 //nivel
 let level;//nivel fácil pordefecto
 
-//-- Velocidades del objeto
+//-- Velocidades
 let velx = 4;
 let vely = -3;
 
@@ -40,17 +44,16 @@ let rightpress= false;
 let leftpress = false;
 
 // variables para ladrillos
-const ladrillo = {
+const ladrillos = {
+    filas: 5,
     width:50,
+    columnas: 9,
     height : 15,
     padding:5,
     marginTop:165,
-    total:45
+    total:45,
+    bricks:[],
 }
-
-const filas = 5;
-const columnas = 9;
-const bricks = [];
 
 let vida = 3;
 let puntos = 0;
@@ -62,10 +65,10 @@ let min = 0;
 
 //ladrillos
 function crearBricks(){ //crear
-    for(c=0; c<columnas; c++) {
-        bricks[c] = [];
-        for(r=0; r<filas; r++) {
-            bricks[c][r] = { x: 0, y: 0, visible:true};
+    for(c=0; c<ladrillos.columnas; c++) {
+        ladrillos.bricks[c] = [];
+        for(r=0; r<ladrillos.filas; r++) {
+            ladrillos.bricks[c][r] = { x: 0, y: 0, visible:true};
         }
     }
 }
@@ -73,17 +76,17 @@ crearBricks();
 
 //dibujar ladrillos
 function drawBricks() {        
-    for(c=0; c<columnas; c++) {
-       // bricks[c] = [];
-        for(r=0; r<filas; r++) {
-            if(bricks[c][r].visible){
-                const brickX = (c*(ladrillo.width+ladrillo.padding));
-                const brickY = (r*(ladrillo.height+ladrillo.padding)+ladrillo.marginTop);
-                bricks[c][r].x = brickX;
-                bricks[c][r].y = brickY;
+    for(c=0; c<ladrillos.columnas; c++) {
+       // ladrillos.bricks[c] = [];
+        for(r=0; r<ladrillos.filas; r++) {
+            if(ladrillos.bricks[c][r].visible){
+                const brickX = (c*(ladrillos.width+ladrillos.padding));
+                const brickY = (r*(ladrillos.height+ladrillos.padding)+ladrillos.marginTop);
+                ladrillos.bricks[c][r].x = brickX;
+                ladrillos.bricks[c][r].y = brickY;
                 ctx.beginPath();
-                ctx.rect(brickX, brickY, ladrillo.width, ladrillo.height);
-                if(r==0){   // pcolor según filas
+                ctx.rect(brickX, brickY, ladrillos.width, ladrillos.height);
+                if(r==0){   // pcolor según ladrillo.filas
                     ctx.fillStyle = '#28B463';
                 }else if(r==1){
                     ctx.fillStyle = '#FF5733';
@@ -170,11 +173,11 @@ function play_sound(sound){
 
 // detectar colision ladrilllos
 function collisionDetection() {
-    for(c=0; c<columnas; c++) {
-        for(r=0; r<filas; r++) {
-            const brick = bricks[c][r];
+    for(c=0; c<ladrillos.columnas; c++) {
+        for(r=0; r<ladrillos.filas; r++) {
+            const brick = ladrillos.bricks[c][r];
             if(brick.visible){
-                if(ball.x > brick.x && ball.x < brick.x+ladrillo.width && ball.y > brick.y && ball.y < brick.y+ladrillo.height) {
+                if(ball.x > brick.x && ball.x < brick.x+ladrillos.width && ball.y > brick.y && ball.y < brick.y+ladrillos.height) {
                     vely = -vely;
                     if(r==2 || r==1){   // puntos según filas
                         puntos+=5;
@@ -186,10 +189,10 @@ function collisionDetection() {
                         puntos++;
                     }                    
                     play_sound(sound_click);
-                    brick.visible=false; //quitar el ladrillo
-                    ladrillo.total--; // restar num del ladrillo
+                    brick.visible=false; //quitar el ladrillos
+                    ladrillos.total--; // restar num del ladrillos
                     win();// función ganador
-                    //console.log(ladrillo.total);
+                    //console.log(ladrillos.total);
                 }
             }               
         }
@@ -232,13 +235,13 @@ function update() {
     if (ball.x - ball.radius >= paddle.x && ball.x + ball.radius <= paddle.x + paddle.width 
         && ball.y + ball.radius >= paddle.y) {
         vely = Math.floor(Math.random() * -5 + (-1)); //random entre -1 y -5
-        //console.log(vely);
+        console.log(vely);
     }
 
     // restar vidas
     if (ball.y > paddle.y) {
         vida--;
-        if(level =='Difficult'){crearBricks();}
+        if(level =='Difficult'){crearBricks();puntos=0;}
         play_sound(sound_tone);
         ball.x=(canvas.width+35)/2; //posición inicial
         ball.y=canvas.height-42;
@@ -307,7 +310,7 @@ function gameOver(){
         play_sound(sound_over)
         ctx.strokeStyle = 'red';
         ctx.font = "78px Arial";
-        ctx.strokeText('Game Over..', canvas.width/2,canvas.height/2);
+        ctx.strokeText('..Game Over..', canvas.width/2,canvas.height/2);
         ctx.fillStyle = 'green';
         ctx.font = "40px Arial";
         ctx.fillText('Puntos:', canvas.width/2,canvas.height/2+100);
@@ -316,9 +319,9 @@ function gameOver(){
     }      
 }
 
-// gana => si distuye todos los ladrillos
+// gana => si distruye todos los ladrillos
 function win(){
-    if(ladrillo.total==0){
+    if(ladrillos.total==0){
         crearBricks();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         juego.jugando=false;
@@ -338,14 +341,14 @@ function win(){
 }
 
 //empezar el juego
-function start(){
+function start_Game(){
     juego.jugando=true;
     puntos=0;
     vida=3;
     microseg=0;
     min=0;
     second=0;
-    ladrillo.total=45;
+    ladrillos.total=45;
     //-- ¡Que empiece la función!
     update();
     
@@ -353,31 +356,30 @@ function start(){
 //boton play
 button_play.onclick= () =>{
     //button_play.innerHTML='Play';
-    start();
+    start_Game();
 }
 
-const btn_inst = document.getElementById('btn_inst');
-const inst = document.getElementById('man');
 //boton instrucciones
 btn_inst.onclick= () =>{
     inst.classList.toggle('show');
     //inst.classList.add('show');
 }
-const close = document.getElementById('close');
-close.onclick= () =>{
+
+//button cerrar instrucciones
+close_inst.onclick= () =>{
     inst.classList.remove('show');
     //inst.classList.add('show');
 }
+
 document.addEventListener("keydown", tecla_empezar);
 //empezar el juego(tecla espacio)
 function tecla_empezar(ev) {
     //button_play.innerHTML='Play';
     switch (ev.keyCode) {
        case 32: //space
-        start();
+        start_Game();
        break;
     }
-
 }
 
 // funcion leer tecla derecha y izq
