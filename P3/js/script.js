@@ -27,16 +27,19 @@ const juego={
 }
 // variables raqueta
 const paddle ={
-    height : 15,
+    height : 10,
     width :100,
     x:(canvas.width-65)/2, //posicion X de la raqueta
     y:canvas.height-30      //posicion y
 }
+let colors_list = ['aqua', '#99ccff', '#8099cc', '#52a366', '#e6c499', '#b3ffd7', '#96eded', '#73abc7', '#26bf8c', 'red', '#ffb2b2', '#bdd991', '#8fd1d1', '#bdbdff']
+
 // variables bola
 const ball ={
     x : (canvas.width+35)/2,
     y: canvas.height-42,
-    radius : 10
+    radius : 10,
+    colors : colors_list[Math.floor(Math.random()*14)]
 }
 
 // mover la raqueta(teclado)
@@ -159,7 +162,7 @@ function draw(){
         //-- Dibujar un circulo: coordenadas x,y del centro
         //-- Radio, Angulo inicial y angulo final
         ctx.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI);
-        ctx.fillStyle = "red";
+        ctx.fillStyle = ball.colors;
         ctx.fill();
     ctx.closePath();
 }
@@ -236,6 +239,8 @@ function update() {
         && ball.y + ball.radius >= paddle.y) {
         vely = Math.floor(Math.random() * -5 + (-1)); //random entre -1 y -5
         console.log(vely);
+        ball.colors = colors_list[Math.floor(Math.random()*16)];
+        
     }
 
     // restar vidas
@@ -246,10 +251,9 @@ function update() {
         ball.x=(canvas.width+35)/2; //posición inicial
         ball.y=canvas.height-42;
         paddle.x=(canvas.width-65)/2;
-        //paddle.y =canvas.height-15; 
-        /*console.log(' ballx:',ball.x+ball.radius,' bally: ',ball.y);      
-        console.log(' paddle x: ',paddle.x,' paddle y: ',paddle.y);*/
+        ball.colors = colors_list[Math.floor(Math.random()*16)]; 
     }
+
     //detectar colision ladrillos
     collisionDetection();
     gameOver();      
