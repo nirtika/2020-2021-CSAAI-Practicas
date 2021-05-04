@@ -246,7 +246,16 @@ function update() {
     // restar vidas
     if (ball.y > paddle.y) {
         vida--;
-        if(level =='Difficult'){crearBricks();puntos=0;}
+        if(level =='Difficult'){
+            let new_point;
+            if(puntos>5){
+                new_point=puntos-5;
+            }else{
+                new_point = puntos-1;
+            }
+            crearBricks();
+            puntos=new_point;
+        }
         play_sound(sound_tone);
         ball.x=(canvas.width+35)/2; //posición inicial
         ball.y=canvas.height-38;
