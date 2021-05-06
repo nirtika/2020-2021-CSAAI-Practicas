@@ -20,6 +20,10 @@ const deslizadorazul = document.getElementById('deslizadorazul');
 //-- Valor del deslizador
 const range_value = document.getElementById('range_value');
 
+ctx.font = "25px Arial";
+ctx.textAlign = 'center';
+ctx.fillStyle = '#FFFFFF';
+ctx.fillText("Selecciona una imagen", canvas.width/2, canvas.height/2);
 
 let img = [];
 function imgsel(){ //seleccionar y poner imagen en canvas
@@ -83,7 +87,7 @@ deslizadorazul.oninput = () =>{
 }
 //color on click
 color.onclick = () =>{
-    document.getElementById('umbralRGB').classList.remove("hide");
+    document.getElementById('umbralRGB').classList.toggle("hide");
 }
 //gris on click
 gris.onclick = () =>{
@@ -100,6 +104,23 @@ gris.onclick = () =>{
       data[i] = brillo;
       data[i+1] = brillo;
       data[i+2] = brillo;
+    }
+    ctx.putImageData(imgData, 0, 0);
+}
+
+//negativo
+invert.onclick = () => {
+    ctx.drawImage(img, 0,0);
+    
+    //-- Obtener la imagen del canvas en pixeles
+    let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    //-- Obtener el array con todos los píxeles
+    let data = imgData.data
+    for (var i = 0, n = data.length; i < n; i += 4) {
+          data[i] = 255 - data[i]
+          data[i+1] = 255 - data[i+1]
+          data[i+2] = 255 - data[i+2]
     }
     ctx.putImageData(imgData, 0, 0);
 }
