@@ -19,6 +19,8 @@ const deslizadorazul = document.getElementById('deslizadorazul');
 
 //-- Valor del deslizador
 const range_value = document.getElementById('range_value');
+canvas.width = 500;
+canvas.height = 300;
 
 ctx.font = "25px Arial";
 ctx.textAlign = 'center';
@@ -33,6 +35,8 @@ function imgsel(){ //seleccionar y poner imagen en canvas
           canvas.width = img.width;
           canvas.height = img.height;      
           ctx.drawImage(img, 0,0);
+          document.getElementById('opciones').classList.remove("hide");
+          
         }
     }
 }
@@ -136,14 +140,20 @@ noise.onclick =()=>{
     let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let data = imgData.data
     for (var i = 0, n = data.length; i < n; i += 4) {
-       // Genero 3 tipos de colores aleatorios delimitados (para r g y b)
-       let randColor1 = 0.6 + Math.random() * 0.4;
-       let randColor2 = 0.6 + Math.random() * 0.4;
-       let randColor3 = 0.6 + Math.random() * 0.4;
-        // añado los colores a los datos
-        data[i] = data[i]*randColor1; // Rojo
-        data[i+1] = data[i+1]*randColor2; // Verde
-        data[i+2] = data[i+2]*randColor3; // Azul
+       // Generar 3 tipos de colores aleatorios delimitados (para r g y b)
+       let randColor_R = 0.6 + Math.random() * 0.4;
+       let randColor_G = 0.6 + Math.random() * 0.4;
+       let randColor_M = 0.6 + Math.random() * 0.4;
+        // añadir los colores a los datos
+        data[i] = data[i]*randColor_R; // Rojo
+        data[i+1] = data[i+1]*randColor_G; // Verde
+        data[i+2] = data[i+2]*randColor_M; // Azul
     }
     ctx.putImageData(imgData, 0, 0);
+}
+// espejo
+mirror.onclick=()=>{
+    ctx.translate(canvas.width,0)
+    ctx.scale(-1,1);
+    ctx.drawImage(img, 0, 0);
 }
