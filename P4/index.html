@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación de Imágenes</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <div>
+        <div class="opciones">
+            <h2>Filtros</h2>
+            <button>Color</button>
+            <button>Gris</button>
+            <button>Blur</button>
+            <button>brightness</button>
+            <button>contrast</button>
+            <button>grayscale</button>
+            <button>invert</button>
+            <button>saturate</button>
+            <button>sepia</button>
+        </div>
+        <div class="umbralRGB">
+            <label for="R">Red&nbsp;&nbsp;&nbsp;</label><input type="range" id="deslizadorrojo" min="0" max="255" value="255"/>
+            <span id="range_value_rojo">00</span><br>
+            <label for="G">Green</label><input type="range" id="deslizadorverde" min="0" max="255" value="255"/>
+            <span id="range_value_verde">00</span><br>
+            <label for="B">Blue&nbsp;&nbsp;</label><input type="range" id="deslizadorazul" min="0" max="255" value="255"/>
+            <span id="range_value_azul">00</span>
+        </div>
+    </div>
+    
+    <div>
+        <h1>Imagen manipulada</h1>
+        <br>
+        <canvas id="canvas"></canvas>
+        <br>
+    </div>        
+    
+    </div>
+    <div id="original">
+        <img src="img/img1.jpg" id="imagesrc">
+        <img src="img/img2.jpg" id="imagesrc">
+        <img src="img/img3.jpg" id="imagesrc">
+        <img src="img/img4.jpg" id="imagesrc">
+    </div>        
+</body>
+</html>
