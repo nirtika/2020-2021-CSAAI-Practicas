@@ -85,3 +85,21 @@ deslizadorazul.oninput = () =>{
 color.onclick = () =>{
     document.getElementById('umbralRGB').classList.remove("hide");
 }
+//gris on click
+gris.onclick = () =>{
+    document.getElementById('umbralRGB').classList.add('hide');
+    ctx.drawImage(img, 0,0);
+    let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    let data = imgData.data;
+    //-- Calcular el brillo para CADA PIXEL y ponerselo por igual a cada componente
+    for (var i = 0; i < data.length; i+=4) {
+      r = data[i];
+      g = data[i+1];
+      b = data[i+2];
+      brillo = (3 * r + 4 * g + b)/8
+      data[i] = brillo;
+      data[i+1] = brillo;
+      data[i+2] = brillo;
+    }
+    ctx.putImageData(imgData, 0, 0);
+}
