@@ -5,12 +5,12 @@ const ctx = canvas.getContext('2d');
 //-- Acceso al boton
 const color = document.getElementById('color');
 const grises = document.getElementById('gris');
-const blur = document.getElementById('blur');
+const noise = document.getElementById('Noise');
 const bright = document.getElementById('bright');
 const contrast = document.getElementById('contrast');
 const invert = document.getElementById('invert');
 const saturate = document.getElementById('saturate');
-const sepia = document.getElementById('sepia');
+const negative = document.getElementById('negativo');
 
 //-- Acceso al deslizador
 const deslizadorrojo = document.getElementById('deslizadorrojo');
@@ -109,7 +109,7 @@ gris.onclick = () =>{
 }
 
 //negativo
-invert.onclick = () => {
+negative.onclick = () => {
     ctx.drawImage(img, 0,0);
     
     //-- Obtener la imagen del canvas en pixeles
@@ -124,3 +124,11 @@ invert.onclick = () => {
     }
     ctx.putImageData(imgData, 0, 0);
 }
+
+//invert
+invert.onclick =()=>{
+    ctx.translate(0, canvas.height)
+    ctx.scale(1,-1);
+    ctx.drawImage(img, 0, 0);
+}
+//
