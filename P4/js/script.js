@@ -36,7 +36,7 @@ function imgsel(){ //seleccionar y poner imagen en canvas
           canvas.height = img.height;      
           ctx.drawImage(img, 0,0);
           document.getElementById('opciones').classList.remove("hide");
-          
+
         }
     }
 }
@@ -89,13 +89,28 @@ deslizadorverde.oninput = () =>{
 deslizadorazul.oninput = () =>{
     rgb();
 }
+
 //color on click
 color.onclick = () =>{
+    color.classList.add('active');
+    negative.classList.remove('active');
+    noise.classList.remove('active');
+    gris.classList.remove('active');
+    invert.classList.remove('active');
+    mirror.classList.remove('active');
     document.getElementById('umbralRGB').classList.toggle("hide");
 }
+
 //gris on click
 gris.onclick = () =>{
+    gris.classList.add('active');
+    negative.classList.remove('active');
+    noise.classList.remove('active');
+    color.classList.remove('active');
+    invert.classList.remove('active');
+    mirror.classList.remove('active');
     document.getElementById('umbralRGB').classList.add('hide');
+
     ctx.drawImage(img, 0,0);
     let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let data = imgData.data;
@@ -114,6 +129,14 @@ gris.onclick = () =>{
 
 //negativo
 negative.onclick = () => {
+    negative.classList.add('active');
+    gris.classList.remove('active');
+    noise.classList.remove('active');
+    color.classList.remove('active');
+    invert.classList.remove('active');
+    mirror.classList.remove('active');
+    document.getElementById('umbralRGB').classList.add('hide');
+
     ctx.drawImage(img, 0,0);
     
     //-- Obtener la imagen del canvas en pixeles
@@ -131,12 +154,28 @@ negative.onclick = () => {
 
 //invert
 invert.onclick =()=>{
+    invert.classList.add('active');
+    gris.classList.remove('active');
+    noise.classList.remove('active');
+    color.classList.remove('active');
+    negative.classList.remove('active');
+    mirror.classList.remove('active');
+    document.getElementById('umbralRGB').classList.add('hide');
+
     ctx.translate(0, canvas.height)
     ctx.scale(1,-1);
     ctx.drawImage(img, 0, 0);
 }
 //
 noise.onclick =()=>{
+    noise.classList.add('active');
+    gris.classList.remove('active');
+    negative.classList.remove('active');
+    color.classList.remove('active');
+    invert.classList.remove('active');
+    mirror.classList.remove('active');
+    document.getElementById('umbralRGB').classList.add('hide');
+
     let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let data = imgData.data
     for (var i = 0, n = data.length; i < n; i += 4) {
@@ -153,6 +192,13 @@ noise.onclick =()=>{
 }
 // espejo
 mirror.onclick=()=>{
+    mirror.classList.add('active');
+    gris.classList.remove('active');
+    noise.classList.remove('active');
+    color.classList.remove('active');
+    invert.classList.remove('active');
+    negative.classList.remove('active');
+    document.getElementById('umbralRGB').classList.add('hide');
     ctx.translate(canvas.width,0)
     ctx.scale(-1,1);
     ctx.drawImage(img, 0, 0);

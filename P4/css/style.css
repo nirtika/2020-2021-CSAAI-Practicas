@@ -1,50 +1,47 @@
-* {box-sizing: border-box;margin: 0px;}
+* {box-sizing: border-box;margin: 0px;text-align: center;}
 canvas{
     background-color: rgb(105, 110, 110);
     margin: auto;
     display: block;
 }
-h1{text-align: center;}
-h2{padding: 5px;}
-.opciones{
+.filter {
     float: left;
-    max-width: 280px;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 20%;
+    height: 380px;
 }
-.opciones button{
-    padding: 15px;
-    font-weight: bold;
-    background-color: rgb(224, 211, 211);
-    border-bottom: 1px solid rgb(36, 34, 34);
+.filter button {
+    display: block;
     color: black;
-    min-width: 60%;
-    text-align: center;
+    padding: 20px;
+    width: 100%;
+    border: none;
+    outline: none;
     cursor: pointer;
-    transition: 0.3s;
-    font-size: 17px;
-}
-button:hover {
-    background-color: #ddd;
-}
-label{
-    margin-top: 15px;
-    padding: 15px;
-}
-.hide{
-   display: none;
-}
-#umbralRGB {
+    font-size: 1.1em;
+} 
+.filter button:hover {background-color: #ddd;}
+.filter button.active {background-color: rgb(149, 240, 213);}
+.seccion_filtros{border: 1px solid #ccc;height: 380px;}
+label{margin: 15px;}
+input{cursor: pointer;}
+#umbralRGB{
     position: absolute;
-    background-color: rgb(224, 211, 211);
+    background-color: #f1f1f1;
     color: rgb(10, 10, 10);
     padding: 20px;
-    transform: translate(170px,35px); /*translate X e Y*/
-    transition: transform 1s ease-in-out;
-    border-radius: 5px;
+    transform: translate(308px,1px); /*translate X e Y*/   
 }
-/*.umbralRGB.hide{transform: translateY(230px);}*/
 #original button{
+    cursor: pointer;
     border-radius: 3px;
-    padding: 5px;
+    padding: 8px;
+    margin: 15px 30px 20px 30px;
+}
+button:active {
+    box-shadow: 0 3px #374249;
+    transform: translateX(3px);
 }
 .hide{
     display: none;

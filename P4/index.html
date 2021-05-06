@@ -9,42 +9,35 @@
     <script src="js/script.js" defer></script>
 </head>
 <body>
-    <div>
-        <div class="opciones">
-            <h2>Filtros</h2>
-            <button id="color">Color</button>
-            <button id="gris">Gris</button>
-            <button id="noise">Noise</button>
-            <button id="negativo">Negative</button>
-            <button id="invert">Invert</button>
-            <button id="mirror">Mirror</button>
-            <button id="contrast">Contrast</button>
-            
-            <button id="saturate">Saturate</button>
-            
-        </div>
-        <div id ="umbralRGB" class="hide">
-            <label for="R">Red&nbsp;&nbsp;&nbsp;</label><input type="range" id="deslizadorrojo" min="0" max="255" value="255"/>
-            <span id="range_R">255</span><br>
-            <label for="G">Green</label><input type="range" id="deslizadorverde" min="0" max="255" value="255"/>
-            <span id="range_G">255</span><br>
-            <label for="B">Blue&nbsp;&nbsp;</label><input type="range" id="deslizadorazul" min="0" max="255" value="255"/>
-            <span id="range_B">255</span>
-        </div>
-    </div>
-    
-    <div>
-        <h1>Imagen manipulada</h1>
-        <br>
-        <canvas id="canvas"></canvas>
-        <br>
-    </div>        
-    
-    </div>
     <div id="original">
-        <button id="img1"><img src="img/img1.jpg" id="image_act" class="imagesrc"></button>
-        <button id="img2"><img src="img/img2.jpg" class="imagesrc" ></button>
-        <button id="img3"><img src="img/img3.jpg" class="imagesrc"></button>
-    </div>        
+            <button id="img1"><img src="img/img1.jpg" id="image_act" class="imagesrc"></button>
+            <button id="img2"><img src="img/img2.jpg" class="imagesrc" ></button>
+            <button id="img3"><img src="img/img3.jpg" class="imagesrc"></button>
+    </div> 
+    <div id ="umbralRGB" class="hide">
+        <label for="R">Red&nbsp;&nbsp;&nbsp;</label><input type="range" id="deslizadorrojo" min="0" max="255" value="255"/>
+        <span id="range_R">255</span><br>
+        <label for="G">Green</label><input type="range" id="deslizadorverde" min="0" max="255" value="255"/>
+        <span id="range_G">255</span><br>
+        <label for="B">Blue&nbsp;&nbsp;</label><input type="range" id="deslizadorazul" min="0" max="255" value="255"/>
+        <span id="range_B">255</span>
+    </div>
+    <div class="seccion_filtros">
+        <div id="opciones" class="filter hide">
+            <button id="color">Color</button>
+                <button id="gris">Gris</button>
+                <button id="noise">Noise</button>
+                <button id="negativo">Negative</button>
+                <button id="invert">Invert</button>
+                <button id="mirror">Mirror</button>
+        </div>
+        <div class="img_manipulada">
+            <h1>Imagen manipulada</h1>
+            <br>
+            <canvas id="canvas"></canvas>
+            <br>
+        </div> 
+    </div>   
+    
 </body>
 </html>
