@@ -5,11 +5,11 @@ const ctx = canvas.getContext('2d');
 //-- Acceso al boton
 const color = document.getElementById('color');
 const grises = document.getElementById('gris');
-const noise = document.getElementById('Noise');
-const bright = document.getElementById('bright');
+const noise = document.getElementById('noise');
+const mirror = document.getElementById('mirror');
 const contrast = document.getElementById('contrast');
 const invert = document.getElementById('invert');
-const saturate = document.getElementById('saturate');
+const vintage = document.getElementById('saturate');
 const negative = document.getElementById('negativo');
 
 //-- Acceso al deslizador
@@ -132,3 +132,18 @@ invert.onclick =()=>{
     ctx.drawImage(img, 0, 0);
 }
 //
+noise.onclick =()=>{
+    let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    let data = imgData.data
+    for (var i = 0, n = data.length; i < n; i += 4) {
+       // Genero 3 tipos de colores aleatorios delimitados (para r g y b)
+       let randColor1 = 0.6 + Math.random() * 0.4;
+       let randColor2 = 0.6 + Math.random() * 0.4;
+       let randColor3 = 0.6 + Math.random() * 0.4;
+        // añado los colores a los datos
+        data[i] = data[i]*randColor1; // Rojo
+        data[i+1] = data[i+1]*randColor2; // Verde
+        data[i+2] = data[i+2]*randColor3; // Azul
+    }
+    ctx.putImageData(imgData, 0, 0);
+}
