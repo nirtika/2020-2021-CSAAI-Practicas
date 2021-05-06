@@ -1,0 +1,28 @@
+<!--Ejercicio 2: tres umbrales de colores-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Ejercicio.css">
+    <script src="Ejercicio3.js" defer></script>
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <img src="FPGA.jpg" id="imagesrc"><br>
+    <div id="caja">
+        <button id="grises">Grises</button>
+        <button id="color">Color</button>
+        <p>Establece el umbral de rojo:</p>
+        <input type="range" id="deslizadorrojo" min="0" max="255" value="255"/>
+        <span id="range_value_rojo">00</span><br>
+        <input type="range" id="deslizadorverde" min="0" max="255" value="255"/>
+        <span id="range_value_verde">00</span><br>
+        <input type="range" id="deslizadorazul" min="0" max="255" value="255"/>
+        <span id="range_value_azul">00</span>
+    </div>
+    
+</body>
+</html>
