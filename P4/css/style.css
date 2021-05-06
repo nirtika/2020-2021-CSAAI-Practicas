@@ -1,13 +1,8 @@
 * {box-sizing: border-box;margin: 0px;}
-img{
-    width: 300px;
-    height: 200px;
-}
 canvas{
     background-color: rgb(105, 110, 110);
     margin: auto;
     display: block;
-    height: 400px;
 }
 h1{text-align: center;}
 h2{padding: 5px;}
@@ -15,7 +10,7 @@ h2{padding: 5px;}
     float: left;
     max-width: 280px;
 }
-button{
+.opciones button{
     padding: 15px;
     font-weight: bold;
     background-color: rgb(224, 211, 211);
@@ -37,7 +32,7 @@ label{
 .hide{
    display: none;
 }
-.umbralRGB {
+#umbralRGB {
     position: absolute;
     background-color: rgb(224, 211, 211);
     color: rgb(10, 10, 10);
@@ -47,3 +42,10 @@ label{
     border-radius: 5px;
 }
 /*.umbralRGB.hide{transform: translateY(230px);}*/
+#original button{
+    border-radius: 3px;
+    padding: 5px;
+}
+.hide{
+    display: none;
+}

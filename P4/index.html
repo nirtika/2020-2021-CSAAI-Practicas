@@ -12,23 +12,22 @@
     <div>
         <div class="opciones">
             <h2>Filtros</h2>
-            <button>Color</button>
-            <button>Gris</button>
-            <button>Blur</button>
-            <button>brightness</button>
-            <button>contrast</button>
-            <button>grayscale</button>
-            <button>invert</button>
-            <button>saturate</button>
-            <button>sepia</button>
+            <button id="color">Color</button>
+            <button id="gris">Gris</button>
+            <button id="blur">Blur</button>
+            <button id="bright">Brightness</button>
+            <button id="contrast">Contrast</button>
+            <button id="invert">Invert</button>
+            <button id="saturate">Saturate</button>
+            <button id="sepia">Sepia</button>
         </div>
-        <div class="umbralRGB">
+        <div id ="umbralRGB" class="hide">
             <label for="R">Red&nbsp;&nbsp;&nbsp;</label><input type="range" id="deslizadorrojo" min="0" max="255" value="255"/>
-            <span id="range_value_rojo">00</span><br>
+            <span id="range_R">00</span><br>
             <label for="G">Green</label><input type="range" id="deslizadorverde" min="0" max="255" value="255"/>
-            <span id="range_value_verde">00</span><br>
+            <span id="range_G">00</span><br>
             <label for="B">Blue&nbsp;&nbsp;</label><input type="range" id="deslizadorazul" min="0" max="255" value="255"/>
-            <span id="range_value_azul">00</span>
+            <span id="range_B">00</span>
         </div>
     </div>
     
@@ -41,10 +40,9 @@
     
     </div>
     <div id="original">
-        <img src="img/img1.jpg" id="imagesrc">
-        <img src="img/img2.jpg" id="imagesrc">
-        <img src="img/img3.jpg" id="imagesrc">
-        <img src="img/img4.jpg" id="imagesrc">
+        <button id="img1"><img src="img/img1.jpg" id="image_act" class="imagesrc"></button>
+        <button id="img2"><img src="img/img2.jpg" class="imagesrc" ></button>
+        <button id="img3"><img src="img/img3.jpg" class="imagesrc"></button>
     </div>        
 </body>
 </html>
