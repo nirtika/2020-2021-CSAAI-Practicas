@@ -236,16 +236,13 @@ function update() {
     else if(leftpress && paddle.x > 0) {
         paddle.x -= 3;
     }
-
-    //rebote en la raqueta
-    if (ball.x - ball.radius >= paddle.x && ball.x + ball.radius <= paddle.x + paddle.width 
-        && ball.y + ball.radius >= paddle.y) {
+    //rebote raqueta
+    if(ball.x >= paddle.x -ball.radius && ball.x  < (paddle.x +paddle.width)&& ball.y >= (paddle.y-ball.radius) && ball.y < (paddle.y+paddle.width)){
         vely = Math.floor(Math.random() * -5 + (-1)); //random entre -1 y -5
         //console.log(vely);
         ball.colors = colors_list[Math.floor(Math.random()*16)];
         play_sound(sound_click);
     }
-
     // restar vidas
     if (ball.y > paddle.y) {
         vida--;
