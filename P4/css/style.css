@@ -3,6 +3,7 @@ canvas{
     background-color: rgb(105, 110, 110);
     margin: auto;
     display: block;
+    border-radius: 10px;
 }
 .filter {
     float: left;
@@ -22,7 +23,7 @@ canvas{
     font-size: 1.1em;
 } 
 .filter button:hover {background-color: #ddd;}
-.filter button.active {background-color: rgb(149, 240, 213);}
+.filter button.active {background-color: rgb(162 190 231);}
 .seccion_filtros{border: 1px solid #ccc;height: 380px;}
 label{margin: 15px;}
 input{cursor: pointer;}
@@ -35,7 +36,7 @@ input{cursor: pointer;}
 }
 #original button{
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 5px;
     padding: 8px;
     margin: 15px 30px 20px 30px;
 }
