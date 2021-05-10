@@ -1,6 +1,6 @@
 //-- Obtener elementos del DOM
 const canvas = document.getElementById('canvas');
-const imgs = document.getElementsByClassName('imagesrc');
+const imgs = document.getElementsByClassName('imagen_inicial');
 const ctx = canvas.getContext('2d');
 //-- Acceso al boton
 const color = document.getElementById('color');
@@ -34,11 +34,12 @@ function imgsel(){ //seleccionar y poner imagen en canvas
           canvas.height = img.height;      
           ctx.drawImage(img, 0,0);
           document.getElementById('opciones').classList.remove("hide");
+          
         }
     }
 }
 imgsel();
-    
+
 function rgb(){
         //-- Mostrar el nuevo valor del deslizador
         range_R.innerHTML = deslizadorrojo.value;
