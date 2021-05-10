@@ -8,8 +8,9 @@ const close_inst = document.getElementById('close');
 
 //sonidos
 const sound_over = new Audio('sound/finish.mp3');
-const sound_click= new Audio('sound/bricks.mp3');
+const sound_brick= new Audio('sound/bricks.mp3');
 const sound_tone= new Audio('sound/tone.wav');
+const sound_click= new Audio('sound/click.mp3');
 
 //-- Definir el tamaño del canvas
 canvas.width = 490;
@@ -191,7 +192,7 @@ function collisionDetection() {
                     }else{
                         puntos++;
                     }                    
-                    play_sound(sound_click);
+                    play_sound(sound_brick);
                     brick.visible=false; //quitar el ladrillos
                     ladrillos.total--; // restar num del ladrillos
                     win();// función ganador
@@ -219,11 +220,13 @@ function update() {
     //-- Condicion de rebote en extremos verticales del canvas
     if (ball.x < 0 || ball.x >= (canvas.width) ) {
         velx = -velx;
+        play_sound(sound_click)
     }
 
     //-- Condición de rebote en extremos horizontales del canvas
     if (ball.y <= 150 || ball.y > canvas.height) {
         vely = -vely;
+        play_sound(sound_click)
     }
    
     // mover la raqueta
@@ -240,7 +243,7 @@ function update() {
         vely = Math.floor(Math.random() * -5 + (-1)); //random entre -1 y -5
         //console.log(vely);
         ball.colors = colors_list[Math.floor(Math.random()*16)];
-        
+        play_sound(sound_click);
     }
 
     // restar vidas
