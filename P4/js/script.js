@@ -25,9 +25,13 @@ ctx.textAlign = 'center';
 ctx.fillStyle = '#FFFFFF';
 ctx.fillText("Selecciona una imagen", canvas.width/2, canvas.height/2);
 
+const ESTADO ={
+  show_umbral:false,
+}
+
 let img = [];
 function imgsel(){ //seleccionar y poner imagen en canvas
-    for (var i = 0; i < imgs.length; i++) {
+    for (let i = 0; i < imgs.length; i++) {
         imgs[i].onclick = (ev) => {
           img = ev.target;
           canvas.width = img.width;
@@ -42,52 +46,53 @@ imgsel();
 
 function rgb(){
         //-- Mostrar el nuevo valor del deslizador
-        range_R.innerHTML = deslizadorrojo.value;
-        range_G.innerHTML = deslizadorverde.value;
-        range_B.innerHTML = deslizadorazul.value;
+  range_R.innerHTML = deslizadorrojo.value;
+  range_G.innerHTML = deslizadorverde.value;
+  range_B.innerHTML = deslizadorazul.value;
     
         //-- Situar la imagen original en el canvas
         //-- No se han hecho manipulaciones todavia
     
-        ctx.drawImage(img, 0,0);
+  ctx.drawImage(img, 0,0);
     
         //-- Obtener la imagen del canvas en pixeles
-        let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     
         //-- Obtener el array con todos los píxeles
-        let data = imgData.data
+  let data = imgData.data
     
         //-- Obtener el umbral de rojo del desliador
-        umbral_R = deslizadorrojo.value
-        umbral_G = deslizadorverde.value
-        umbral_B = deslizadorazul.value
+  umbral_R = deslizadorrojo.value
+  umbral_G = deslizadorverde.value
+  umbral_B = deslizadorazul.value
     
         //-- Filtrar la imagen según el nuevo umbral
-        for (let i = 0; i < data.length; i+=4) {
-          if (data[i] > umbral_R){
-            data[i] = umbral_R;
-          }
-          if (data[i+1] > umbral_G) {
-            data[i+1] = umbral_G;
-          }
-          if (data[i+2] > umbral_B) {
-            data[i+2] = umbral_B;
-          }
-        }
+  for (let i = 0; i < data.length; i+=4) {
+    if (data[i] > umbral_R){
+      data[i] = umbral_R;
+    }
+    if (data[i+1] > umbral_G) {
+      data[i+1] = umbral_G;
+    }
+    if (data[i+2] > umbral_B) {
+      data[i+2] = umbral_B;
+    }
+  }
         //-- Poner la imagen modificada en el canvas
-        ctx.putImageData(imgData, 0, 0);
+  ctx.putImageData(imgData, 0, 0);
 }
+
 deslizadorrojo.oninput = () => {
-    rgb();
+  rgb();
 }
 deslizadorverde.oninput = () =>{
-    rgb();
+  rgb();
 }
     
 deslizadorazul.oninput = () =>{
-    rgb();
+  rgb();
 }
-// el div que contitne los buttones
+// el div que contiene los buttones
 const btnContainer = document.getElementById("opciones");
 const btns = btnContainer.getElementsByClassName("filter_btn");
 
@@ -95,29 +100,50 @@ const btns = btnContainer.getElementsByClassName("filter_btn");
 for (let i = 0; i < btns.length; i++) {
   btns[i].addEventListener("click", function() {
     let current = document.getElementsByClassName("active");
-      current[0].className = current[0].className.replace("active",'');
-     // this.className += " active";
+      // si no hay active class
+    if (current.length > 0) {
+      current[0].className = current[0].className.replace(" active", "");
+    }
+
+    // añadir clase active
+    this.className += " active";
   });
 }
-
+//mostrar deslizadores o no
+function show_umbral(){
+  if(ESTADO.show_umbral){
+    document.getElementById('umbralRGB').classList.remove("hide");
+  }else{
+    document.getElementById('umbralRGB').classList.add("hide");
+  }
+}
+ 
 //color on click
 color.onclick = () =>{
+  ESTADO.show_umbral=true;
+  show_umbral();
+
   ctx.drawImage(img, 0,0);
-  let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  let data = imgData.data;
-  color.classList.add('active');
-  document.getElementById('umbralRGB').classList.toggle("hide");
+  deslizadorrojo.value=255;
+  deslizadorverde.value = 255;
+  deslizadorazul.value =255;
+  range_R.innerHTML = deslizadorrojo.value;
+  range_G.innerHTML = deslizadorverde.value;
+  range_B.innerHTML = deslizadorazul.value;
+  //let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  //let data = imgData.data;
 }
 
 //gris on click
 gris.onclick = () =>{
-  gris.classList.add('active');
-  document.getElementById('umbralRGB').classList.add('hide');
+  ESTADO.show_umbral=false;
+  show_umbral();
+
   ctx.drawImage(img, 0,0);
   let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   let data = imgData.data;
     //-- Calcular el brillo para CADA PIXEL y ponerselo por igual a cada componente
-  for (var i = 0; i < data.length; i+=4) {
+  for (let i = 0; i < data.length; i+=4) {
     r = data[i];
     g = data[i+1];
     b = data[i+2];
@@ -131,8 +157,8 @@ gris.onclick = () =>{
 
 //negativo
 negative.onclick = () => {
-  negative.classList.add('active');
-  document.getElementById('umbralRGB').classList.add('hide');
+  ESTADO.show_umbral=false;
+  show_umbral();
 
   ctx.drawImage(img, 0,0);
   
@@ -140,8 +166,8 @@ negative.onclick = () => {
   let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
     //-- Obtener el array con todos los píxeles
-  let data = imgData.data
-  for (var i = 0, n = data.length; i < n; i += 4) {
+  let data = imgData.data;
+  for (let i = 0, n = data.length; i < n; i += 4) {
         data[i] = 255 - data[i]
         data[i+1] = 255 - data[i+1]
         data[i+2] = 255 - data[i+2]
@@ -151,8 +177,8 @@ negative.onclick = () => {
 
 //invert
 invert.onclick =()=>{
-  invert.classList.add('active');
-  document.getElementById('umbralRGB').classList.add('hide');
+  ESTADO.show_umbral=false;
+  show_umbral();
 
   ctx.translate(0, canvas.height)
   ctx.scale(1,-1);
@@ -160,12 +186,13 @@ invert.onclick =()=>{
 }
 //
 noise.onclick =()=>{
-  noise.classList.add('active');
-  document.getElementById('umbralRGB').classList.add('hide');
+  ESTADO.show_umbral=false;
+  show_umbral();
 
+  ctx.drawImage(img, 0,0);
   let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  let data = imgData.data
-  for (var i = 0, n = data.length; i < n; i += 4) {
+  let data = imgData.data;
+  for (let i = 0, n = data.length; i < n; i += 4) {
        // Generar 3 tipos de colores aleatorios (para r g y b)
     let randColor_R = 0.6 + Math.random() * 0.4;
     let randColor_G = 0.6 + Math.random() * 0.4;
@@ -179,9 +206,10 @@ noise.onclick =()=>{
 }
 // espejo
 mirror.onclick=()=>{
-    mirror.classList.add('active');
-    document.getElementById('umbralRGB').classList.add('hide');
-    ctx.translate(canvas.width,0)
-    ctx.scale(-1,1);
-    ctx.drawImage(img, 0, 0);
+  ESTADO.show_umbral=false;
+  show_umbral();
+  
+  ctx.translate(canvas.width,0)
+  ctx.scale(-1,1);
+  ctx.drawImage(img, 0, 0);
 }
