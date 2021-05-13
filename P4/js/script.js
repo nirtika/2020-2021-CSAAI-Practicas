@@ -9,6 +9,8 @@ const noise = document.getElementById('noise');
 const mirror = document.getElementById('mirror');
 const invert = document.getElementById('invert');
 const negative = document.getElementById('negativo');
+const reset = document.getElementById('reset');
+const btn_filtros = document.getElementById("opciones");
 
 //-- Acceso al deslizador
 const deslizadorrojo = document.getElementById('deslizadorrojo');
@@ -20,13 +22,29 @@ const range_value = document.getElementById('range_value');
 canvas.width = 500;
 canvas.height = 300;
 
-ctx.font = "25px Arial";
+ctx.font = "25px Monospace";
 ctx.textAlign = 'center';
 ctx.fillStyle = '#FFFFFF';
 ctx.fillText("Selecciona una imagen", canvas.width/2, canvas.height/2);
 
 const ESTADO ={
   show_umbral:false,
+}
+
+// el div que contiene los buttones
+const btns = btn_filtros.getElementsByClassName("filter_btn");
+
+// añadir class active en el button
+for (let i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    let current = document.getElementsByClassName("active");
+      // si no hay active class
+    if (current.length > 0) {
+      current[0].className = current[0].className.replace(" active", "");
+    }
+    // añadir clase active
+    this.className += " active";
+  });
 }
 
 let img = [];
@@ -37,7 +55,8 @@ function imgsel(){ //seleccionar y poner imagen en canvas
           canvas.width = img.width;
           canvas.height = img.height;      
           ctx.drawImage(img, 0,0);
-          document.getElementById('opciones').classList.remove("hide");
+          btn_filtros.classList.remove("hide");
+          reset.classList.remove("hide");
           
         }
     }
@@ -92,23 +111,7 @@ deslizadorverde.oninput = () =>{
 deslizadorazul.oninput = () =>{
   rgb();
 }
-// el div que contiene los buttones
-const btnContainer = document.getElementById("opciones");
-const btns = btnContainer.getElementsByClassName("filter_btn");
 
-// añadir class active en el button
-for (let i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-    let current = document.getElementsByClassName("active");
-      // si no hay active class
-    if (current.length > 0) {
-      current[0].className = current[0].className.replace(" active", "");
-    }
-
-    // añadir clase active
-    this.className += " active";
-  });
-}
 //mostrar deslizadores o no
 function show_umbral(){
   if(ESTADO.show_umbral){
@@ -212,4 +215,11 @@ mirror.onclick=()=>{
   ctx.translate(canvas.width,0)
   ctx.scale(-1,1);
   ctx.drawImage(img, 0, 0);
+}
+
+// reset
+reset.onclick=()=>{
+  canvas.width = img.width;
+  canvas.height = img.height;      
+  ctx.drawImage(img, 0,0);
 }

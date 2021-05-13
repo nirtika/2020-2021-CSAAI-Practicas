@@ -15,27 +15,33 @@
             <button id="img3"><img src="img/img3.jpg" class="imagen_inicial"></button>
     </div> 
     <div id ="umbralRGB" class="hide">
-        <label for="R">Red&nbsp;&nbsp;&nbsp;</label><input type="range" id="deslizadorrojo" min="0" max="255" value="255"/>
-        <span id="range_R">255</span><br>
-        <label for="G">Green</label><input type="range" id="deslizadorverde" min="0" max="255" value="255"/>
-        <span id="range_G">255</span><br>
-        <label for="B">Blue&nbsp;&nbsp;</label><input type="range" id="deslizadorazul" min="0" max="255" value="255"/>
+        <label for="R">Red</label><span id="range_R">255</span>
+        <input type="range" id="deslizadorrojo" min="0" max="255" value="255"/>
+        <br>
+        <label for="G">Green</label>
+        <span id="range_G">255</span>
+        <input type="range" id="deslizadorverde" min="0" max="255" value="255"/>
+        <br>
+        <label for="B">Blue</label>
         <span id="range_B">255</span>
+        <input type="range" id="deslizadorazul" min="0" max="255" value="255"/>
+        
     </div>
     <div class="seccion_filtros">
-        <div id="opciones" class="filter hide">
-            <button id="color" class="filter_btn">Color</button>
-            <button id="gris" class="filter_btn">Greyscale</button>
-            <button id="noise" class="filter_btn">Noise</button>
-            <button id="negativo" class="filter_btn">Negative</button>
-            <button id="invert" class="filter_btn">Invert</button>
-            <button id="mirror" class="filter_btn">Mirror</button>
-        </div>
         <div class="img_manipulada">
+            <div id="opciones" class="filter hide">
+                <button id="color" class="filter_btn">Color</button>
+                <button id="gris" class="filter_btn">Greyscale</button>
+                <button id="noise" class="filter_btn">Noise</button>
+                <button id="negativo" class="filter_btn">Negative</button>
+                <button id="invert" class="filter_btn">Invert</button>
+                <button id="mirror" class="filter_btn">Mirror</button>
+            </div>
             <h1>Imagen manipulada</h1>
             <br>
             <canvas id="canvas"></canvas>
             <br>
+            <button id="reset" type="reset" class="hide">Reset</button>
         </div> 
     </div>   
     
