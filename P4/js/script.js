@@ -57,7 +57,14 @@ function imgsel(){ //seleccionar y poner imagen en canvas
           ctx.drawImage(img, 0,0);
           btn_filtros.classList.remove("hide");
           reset.classList.remove("hide");
-          
+          negative.classList.remove('active');
+          grises.classList.remove('active');
+          color.classList.remove('active');
+          noise.classList.remove('active');
+          mirror.classList.remove('active');
+          invert.classList.remove('active');
+          ESTADO.show_umbral=false;
+          show_umbral();
         }
     }
 }
@@ -219,6 +226,12 @@ mirror.onclick=()=>{
 
 // reset
 reset.onclick=()=>{
+  deslizadorrojo.value=255;
+  deslizadorverde.value = 255;
+  deslizadorazul.value =255;
+  range_R.innerHTML = deslizadorrojo.value;
+  range_G.innerHTML = deslizadorverde.value;
+  range_B.innerHTML = deslizadorazul.value;
   canvas.width = img.width;
   canvas.height = img.height;      
   ctx.drawImage(img, 0,0);
