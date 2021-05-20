@@ -89,6 +89,9 @@ btn_src_off.onclick = () => {
   modo_manual.style.display='none';
   modo_bucle.style.display='none';
   btn_test.style.display='none';
+  btn_video1.style.display='none';
+  btn_video2.style.display='none';
+  btn_video3.style.display='none';
   video1.src=null;
   video2.src=null;
   video3.src=null;

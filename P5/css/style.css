@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: auto;
 }
-input[type=button]{
+input[type=button] , button{
     padding: 8px;
     cursor: pointer;
     box-shadow: 0 8px 5px 0 rgba(0, 0, 0, 0.2);
