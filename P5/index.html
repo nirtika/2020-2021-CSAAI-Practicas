@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/script.js" defer></script>
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Realizador de TV</title>
 </head>
 <body>
@@ -19,6 +19,7 @@
             <input type="button" value="Parar emisión" id="stop">
             <input type="button" value="Modo Auto" id="auto">
             <input type="button" value="Modo Manual" id="manual">
+            <input type="button" value="Modo Bucle" id="bucle">
         </div>    
         <br>
         <div>
@@ -28,12 +29,13 @@
             <img id="img_test" ></img>
         </div>    
         <br>
-        <div class="btn_man">
-          <input type="button" value="Video 1" id="btn_video1">
-          <input type="button" value="Video 2" id="btn_video2">
-          <input type="button" value="Video 3" id="btn_video3">
-          <input type="button" value="Test" id="btn_video4">
+        <div id="btn_videos">
+          <input type="button" value="Video 1" id="btn_video1" class="hide">
+          <input type="button" value="Video 2" id="btn_video2" class="hide">
+          <input type="button" value="Video 3" id="btn_video3" class="hide">
+          <input type="button" value="Test" id="btn_test">
         </div>
+        
     </div>
        
     

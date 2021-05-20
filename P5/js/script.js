@@ -10,7 +10,20 @@ const video3 = document.getElementById("video3");
 const btn_video3 = document.getElementById("btn_video3");
 const img_stand = document.getElementById("img_test");
 const btn_video4 = document.getElementById("btn_video4");
+const modo_auto = document.getElementById("auto");
+const modo_manual = document.getElementById("manual");
+const modo_bucle = document.getElementById("bucle");
+//const btn_opcn= document.getElementsBy('btn_opc')
+const MODO={
+  manual: false,
+  auto: false,
+  bucle:false
 
+}
+
+modo_auto.disabled = true;
+modo_manual.disabled = true;
+modo_bucle.disabled = true;
 
 //-- Establecer las dimensiones de los vídeos
 directo.width=420;
@@ -38,6 +51,10 @@ img_stand.src = TEST_IMAGE_URL;
 
 //-- Boton de FUENTES-ON
 btn_src_on.onclick = () => {
+
+  modo_auto.disabled = false;
+  modo_manual.disabled = false;
+  modo_bucle.disabled = false;
  
   //-- Establecer la fuente de la cámara 1
   video1.src="https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente1.mp4";
@@ -53,24 +70,48 @@ btn_src_on.onclick = () => {
   video3.currentTime = 0;
   video3.play();
   
-
-  //-- Y en silencio...
-  video1.muted;
-
   //-- En la emisión en directo ponemos la imagen de prueba
   directo.poster = TEST_IMAGE_URL;
 };
 
 //-- Botón de Test
 btn_test.onclick = () => {
-    directo.poster = TEST_IMAGE_URL;
+    directo.poster = TEST_IMAGE_URL2;
     directo.src = null;
 };
 
-//-- Botón de Selección de la cámara 1
-btn_video1.onclick = () => {
+
+modo_manual.onclick = () => {
+
+  MODO.manual = true;
+  check_modo();
+  //-- Botón de Selección de la cámara 1
+  btn_video1.onclick = () => {
     directo.src = video1.src;
     directo.currentTime = video1.currentTime;
     directo.play();
-    directo.poster=null;
+    
+  };
+  //-- Botón de Selección de la cámara 2
+  btn_video2.onclick = () => {
+    directo.src = video2.src;
+    directo.currentTime = video2.currentTime;
+    directo.play();
+  };
+  //-- Botón de Selección de la cámara 3
+  btn_video3.onclick = () => {
+    directo.src = video3.src;
+    directo.currentTime = video3.currentTime;
+    directo.play();
+  };
+  
 };
+
+function check_modo(){
+  if(MODO.manual){
+    console.log('hola');
+    btn_video1.classList.remove("hide");
+    btn_video2.classList.remove("hide");
+    btn_video3.classList.remove("hide");
+  }
+}
