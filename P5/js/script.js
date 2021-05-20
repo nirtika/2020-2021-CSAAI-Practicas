@@ -10,10 +10,10 @@ const video3 = document.getElementById("video3");
 const btn_video3 = document.getElementById("btn_video3");
 const img_stand = document.getElementById("img_test");
 const btn_video4 = document.getElementById("btn_video4");
-const modo_auto = document.getElementById("auto");
-const modo_manual = document.getElementById("manual");
-const modo_bucle = document.getElementById("bucle");
-//const btn_opcn= document.getElementsBy('btn_opc')
+const modo_auto = document.getElementById("btn_src_auto");
+const modo_manual = document.getElementById("btn_src_manual");
+const modo_bucle = document.getElementById("btn_src_bucle");
+const btn_off= document.getElementById('btn_src_off');
 const MODO={
   manual: false,
   auto: false,
@@ -21,9 +21,10 @@ const MODO={
 
 }
 
-modo_auto.disabled = true;
-modo_manual.disabled = true;
-modo_bucle.disabled = true;
+modo_auto.style.display='none';
+modo_manual.style.display='none';
+modo_bucle.style.display='none';
+btn_test.style.display='none';
 
 //-- Establecer las dimensiones de los vídeos
 directo.width=420;
@@ -52,9 +53,10 @@ img_stand.src = TEST_IMAGE_URL;
 //-- Boton de FUENTES-ON
 btn_src_on.onclick = () => {
 
-  modo_auto.disabled = false;
-  modo_manual.disabled = false;
-  modo_bucle.disabled = false;
+  modo_auto.style.display='';
+  modo_manual.style.display='';
+  modo_bucle.style.display='';
+  btn_test.style.display='';
  
   //-- Establecer la fuente de la cámara 1
   video1.src="https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente1.mp4";
@@ -74,11 +76,28 @@ btn_src_on.onclick = () => {
   directo.poster = TEST_IMAGE_URL;
 };
 
+//-- Boton de FUENTES-OFF
+btn_src_off.onclick = () => {
+  modo_auto.style.display='none';
+  modo_manual.style.display='none';
+  modo_bucle.style.display='none';
+  btn_test.style.display='none';
+  video1.src=null;
+  video2.src=null;
+  video3.src=null;
+  directo.poster = TEST_IMAGE_URL;
+  video1.poster = TEST_IMAGE_URL;
+  video2.poster = TEST_IMAGE_URL;
+  video3.poster = TEST_IMAGE_URL;
+  img_stand.src = TEST_IMAGE_URL;
+}
+
 //-- Botón de Test
 btn_test.onclick = () => {
     directo.poster = TEST_IMAGE_URL2;
     directo.src = null;
 };
+
 
 
 modo_manual.onclick = () => {
