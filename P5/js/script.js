@@ -95,6 +95,7 @@ btn_src_off.onclick = () => {
   video1.src=null;
   video2.src=null;
   video3.src=null;
+  directo.src = null;
   directo.poster = OFF_IMAGE_URL;
   video1.poster = OFF_IMAGE_URL;
   video2.poster = OFF_IMAGE_URL;
