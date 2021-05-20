@@ -27,18 +27,21 @@ modo_auto.style.display='none';
 modo_manual.style.display='none';
 modo_bucle.style.display='none';
 btn_test.style.display='none';
+btn_video1.style.display='none';
+btn_video2.style.display='none';
+btn_video3.style.display='none';
 
 //-- Establecer las dimensiones de los vídeos
-directo.width=420;
-directo.height=200;
-video1.width=200;  
-video1.height=100;
-video2.width=200;  
-video2.height=100;
-video3.width=200;  
-video3.height=100;
-img_stand.width=200;  
-img_stand.height=100;
+directo.width=480;
+directo.height=280;
+video1.width=300;  
+video1.height=150;
+video2.width=300;  
+video2.height=150;
+video3.width=300;  
+video3.height=150;
+img_stand.width=300;  
+img_stand.height=150;
 
 //-- Imagen de Test usada
 const OFF_IMAGE_URL = "img/test.jpg";
@@ -58,6 +61,9 @@ btn_src_on.onclick = () => {
   modo_manual.style.display='';
   modo_bucle.style.display='';
   btn_test.style.display='';
+  btn_video1.style.display='';
+  btn_video2.style.display='';
+  btn_video3.style.display='';
  
   //-- Establecer la fuente de la cámara 1
   video1.src="https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente1.mp4";
@@ -155,12 +161,12 @@ function bucle() {
 function check_modo(){
   if(MODO.manual || modo_bucle){
     console.log('MANUAL');
-    btn_video1.classList.remove("hide");
-    btn_video2.classList.remove("hide");
-    btn_video3.classList.remove("hide");
+    btn_video1.disabled = false;
+    btn_video2.disabled = false;
+    btn_video3.disabled = false;
   }if(MODO.auto){
-    btn_video1.classList.add("hide");
-    btn_video2.classList.add("hide");
-    btn_video3.classList.add("hide");
+    btn_video1.disabled = true;
+    btn_video2.disabled = true;
+    btn_video3.disabled = true;
   }
 }

@@ -1,9 +1,32 @@
-#main{
+* {
+    box-sizing: border-box;
+    margin: auto;
+}
+input[type=button]{
+    padding: 8px;
+    cursor: pointer;
+    box-shadow: 0 8px 5px 0 rgba(0, 0, 0, 0.2);
+}
+input[type=button]:disabled {
+    color: black;
+}
+.video_directo {    
+    width: 31.5%;
+}
+.video_directo  video {
+    box-shadow: 0 8px 5px 0 rgba(0, 0, 0, 0.2);
     padding: 15px;
 }
-.hide{
-    display: none;
+.centrar{
+    width: 55%;
+    margin-bottom: 15px;
 }
-
-
-
+.caja {
+    float: left;
+    margin: 20px 35px 0px 35px;
+    box-shadow: 0 8px 5px 0 rgba(0, 0, 0, 0.2);
+  }
+.caja input[type=button]{
+    width: 100%;
+}
+p{margin-bottom: 0px;}

@@ -9,33 +9,36 @@
     <title>Realizador de TV</title>
 </head>
 <body>
-    <div id="main">
-        <div>
+    <div>
+        <div class="video_directo">
             <video loop id="directo"></video>
         </div>
         <br>
-        <div class="opcn">
+        <div class="centrar">
             <input type="button" value="Fuentes ON" id="btn_src_on">
             <input type="button" value="Fuentes OFF" id="btn_src_off">
             <input type="button" value="Modo Auto" id="btn_src_auto">
             <input type="button" value="Modo Manual" id="btn_src_manual">
             <input type="button" value="Modo Bucle" id="btn_src_bucle">
-        </div>    
-        <br>
-        <div>
+        </div>           
+        <div class="caja">
             <video id="video1" muted loop ></video>
+            <p><input type="button" value="Video 1" id="btn_video1" ></p>
+        </div>
+        <div class="caja">
             <video id="video2" muted loop ></video>
+            <p><input type="button" value="Video 2" id="btn_video2" ></p>
+        </div>
+        <div class="caja">
             <video id="video3" muted loop ></video>
+            <p><input type="button" value="Video 3" id="btn_video3" ></p>
+        </div>
+        <div class="caja">
             <img id="img_test" ></img>
-        </div>    
-        <br>
-        <div id="btn_videos">
-          <input type="button" value="Video 1" id="btn_video1" class="hide">
-          <input type="button" value="Video 2" id="btn_video2" class="hide">
-          <input type="button" value="Video 3" id="btn_video3" class="hide">
-          <input type="button" value="Test" id="btn_test">
+            <p><input type="button" value="Test" id="btn_test"></p>
         </div>
         
+
     </div>
        
     
