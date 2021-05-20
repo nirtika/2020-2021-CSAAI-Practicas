@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="style/style.css">
+    <title>Realizador de TV</title>
+</head>
+<body>
+    <div id="main">
+        <div>
+            <video loop id="directo"></video>
+        </div>
+        <br>
+        <div class="opcn">
+            <input type="button" value="Fuentes ON" id="btn_src_on">
+            <input type="button" value="Parar emisión" id="stop">
+            <input type="button" value="Modo Auto" id="auto">
+            <input type="button" value="Modo Manual" id="manual">
+        </div>    
+        <br>
+        <div>
+            <video id="video1" muted loop ></video>
+            <video id="video2" muted loop ></video>
+            <video id="video3" muted loop ></video>
+            <img id="img_test" ></img>
+        </div>    
+        <br>
+        <div class="btn_man">
+          <input type="button" value="Video 1" id="btn_video1">
+          <input type="button" value="Video 2" id="btn_video2">
+          <input type="button" value="Video 3" id="btn_video3">
+          <input type="button" value="Test" id="btn_video4">
+        </div>
+    </div>
+       
+    
+</body>
+</html>
