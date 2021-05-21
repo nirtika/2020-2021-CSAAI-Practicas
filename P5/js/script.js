@@ -10,26 +10,27 @@ const video3 = document.getElementById("video3");
 const btn_video3 = document.getElementById("btn_video3");
 const img_stand = document.getElementById("img_test");
 const btn_video4 = document.getElementById("btn_video4");
-const modo_auto = document.getElementById("btn_src_auto");
 const modo_manual = document.getElementById("btn_src_manual");
 const modo_bucle = document.getElementById("btn_src_bucle");
 const btn_off= document.getElementById('btn_src_off');
+const vol_on= document.getElementById('vol_on');
+const vol_off= document.getElementById('vol_off');
 
-let loop;
+let loop; //bucle
 // modos
 const MODO={
   manual: false,
-  auto: false,
   bucle:false
 }
 
-modo_auto.style.display='none';
 modo_manual.style.display='none';
 modo_bucle.style.display='none';
 btn_test.style.display='none';
 btn_video1.style.display='none';
 btn_video2.style.display='none';
 btn_video3.style.display='none';
+vol_off.style.display='none'
+vol_on.style.display='none'
 
 //-- Establecer las dimensiones de los vídeos
 directo.width=480;
@@ -57,13 +58,13 @@ img_stand.src = OFF_IMAGE_URL;
 
 //-- Boton de FUENTES-ON
 btn_src_on.onclick = () => {
-  modo_auto.style.display='';
   modo_manual.style.display='';
   modo_bucle.style.display='';
   btn_test.style.display='';
   btn_video1.style.display='';
   btn_video2.style.display='';
   btn_video3.style.display='';
+  
  
   //-- Establecer la fuente de la cámara 1
   video1.src="https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas/raw/main/video1.mp4";
@@ -85,7 +86,6 @@ btn_src_on.onclick = () => {
 
 //-- Boton de FUENTES-OFF
 btn_src_off.onclick = () => {
-  modo_auto.style.display='none';
   modo_manual.style.display='none';
   modo_bucle.style.display='none';
   btn_test.style.display='none';
@@ -111,9 +111,7 @@ btn_test.onclick = () => {
 
 modo_manual.onclick = () => {
   MODO.manual = true;
-  MODO.auto = false;
   MODO.bucle = false;
-  check_modo();
   window.clearInterval(loop);
 };
 
@@ -122,6 +120,8 @@ btn_video1.onclick = () => {
     directo.src = video1.src;
     directo.currentTime = video1.currentTime;
     directo.play();
+    vol_on.style.display='none'
+    vol_off.style.display=''
     
 };
   //-- Botón de Selección de la cámara 2
@@ -129,28 +129,23 @@ btn_video2.onclick = () => {
   directo.src = video2.src;
   directo.currentTime = video2.currentTime;
   directo.play();
+  vol_on.style.display='none'
+    vol_off.style.display=''
 };
 //-- Botón de Selección de la cámara 3
 btn_video3.onclick = () => {
   directo.src = video3.src;
   directo.currentTime = video3.currentTime;
   directo.play();
+  vol_on.style.display='none'
+  vol_off.style.display=''
 };
 
-
-modo_auto.onclick = () => {
-  MODO.auto = true;
-  MODO.manual = false;
-  MODO.bucle = false;
-  check_modo();
-  window.clearInterval(loop);  
-};
 
 modo_bucle.onclick =() =>{
   MODO.bucle = true;
   MODO.manual = false;
-  MODO.auto = false;
-  check_modo();
+ 
   video1.play();
   video2.play();
   video3.play();
@@ -162,15 +157,15 @@ function bucle() {
   directo.currentTime = inicio;
 }
 
-function check_modo(){
-  if(MODO.manual || modo_bucle){
-    console.log('MANUAL');
-    btn_video1.disabled = false;
-    btn_video2.disabled = false;
-    btn_video3.disabled = false;
-  }if(MODO.auto){
-    btn_video1.disabled = true;
-    btn_video2.disabled = true;
-    btn_video3.disabled = true;
-  }
+// control volumen
+vol_off.onclick =()=>{
+  directo.muted = true;
+  vol_on.style.display='';
+  vol_off.style.display='none';
+}
+
+vol_on.onclick =()=>{
+  directo.muted = false;
+  vol_off.style.display='';
+  vol_on.style.display='none';
 }

@@ -36,7 +36,7 @@ input[type=button]:disabled {
     padding: 10px;
     width: 100%;
     border: none;
-    outline: 1px solid #ccc;;
+    outline: 1px solid #ccc;
     cursor: pointer;  
 }
 #btn_src_manual ,#btn_src_auto,#btn_src_bucle{
@@ -56,4 +56,12 @@ button:hover {background-color: #ddd;}
 input[type=button]:active, button:active {
     box-shadow: 0 3px #82888b;
     transform: translateX(5px);
+}
+.video_directo button{
+    padding: 18px;
+    width: 100px;
+    text-align: center;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
 }
