@@ -66,9 +66,9 @@ btn_src_on.onclick = () => {
   btn_video3.style.display='';
  
   //-- Establecer la fuente de la cámara 1
-  video1.src="https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente1.mp4";
-  video2.src="https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente2.mp4";
-  video3.src="https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente3.mp4";
+  video1.src="https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas/raw/main/video1.mp4";
+  video2.src="https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas/raw/main/video2.mp4";
+  video3.src="https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas/raw/main/video3.mp4";
   img_stand.src=TEST_IMAGE_URL;
 
   //-- Reprodeucimos un vídeo, desde el comienzo
