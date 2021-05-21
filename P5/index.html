@@ -12,19 +12,21 @@
 </head>
 <body>
     <div>
-        <div class="centrar">
+        <div id ="opciones" class="centrar">
             <button id="btn_src_on">Fuentes ON <br><i class="fas fa-toggle-on"></i></button>
-            <button  id="btn_src_manual">Modo Manual</button>
-            <button  id="btn_src_bucle">Modo Bucle</button>
+            <button  id="btn_src_manual" class="btn_modo">Modo Manual</button>
+            <button  id="btn_src_bucle"  class="btn_modo">Modo Bucle</button>
             <button  id="btn_src_off">Fuentes OFF <br><i class="fas fa-power-off"></i></button>
         </div>
+        
         <div class="video_directo">
             <video loop id="directo" autoplay></video>
             <p> <br>
                 <button id="vol_on"><i class="fas fa-volume-up iconos"></i></button>
                 <button id="vol_off"><i class="fas fa-volume-mute iconos"></i></button> 
-            </p>
-            
+                <button id="bucle_off">Bucle OFF</button> 
+                <button id="bucle_on">Bucle ON</button> 
+            </p>            
         </div>
         <br>                   
         <div class="caja">

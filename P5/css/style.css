@@ -22,7 +22,7 @@ input[type=button]:disabled {
 .video_directo  video {
     box-shadow: 0px 0px 15px 15px rgba(0, 0, 0, 0.2);
     padding: 15px;
-    margin-top: 80px;
+    margin-top: 50px;
 }
 .centrar{
     float: left;
@@ -39,9 +39,7 @@ input[type=button]:disabled {
     outline: 1px solid #ccc;
     cursor: pointer;  
 }
-#btn_src_manual ,#btn_src_auto,#btn_src_bucle{
-    box-shadow:  0px -3px 5px 2px #98a0a7;
-}
+
 button:hover {background-color: #ddd;}
 
 .caja {
@@ -53,15 +51,19 @@ button:hover {background-color: #ddd;}
     width: 94%;
     margin: 10px 10px 10px 10px;
 }
-input[type=button]:active, button:active {
+input[type=button]:active{
     box-shadow: 0 3px #82888b;
     transform: translateX(5px);
 }
 .video_directo button{
-    padding: 18px;
-    width: 100px;
+    padding: 15px;
+    width: 120px;
     text-align: center;
     border-radius: 15px;
     border: none;
     cursor: pointer;
+}
+.active {
+    box-shadow: 0 3px #374249;
+    background-color: rgb(131 160 177 / 70%);
 }

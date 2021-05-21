@@ -16,6 +16,7 @@ const btn_off= document.getElementById('btn_src_off');
 const vol_on= document.getElementById('vol_on');
 const vol_off= document.getElementById('vol_off');
 
+
 let loop; //bucle
 // modos
 const MODO={
@@ -29,8 +30,13 @@ btn_test.style.display='none';
 btn_video1.style.display='none';
 btn_video2.style.display='none';
 btn_video3.style.display='none';
-vol_off.style.display='none'
-vol_on.style.display='none'
+vol_off.style.display='none';
+vol_on.style.display='none';
+
+
+btn_video1.disabled = true;
+btn_video2.disabled = true;
+btn_video3.disabled = true;
 
 //-- Establecer las dimensiones de los vídeos
 directo.width=480;
@@ -64,8 +70,7 @@ btn_src_on.onclick = () => {
   btn_video1.style.display='';
   btn_video2.style.display='';
   btn_video3.style.display='';
-  
- 
+   
   //-- Establecer la fuente de la cámara 1
   video1.src="https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas/raw/main/video1.mp4";
   video2.src="https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas/raw/main/video2.mp4";
@@ -84,6 +89,25 @@ btn_src_on.onclick = () => {
   directo.poster = OFF_IMAGE_URL;
 };
 
+//active button 
+const btn_modos = document.getElementById("opciones");
+// el div que contiene los buttones
+const btns = btn_modos.getElementsByClassName("btn_modo");
+
+// añadir class active en el button
+for (let i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    let current = document.getElementsByClassName("active");
+      // si no hay active class
+    if (current.length > 0) {
+      current[0].className = current[0].className.replace(" active", "");
+    }
+    // añadir clase active
+    this.className += " active";
+  });
+}
+
+
 //-- Boton de FUENTES-OFF
 btn_src_off.onclick = () => {
   modo_manual.style.display='none';
@@ -92,6 +116,11 @@ btn_src_off.onclick = () => {
   btn_video1.style.display='none';
   btn_video2.style.display='none';
   btn_video3.style.display='none';
+  vol_on.style.display='none';
+  vol_off.style.display='none';
+  document.getElementById('bucle_off').style.display='none';
+  document.getElementById('bucle_on').style.display='none';
+
   video1.src=null;
   video2.src=null;
   video3.src=null;
@@ -112,7 +141,10 @@ btn_test.onclick = () => {
 modo_manual.onclick = () => {
   MODO.manual = true;
   MODO.bucle = false;
+  check_modo();
   window.clearInterval(loop);
+  document.getElementById('bucle_on').style.display='none';
+  document.getElementById('bucle_off').style.display='none';
 };
 
   //-- Botón de Selección de la cámara 1
@@ -120,8 +152,10 @@ btn_video1.onclick = () => {
     directo.src = video1.src;
     directo.currentTime = video1.currentTime;
     directo.play();
-    vol_on.style.display='none'
-    vol_off.style.display=''
+    vol_off.style.display='';
+    if(MODO.bucle){
+      document.getElementById('bucle_off').style.display='';
+    }
     
 };
   //-- Botón de Selección de la cámara 2
@@ -129,32 +163,49 @@ btn_video2.onclick = () => {
   directo.src = video2.src;
   directo.currentTime = video2.currentTime;
   directo.play();
-  vol_on.style.display='none'
-    vol_off.style.display=''
+  vol_off.style.display='';
+  if(MODO.bucle){
+    document.getElementById('bucle_off').style.display='';
+  }
 };
 //-- Botón de Selección de la cámara 3
 btn_video3.onclick = () => {
   directo.src = video3.src;
   directo.currentTime = video3.currentTime;
   directo.play();
-  vol_on.style.display='none'
-  vol_off.style.display=''
+  vol_off.style.display='';
+  if(MODO.bucle){
+    document.getElementById('bucle_off').style.display='';
+  }
 };
 
-
+document.getElementById('bucle_off').style.display='none';
+document.getElementById('bucle_on').style.display='none';
+//modo bucle
 modo_bucle.onclick =() =>{
   MODO.bucle = true;
   MODO.manual = false;
- 
+  check_modo();
   video1.play();
   video2.play();
   video3.play();
   inicio = directo.currentTime;
   loop = setInterval(bucle, 2000);
+  document.getElementById('bucle_off').style.display='';
+  
 }
 
 function bucle() {
   directo.currentTime = inicio;
+}
+//habilitar boton para selecionar video
+function check_modo(){
+  if(MODO.manual || modo_bucle){
+    //console.log('MANUAL');
+    btn_video1.disabled = false;
+    btn_video2.disabled = false;
+    btn_video3.disabled = false;
+  }
 }
 
 // control volumen
@@ -169,3 +220,18 @@ vol_on.onclick =()=>{
   vol_off.style.display='';
   vol_on.style.display='none';
 }
+
+// bucle on y off
+document.getElementById('bucle_off').onclick =()=>{
+  MODO.bucle= false;
+  window.clearInterval(loop);
+  document.getElementById('bucle_on').style.display='';
+  document.getElementById('bucle_off').style.display='none';
+}
+document.getElementById('bucle_on').onclick =()=>{
+  inicio = directo.currentTime;
+  loop = setInterval(bucle, 2000);
+  document.getElementById('bucle_off').style.display='';
+  document.getElementById('bucle_on').style.display='none';
+}
+
