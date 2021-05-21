@@ -29,7 +29,7 @@ const juego={
 // variables raqueta
 const paddle ={
     height : 10,
-    width :100,
+    width :80,
     x:(canvas.width-65)/2, //posicion X de la raqueta
     y:canvas.height-25      //posicion y
 }
@@ -37,7 +37,7 @@ let colors_list = ['aqua', '#99ccff', '#8099cc', '#52a366', '#e6c499', '#b3ffd7'
 
 // variables bola
 const ball ={
-    x : (canvas.width+35)/2,
+    x : (canvas.width+20)/2,
     y: canvas.height-38,
     radius : 10,
     colors : colors_list[Math.floor(Math.random()*14)]
@@ -220,13 +220,13 @@ function update() {
     //-- Condicion de rebote en extremos verticales del canvas
     if (ball.x < 0 || ball.x >= (canvas.width) ) {
         velx = -velx;
-        play_sound(sound_click)
+        //play_sound(sound_click)
     }
 
     //-- Condición de rebote en extremos horizontales del canvas
     if (ball.y <= 150 || ball.y > canvas.height) {
         vely = -vely;
-        play_sound(sound_click)
+       play_sound(sound_click);
     }
    
     // mover la raqueta
@@ -257,7 +257,7 @@ function update() {
             puntos=new_point;
         }
         play_sound(sound_tone);
-        ball.x=(canvas.width+35)/2; //posición inicial
+        ball.x=(canvas.width+20)/2; //posición inicial
         ball.y=canvas.height-38;
         paddle.x=(canvas.width-65)/2;
         ball.colors = colors_list[Math.floor(Math.random()*16)]; 
@@ -347,7 +347,7 @@ function win(){
         ctx.fillText(puntos, canvas.width/2+100,canvas.height/2+100);
         ctx.fillText('Tiempo: ', canvas.width/2-25,canvas.height/2+150);
         ctx.fillText(min+':'+second, canvas.width/2+110,canvas.height/2+150);
-        ball.x=(canvas.width+35)/2; //posición inicial
+        ball.x=(canvas.width+20)/2; //posición inicial
         ball.y=canvas.height-40;
         paddle.x=(canvas.width-50)/2;
         button_play.innerHTML='Restart';
