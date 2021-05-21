@@ -235,4 +235,10 @@ reset.onclick=()=>{
   canvas.width = img.width;
   canvas.height = img.height;      
   ctx.drawImage(img, 0,0);
+  negative.classList.remove('active');
+  grises.classList.remove('active');
+  color.classList.remove('active');
+  noise.classList.remove('active');
+  mirror.classList.remove('active');
+  invert.classList.remove('active');
 }
