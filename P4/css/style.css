@@ -3,7 +3,7 @@ canvas{
     background-color: rgb(105, 110, 110);
     margin: auto;
     display: block;
-    border-radius: 5px;
+    border-radius: 2px;
 }
 .filter {
     float: left;
@@ -37,11 +37,16 @@ span{float: right;}
     font-size: 18px;
     width: 330px;
 }
-#original button{
+#original img{
     cursor: pointer;
-    border-radius: 5px;
-    padding: 8px;
+    box-shadow: 0 8px 5px 0 rgba(0, 0, 0, 0.2);
     margin: 15px 30px 20px 30px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+#original img:active {
+    transform: translateY(8px);
 }
 button:active {
     box-shadow: 0 3px #374249;
