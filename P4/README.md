@@ -8,7 +8,7 @@ Hay que seleccionar una de las 3 imagenes para aplicar los filtors.<br>
 Funcionamiento Básico: <br>
 Filtro de grises y Escala de Colores (RGB). Los deslizadores (RGB) solo apareceran una vez pulsado el botón de color. <br>
 Hay un botón Reset para volver a imagen original. <br>
-Mejoras: 
+Mejoras: <br>
 Filtro ruido (Noise) <br>
 Filtro negativo (Negative) <br>
 Filtro Invertir (Invert) <br>
