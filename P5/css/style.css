@@ -1,32 +1,59 @@
 * {
     box-sizing: border-box;
     margin: auto;
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: bold;
 }
-input[type=button] , button{
+input[type=button]{
     padding: 8px;
     cursor: pointer;
-    box-shadow: 0 8px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0px 5px 5px rgba(126, 122, 122, 0.315);
+    border: 0px solid #ccc;
 }
 input[type=button]:disabled {
     color: black;
+    box-shadow:none;
+    cursor:auto;
 }
 .video_directo {    
     width: 31.5%;
 }
 .video_directo  video {
-    box-shadow: 0 8px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 15px 15px rgba(0, 0, 0, 0.2);
     padding: 15px;
+    margin-top: 80px;
 }
 .centrar{
-    width: 55%;
-    margin-bottom: 15px;
+    float: left;
+    border: 1px solid #ccc;
+    width: 25%;
+    margin-left: 50px;
 }
+.centrar button{
+    display: block;
+    color: rgb(51, 60, 68);
+    padding: 10px;
+    width: 100%;
+    border: none;
+    outline: 1px solid #ccc;;
+    cursor: pointer;  
+}
+#btn_src_manual ,#btn_src_auto,#btn_src_bucle{
+    box-shadow:  0px -3px 5px 2px #98a0a7;
+}
+button:hover {background-color: #ddd;}
+
 .caja {
     float: left;
     margin: 20px 35px 0px 35px;
     box-shadow: 0 8px 5px 0 rgba(0, 0, 0, 0.2);
   }
 .caja input[type=button]{
-    width: 100%;
+    width: 94%;
+    margin: 10px 10px 10px 10px;
 }
-p{margin-bottom: 0px;}
+input[type=button]:active, button:active {
+    box-shadow: 0 3px #82888b;
+    transform: translateX(5px);
+}
