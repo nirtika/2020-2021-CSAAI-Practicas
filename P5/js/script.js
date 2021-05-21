@@ -73,6 +73,7 @@ btn_src_on.onclick = () => {
   btn_video1.disabled = true;
   btn_video2.disabled = true;
   btn_video3.disabled = true;
+  btn_src_on.disabled=true;
 
   //-- Establecer la fuente de las cámaras
   video1.src="https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas/raw/main/video1.mp4";
@@ -125,6 +126,7 @@ btn_src_off.onclick = () => {
   bucle_on.style.display='none';
   modo_manual.classList.remove('active');
   modo_bucle.classList.remove('active');
+  btn_src_on.disabled=false;
 
   video1.src=null;
   video2.src=null;
