@@ -15,7 +15,8 @@ const modo_bucle = document.getElementById("btn_src_bucle");
 const btn_off= document.getElementById('btn_src_off');
 const vol_on= document.getElementById('vol_on');
 const vol_off= document.getElementById('vol_off');
-
+const bucle_off = document.getElementById('bucle_off');
+const bucle_on = document.getElementById('bucle_on');
 
 let loop; //bucle
 // modos
@@ -32,11 +33,8 @@ btn_video2.style.display='none';
 btn_video3.style.display='none';
 vol_off.style.display='none';
 vol_on.style.display='none';
-
-
-btn_video1.disabled = true;
-btn_video2.disabled = true;
-btn_video3.disabled = true;
+bucle_off.style.display='none';
+bucle_on.style.display='none';
 
 //-- Establecer las dimensiones de los vídeos
 directo.width=480;
@@ -62,16 +60,21 @@ video2.poster = OFF_IMAGE_URL;
 video3.poster = OFF_IMAGE_URL;
 img_stand.src = OFF_IMAGE_URL;
 
-//-- Boton de FUENTES-ON
+
+//-- Botón de FUENTES-ON
 btn_src_on.onclick = () => {
+  //estilos
   modo_manual.style.display='';
   modo_bucle.style.display='';
   btn_test.style.display='';
   btn_video1.style.display='';
   btn_video2.style.display='';
   btn_video3.style.display='';
-   
-  //-- Establecer la fuente de la cámara 1
+  btn_video1.disabled = true;
+  btn_video2.disabled = true;
+  btn_video3.disabled = true;
+
+  //-- Establecer la fuente de las cámaras
   video1.src="https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas/raw/main/video1.mp4";
   video2.src="https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas/raw/main/video2.mp4";
   video3.src="https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas/raw/main/video3.mp4";
@@ -108,7 +111,7 @@ for (let i = 0; i < btns.length; i++) {
 }
 
 
-//-- Boton de FUENTES-OFF
+//-- Botón de FUENTES-OFF
 btn_src_off.onclick = () => {
   modo_manual.style.display='none';
   modo_bucle.style.display='none';
@@ -118,8 +121,10 @@ btn_src_off.onclick = () => {
   btn_video3.style.display='none';
   vol_on.style.display='none';
   vol_off.style.display='none';
-  document.getElementById('bucle_off').style.display='none';
-  document.getElementById('bucle_on').style.display='none';
+  bucle_off.style.display='none';
+  bucle_on.style.display='none';
+  modo_manual.classList.remove('active');
+  modo_bucle.classList.remove('active');
 
   video1.src=null;
   video2.src=null;
@@ -130,21 +135,13 @@ btn_src_off.onclick = () => {
   video2.poster = OFF_IMAGE_URL;
   video3.poster = OFF_IMAGE_URL;
   img_stand.src = OFF_IMAGE_URL;
+
 }
 
 //-- Botón de Test
 btn_test.onclick = () => {
     directo.poster = TEST_IMAGE_URL;
     directo.src = null;
-};
-
-modo_manual.onclick = () => {
-  MODO.manual = true;
-  MODO.bucle = false;
-  check_modo();
-  window.clearInterval(loop);
-  document.getElementById('bucle_on').style.display='none';
-  document.getElementById('bucle_off').style.display='none';
 };
 
   //-- Botón de Selección de la cámara 1
@@ -154,7 +151,7 @@ btn_video1.onclick = () => {
     directo.play();
     vol_off.style.display='';
     if(MODO.bucle){
-      document.getElementById('bucle_off').style.display='';
+      bucle_off.style.display='';
     }
     
 };
@@ -165,7 +162,7 @@ btn_video2.onclick = () => {
   directo.play();
   vol_off.style.display='';
   if(MODO.bucle){
-    document.getElementById('bucle_off').style.display='';
+    bucle_off.style.display='';
   }
 };
 //-- Botón de Selección de la cámara 3
@@ -175,12 +172,20 @@ btn_video3.onclick = () => {
   directo.play();
   vol_off.style.display='';
   if(MODO.bucle){
-    document.getElementById('bucle_off').style.display='';
+    bucle_off.style.display='';
   }
 };
 
-document.getElementById('bucle_off').style.display='none';
-document.getElementById('bucle_on').style.display='none';
+// Modo manual
+modo_manual.onclick = () => {
+  MODO.manual = true;
+  MODO.bucle = false;
+  check_modo();
+  window.clearInterval(loop);
+  bucle_on.style.display='none';
+  bucle_off.style.display='none';
+};
+
 //modo bucle
 modo_bucle.onclick =() =>{
   MODO.bucle = true;
@@ -191,7 +196,7 @@ modo_bucle.onclick =() =>{
   video3.play();
   inicio = directo.currentTime;
   loop = setInterval(bucle, 2000);
-  document.getElementById('bucle_off').style.display='';
+  bucle_off.style.display='';
   
 }
 
@@ -222,16 +227,16 @@ vol_on.onclick =()=>{
 }
 
 // bucle on y off
-document.getElementById('bucle_off').onclick =()=>{
+bucle_off.onclick =()=>{
   MODO.bucle= false;
   window.clearInterval(loop);
-  document.getElementById('bucle_on').style.display='';
-  document.getElementById('bucle_off').style.display='none';
+  bucle_on.style.display='';
+  bucle_off.style.display='none';
 }
-document.getElementById('bucle_on').onclick =()=>{
+bucle_on.onclick =()=>{
   inicio = directo.currentTime;
   loop = setInterval(bucle, 2000);
-  document.getElementById('bucle_off').style.display='';
-  document.getElementById('bucle_on').style.display='none';
+  bucle_off.style.display='';
+  bucle_on.style.display='none';
 }
 
