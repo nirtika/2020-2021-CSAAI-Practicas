@@ -10,17 +10,21 @@ Boton Fuentes OFF: Apagar las cámaras.
 
 Primero hay que encender las cámaras y seleccionar el modo (Manual/Bucle), luego seleccionar los vídeos para realizar la emisión.
 
-Funcionamiento básico
-
-Modo Manual
+Funcionamiento básico: Modo Manual
 
 Los vídeos utilizados estan subidos en el Repositorio [ VIDEOS_2020-2021-CSAAI-Practicas ](https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas)
 
-    MEJORAS: Modo Bucle
-            Si se activa este modo, cada vez que se selecciona una fuente, se reproduce sólo durante 2 segundos
-            y se vuelve atrás (2 segundos), repitiéndose ese trozo de dos segundos en bucle, constantemente.
+    MEJORAS: 
+        1. Modo Bucle
+            Si se activa este modo, cada vez que se selecciona una fuente,
+            se reproduce sólo durante 2 segundos y se vuelve atrás (2 segundos),
+            repitiéndose ese trozo de dos segundos en bucle, constantemente.
                 Hay un botón para activar y desactivar el bucle.
 
-    Botón para silenciar y activar el sonido.
+        2. Botón para silenciar y activar el sonido.
+        3. Botón para pausar, reproducir y parar la emisión.
+            Cuando la emisión esta pausado o parado se muestra
+            la imagen de pruebas en la pantalla.
+
 
 ![](img/Realizador_de_TV.png)
