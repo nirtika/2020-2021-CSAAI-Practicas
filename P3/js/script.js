@@ -1,6 +1,6 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
-const button_play = document.getElementById('button_play'); //id del boton play
+const button_play = document.getElementById('button_play'); //id del botón play
 const level_op=document.getElementById("level");
 const inst = document.getElementById('man');
 const btn_inst = document.getElementById('btn_inst');//botón instrucciones
@@ -23,6 +23,7 @@ let level;//nivel fácil pordefecto
 let velx = 4;
 let vely = -3;
 
+//estado de juego
 const juego={
     jugando:false,
 }
@@ -33,6 +34,8 @@ const paddle ={
     x:(canvas.width-65)/2, //posicion X de la raqueta
     y:canvas.height-25      //posicion y
 }
+
+//colores para la bola
 let colors_list = ['aqua', '#99ccff', '#8099cc', '#52a366', '#e6c499', '#b3ffd7', '#96eded', '#73abc7', '#26bf8c', 'red', '#ffb2b2', '#bdd991', '#8fd1d1', '#bdbdff']
 
 // variables bola
@@ -59,8 +62,8 @@ const ladrillos = {
     bricks:[],
 }
 
-let vida = 3;
-let puntos = 0;
+let vida = 3; //total de vidas
+let puntos = 0; // puntos 
 
 //contador tiempo
 let microseg = 0;
@@ -265,7 +268,7 @@ function update() {
 
     //detectar colision ladrillos
     collisionDetection();
-    gameOver();      
+    gameOver();   // función cuando se pierde el juego    
     //-- Actualizar la posición
     ball.x = ball.x + velx;
     ball.y = ball.y + vely;
@@ -289,7 +292,7 @@ function update() {
     
 }
 
-//cronometro
+//crónometro
 function cronometro(){
     microseg ++;
     if (microseg === 100) {
@@ -297,8 +300,7 @@ function cronometro(){
         second ++;
         if (second < 10) {
             second = "0" + second;
-        }
-        
+        }        
     }
     if (second == 60) {
         min ++;
@@ -331,7 +333,7 @@ function gameOver(){
     }      
 }
 
-// gana => si distruye todos los ladrillos
+// ganar => hay que destruir todos los ladrillos
 function win(){
     if(ladrillos.total==0){
         crearBricks();
@@ -367,13 +369,14 @@ function start_Game(){
     update();
     
 }
-//boton play
+
+//botón play
 button_play.onclick= () =>{
     //button_play.innerHTML='Play';
     start_Game();
 }
 
-//boton instrucciones
+//botón instrucciones
 btn_inst.onclick= () =>{
     inst.classList.toggle('show');
     //inst.classList.add('show');
@@ -385,8 +388,9 @@ close_inst.onclick= () =>{
     //inst.classList.add('show');
 }
 
-document.addEventListener("keydown", tecla_empezar);
 //empezar el juego(tecla espacio)
+document.addEventListener("keydown", tecla_empezar);
+
 function tecla_empezar(ev) {
     //button_play.innerHTML='Play';
     switch (ev.keyCode) {
@@ -396,7 +400,7 @@ function tecla_empezar(ev) {
     }
 }
 
-// funcion leer tecla derecha y izq
+// funcion leer teclas derecha y izq
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
