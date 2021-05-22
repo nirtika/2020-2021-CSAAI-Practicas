@@ -1,15 +1,26 @@
- # Práctica 5
- [Realizador de TV](https://nirtika.github.io/2020-2021-CSAAI-Practicas/P5/)<br>
+# Práctica 5
 
+[Realizador de TV](https://nirtika.github.io/2020-2021-CSAAI-Practicas/P5/)
 
- Funcionamiento básico <br>
- Botón para silenciar Y activar el sonido <br>
- Modo Manual <br>
- Mejoras: Modo Bucle<br>
- Hay 4 fuentes, 3 de video y una imagen de emisión.<br>
- Botón Fuentes ON: Encender las cámaras <br>
- Boton Fuentes OFF: Apagar las cámaras. <br>
- Primero hay que encender las cámaras y selecionar el modo (Manual/Bucle), luego selecionar los videos para realizar la emisión. <br>
+Hay 4 fuentes, 3 de video y una imagen de emisión.
 
-  ![](img/Realizador_de_TV.png)<br>
+Botón Fuentes ON: Encender las cámaras
 
+Boton Fuentes OFF: Apagar las cámaras.
+
+Primero hay que encender las cámaras y seleccionar el modo (Manual/Bucle), luego seleccionar los vídeos para realizar la emisión.
+
+Funcionamiento básico
+
+Modo Manual
+
+Los vídeos utilizados estan subidos en el Repositorio [ VIDEOS_2020-2021-CSAAI-Practicas ](https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas)
+
+    MEJORAS: Modo Bucle
+            Si se activa este modo, cada vez que se selecciona una fuente, se reproduce sólo durante 2 segundos
+            y se vuelve atrás (2 segundos), repitiéndose ese trozo de dos segundos en bucle, constantemente.
+                Hay un botón para activar y desactivar el bucle.
+
+    Botón para silenciar y activar el sonido.
+
+![](img/Realizador_de_TV.png)

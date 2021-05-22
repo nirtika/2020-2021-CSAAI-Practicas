@@ -1,16 +1,18 @@
  # Práctica 4
-[Manipulación de imágenes](https://nirtika.github.io/2020-2021-CSAAI-Practicas/P4/)<br>
+[Manipulación de imágenes](https://nirtika.github.io/2020-2021-CSAAI-Practicas/P4/)
+
+Hay que seleccionar una de las 3 imagenes para aplicar los filtros.
+
+    Funcionamiento Básico
+        Filtro de grises y Escala de Colores (RGB).
+        Los deslizadores (RGB) solo aparecerán una vez pulsado el botón de color.
+
+Hay un botón Reset para volver a imagen original. 
+
+    MEJORAS: 
+            Filtro ruido (Noise) 
+            Filtro negativo (Negative)
+            Filtro Invertir (Invert)
+            Filtro Espejo (Mirror)
 
 ![](img/img_P4.png)
-
-Hay que seleccionar una de las 3 imagenes para aplicar los filtors.<br>
-
-Funcionamiento Básico: <br>
-Filtro de grises y Escala de Colores (RGB). Los deslizadores (RGB) solo apareceran una vez pulsado el botón de color. <br>
-Hay un botón Reset para volver a imagen original. <br>
-Mejoras: <br>
-Filtro ruido (Noise) <br>
-Filtro negativo (Negative) <br>
-Filtro Invertir (Invert) <br>
-Filtro Espejo (Mirror) <br>
-
