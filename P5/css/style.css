@@ -56,13 +56,14 @@ input[type=button]:active{
     transform: translateX(5px);
 }
 .video_directo button{
-    padding: 15px;
-    width: 120px;
+    padding: 8px;
+    width: auto;
     text-align: center;
-    border-radius: 15px;
+    border-radius: 6px;
     border: none;
     cursor: pointer;
 }
+i{font-size: 25px;}
 .active {
     box-shadow: 0 3px #374249;
     background-color: rgb(131 160 177 / 70%);

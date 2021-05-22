@@ -8,7 +8,7 @@ const video2 = document.getElementById("video2");
 const btn_video2 = document.getElementById("btn_video2");
 const video3 = document.getElementById("video3");
 const btn_video3 = document.getElementById("btn_video3");
-const img_stand = document.getElementById("img_test");
+const img_test = document.getElementById("img_test");
 const btn_video4 = document.getElementById("btn_video4");
 const modo_manual = document.getElementById("btn_src_manual");
 const modo_bucle = document.getElementById("btn_src_bucle");
@@ -17,14 +17,24 @@ const vol_on= document.getElementById('vol_on');
 const vol_off= document.getElementById('vol_off');
 const bucle_off = document.getElementById('bucle_off');
 const bucle_on = document.getElementById('bucle_on');
+const btn_pause = document.getElementById('pause');
+const btn_play = document.getElementById('play');
+const btn_stop = document.getElementById('stop');
 
 let loop; //bucle
 // modos
 const MODO={
   manual: false,
-  bucle:false
+  bucle:false,
 }
 
+// videos
+const PLAYING={
+  vUno: false,
+  vDos:false,
+  vTres:false
+}
+//estilos (ocultar / mostrar elementos)
 modo_manual.style.display='none';
 modo_bucle.style.display='none';
 btn_test.style.display='none';
@@ -35,6 +45,9 @@ vol_off.style.display='none';
 vol_on.style.display='none';
 bucle_off.style.display='none';
 bucle_on.style.display='none';
+btn_pause.style.display='none';
+btn_play.style.display = 'none';
+btn_stop.style.display='none';
 
 //-- Establecer las dimensiones de los vídeos
 directo.width=480;
@@ -45,8 +58,8 @@ video2.width=300;
 video2.height=150;
 video3.width=300;  
 video3.height=150;
-img_stand.width=300;  
-img_stand.height=150;
+img_test.width=300;  
+img_test.height=150;
 
 //-- Imagen de Test usada
 const OFF_IMAGE_URL = "img/test.jpg";
@@ -58,7 +71,7 @@ directo.poster = OFF_IMAGE_URL;
 video1.poster = OFF_IMAGE_URL;
 video2.poster = OFF_IMAGE_URL;
 video3.poster = OFF_IMAGE_URL;
-img_stand.src = OFF_IMAGE_URL;
+img_test.src = OFF_IMAGE_URL;
 
 
 //-- Botón de FUENTES-ON
@@ -79,7 +92,7 @@ btn_src_on.onclick = () => {
   video1.src="https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas/raw/main/video1.mp4";
   video2.src="https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas/raw/main/video2.mp4";
   video3.src="https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas/raw/main/video3.mp4";
-  img_stand.src=TEST_IMAGE_URL;
+  img_test.src=TEST_IMAGE_URL;
 
   //-- Reprodeucimos un vídeo, desde el comienzo
   video1.currentTime = 0;
@@ -127,16 +140,15 @@ btn_src_off.onclick = () => {
   modo_manual.classList.remove('active');
   modo_bucle.classList.remove('active');
   btn_src_on.disabled=false;
+  btn_pause.style.display='none';
+  btn_play.style.display = 'none';
+  btn_stop.style.display='none';
 
-  video1.src=null;
-  video2.src=null;
-  video3.src=null;
-  directo.src = null;
+  video1.src=OFF_IMAGE_URL;
+  video2.src=OFF_IMAGE_URL;
+  video3.src=OFF_IMAGE_URL;
+  directo.src = OFF_IMAGE_URL;
   directo.poster = OFF_IMAGE_URL;
-  video1.poster = OFF_IMAGE_URL;
-  video2.poster = OFF_IMAGE_URL;
-  video3.poster = OFF_IMAGE_URL;
-  img_stand.src = OFF_IMAGE_URL;
 
 }
 
@@ -148,31 +160,48 @@ btn_test.onclick = () => {
 
   //-- Botón de Selección de la cámara 1
 btn_video1.onclick = () => {
+    PLAYING.vUno=true;
+    PLAYING.vDos=false;
+    PLAYING.vTres=false;
     directo.src = video1.src;
     directo.currentTime = video1.currentTime;
     directo.play();
+    directo.poster='';
     vol_off.style.display='';
     if(MODO.bucle){
       bucle_off.style.display='';
     }
-    
+    btn_pause.style.display='';  
+    btn_stop.style.display='';
 };
   //-- Botón de Selección de la cámara 2
 btn_video2.onclick = () => {
+  PLAYING.vDos=true;
+  PLAYING.vUno=false;
+  PLAYING.vTres=false;
   directo.src = video2.src;
   directo.currentTime = video2.currentTime;
   directo.play();
+  directo.poster='';
   vol_off.style.display='';
+  btn_pause.style.display='';  
   if(MODO.bucle){
     bucle_off.style.display='';
   }
+  btn_stop.style.display='';
 };
 //-- Botón de Selección de la cámara 3
 btn_video3.onclick = () => {
+  PLAYING.vTres=true;
+  PLAYING.vDos=false;
+  PLAYING.vUno=false;
   directo.src = video3.src;
   directo.currentTime = video3.currentTime;
   directo.play();
+  directo.poster='';
   vol_off.style.display='';
+  btn_pause.style.display='';  
+  btn_stop.style.display='';
   if(MODO.bucle){
     bucle_off.style.display='';
   }
@@ -207,7 +236,7 @@ function bucle() {
 }
 //habilitar boton para selecionar video
 function check_modo(){
-  if(MODO.manual || modo_bucle){
+  if(MODO.manual || MODO.bucle){
     //console.log('MANUAL');
     btn_video1.disabled = false;
     btn_video2.disabled = false;
@@ -241,4 +270,73 @@ bucle_on.onclick =()=>{
   bucle_off.style.display='';
   bucle_on.style.display='none';
 }
+// botón pausar
+btn_pause.onclick =()=>{
+  directo.src = TEST_IMAGE_URL;
+  directo.poster = TEST_IMAGE_URL;
+  directo.pause();
+  //directo.poster=TEST_IMAGE_URL;
+  btn_play.style.display='';
+  btn_pause.style.display = 'none';
+}
+
+// botón reproducir
+btn_play.onclick =()=>{
+  
+  btn_pause.style.display='';
+  btn_play.style.display = 'none';
+  if(PLAYING.vUno){
+    //video1.play();
+    directo.src=video1.src;
+    directo.currentTime = video1.currentTime;
+    directo.play();
+    directo.poster='';
+  }else if(PLAYING.vDos){
+    //video2.play();
+    directo.src=video2.src;
+    directo.currentTime = video2.currentTime;
+    directo.play();
+    directo.poster='';
+  }else{
+    //video3.play();
+    directo.src=video3.src;
+    directo.currentTime = video3.currentTime;
+    directo.play();
+    directo.poster='';
+  }
+
+}
+
+// botón parar
+btn_stop.onclick =()=>{ 
+  btn_pause.style.display='none';
+  btn_play.style.display = '';
+  if(PLAYING.vUno ){
+    //video1.play();
+    directo.src=video1.src;
+    directo.currentTime = 0;
+    directo.pause();
+    directo.poster=OFF_IMAGE_URL;
+  }else if(PLAYING.vDos){
+    //video2.play();
+    directo.src=video2.src;
+    directo.currentTime = 0;
+    directo.pause();
+    directo.poster=OFF_IMAGE_URL;
+  }else{
+    //video3.play();
+    directo.src=video3.src;
+    directo.currentTime = 0;
+    directo.pause();
+    directo.poster=OFF_IMAGE_URL;
+  }
+  if (MODO.bucle) {
+    directo.currentTime = 0;
+    directo.pause();
+    directo.src=OFF_IMAGE_URL;
+    directo.poster=OFF_IMAGE_URL;
+  }
+
+}
+
 
