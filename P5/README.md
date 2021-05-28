@@ -27,7 +27,7 @@ Los vídeos utilizados estan subidos en el Repositorio [ VIDEOS_2020-2021-CSAAI-
 
         2. Botón para silenciar y activar el sonido.
         3. Botón para pausar, reproducir y parar la emisión. Cuando la emisión esta pausado o parado se muestra
-            la imagen de pruebas en la pantalla.
+            la imagen de prueba en la pantalla.
 
 
 ![](img/Realizador_de_TV.png)
