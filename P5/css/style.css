@@ -51,7 +51,7 @@ button:hover {background-color: #ddd;}
     width: 94%;
     margin: 10px 10px 10px 10px;
 }
-input[type=button]:active{
+input[type=button]:active ,button:active{
     box-shadow: 0 3px #82888b;
     transform: translateX(5px);
 }

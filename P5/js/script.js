@@ -12,6 +12,7 @@ const img_test = document.getElementById("img_test");
 const btn_video4 = document.getElementById("btn_video4");
 const modo_manual = document.getElementById("btn_src_manual");
 const modo_bucle = document.getElementById("btn_src_bucle");
+const modo_auto = document.getElementById('btn_src_auto');
 const btn_off= document.getElementById('btn_src_off');
 const vol_on= document.getElementById('vol_on');
 const vol_off= document.getElementById('vol_off');
@@ -21,11 +22,15 @@ const btn_pause = document.getElementById('pause');
 const btn_play = document.getElementById('play');
 const btn_stop = document.getElementById('stop');
 
-let loop; //bucle
+let loop_video; //bucle
+let loop_auto; //auto
+let auto_play;
+
 // modos
 const MODO={
   manual: false,
   bucle:false,
+  auto:false
 }
 
 // videos
@@ -37,6 +42,7 @@ const PLAYING={
 //estilos (ocultar / mostrar elementos)
 modo_manual.style.display='none';
 modo_bucle.style.display='none';
+modo_auto.style.display='none';
 btn_test.style.display='none';
 btn_video1.style.display='none';
 btn_video2.style.display='none';
@@ -79,15 +85,15 @@ btn_src_on.onclick = () => {
   //estilos
   modo_manual.style.display='';
   modo_bucle.style.display='';
+  modo_auto.style.display='';
   btn_test.style.display='';
   btn_video1.style.display='';
   btn_video2.style.display='';
   btn_video3.style.display='';
+  btn_src_on.disabled=true;
   btn_video1.disabled = true;
   btn_video2.disabled = true;
   btn_video3.disabled = true;
-  btn_src_on.disabled=true;
-
   //-- Establecer la fuente de las cámaras
   video1.src="https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas/raw/main/video1.mp4";
   video2.src="https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas/raw/main/video2.mp4";
@@ -129,6 +135,7 @@ for (let i = 0; i < btns.length; i++) {
 btn_src_off.onclick = () => {
   modo_manual.style.display='none';
   modo_bucle.style.display='none';
+  modo_auto.style.display='none';
   btn_test.style.display='none';
   btn_video1.style.display='none';
   btn_video2.style.display='none';
@@ -168,11 +175,18 @@ btn_video1.onclick = () => {
     directo.play();
     directo.poster='';
     vol_off.style.display='';
+    btn_pause.style.display='';  
+    btn_stop.style.display='';
+    //check_modo();
     if(MODO.bucle){
       bucle_off.style.display='';
     }
-    btn_pause.style.display='';  
-    btn_stop.style.display='';
+    if (MODO.auto) {
+      btn_pause.style.display='none';  
+      btn_stop.style.display='none';
+      bucle_off.style.display='none';
+      bucle_on.style.display='none';
+    }
 };
   //-- Botón de Selección de la cámara 2
 btn_video2.onclick = () => {
@@ -185,10 +199,17 @@ btn_video2.onclick = () => {
   directo.poster='';
   vol_off.style.display='';
   btn_pause.style.display='';  
+  btn_stop.style.display='';
+ // check_modo(); 
   if(MODO.bucle){
     bucle_off.style.display='';
   }
-  btn_stop.style.display='';
+  if (MODO.auto) {
+    btn_pause.style.display='none';  
+    btn_stop.style.display='none';
+    bucle_off.style.display='none';
+    bucle_on.style.display='none';
+  }
 };
 //-- Botón de Selección de la cámara 3
 btn_video3.onclick = () => {
@@ -202,17 +223,27 @@ btn_video3.onclick = () => {
   vol_off.style.display='';
   btn_pause.style.display='';  
   btn_stop.style.display='';
+  check_modo();
   if(MODO.bucle){
     bucle_off.style.display='';
+  }
+  if (MODO.auto) {
+    btn_pause.style.display='none';  
+    btn_stop.style.display='none';
+    bucle_off.style.display='none';
+    bucle_on.style.display='none';
   }
 };
 
 // Modo manual
 modo_manual.onclick = () => {
+  window.clearInterval(loop_video);
+  window.clearInterval(loop_auto);
+  window.clearTimeout(auto_play);
   MODO.manual = true;
   MODO.bucle = false;
-  check_modo();
-  window.clearInterval(loop);
+  MODO.auto = false;
+  check_modo();  
   bucle_on.style.display='none';
   bucle_off.style.display='none';
 };
@@ -221,19 +252,39 @@ modo_manual.onclick = () => {
 modo_bucle.onclick =() =>{
   MODO.bucle = true;
   MODO.manual = false;
+  MODO.auto = false;
   check_modo();
   video1.play();
   video2.play();
   video3.play();
+  window.clearTimeout(auto_play);
+  window.clearInterval(loop_auto);
   inicio = directo.currentTime;
-  loop = setInterval(bucle, 2000);
+  loop_video = setInterval( function bucle() {
+                        directo.currentTime = inicio;
+          }, 2000);
   bucle_off.style.display='';
   
 }
 
-function bucle() {
-  directo.currentTime = inicio;
+//modo auto
+modo_auto.onclick=()=>{
+  MODO.bucle = false;
+  MODO.manual = false;
+  MODO.auto = true;
+  check_modo();
+  window.clearInterval(loop_video);
+  btn_video1.onclick();
+  auto_play= setTimeout(btn_video2.onclick, 3000);
+  auto_play= setTimeout(btn_video3.onclick, 6000);
+  loop_auto= setInterval(change_video, 9000);  
 }
+function change_video() {
+  btn_video1.onclick();
+  setTimeout(btn_video2.onclick, 3000);
+  setTimeout(btn_video3.onclick, 6000);
+}
+
 //habilitar boton para selecionar video
 function check_modo(){
   if(MODO.manual || MODO.bucle){
@@ -241,6 +292,12 @@ function check_modo(){
     btn_video1.disabled = false;
     btn_video2.disabled = false;
     btn_video3.disabled = false;
+    btn_test.disabled= false;
+  }else{
+    btn_video1.disabled = true;
+    btn_video2.disabled = true;
+    btn_video3.disabled = true;
+    btn_test.disabled= true;
   }
 }
 
@@ -260,13 +317,13 @@ vol_on.onclick =()=>{
 // bucle on y off
 bucle_off.onclick =()=>{
   MODO.bucle= false;
-  window.clearInterval(loop);
+  window.clearInterval(loop_video);
   bucle_on.style.display='';
   bucle_off.style.display='none';
 }
 bucle_on.onclick =()=>{
   inicio = directo.currentTime;
-  loop = setInterval(bucle, 2000);
+  loop_video = setInterval(bucle, 2000);
   bucle_off.style.display='';
   bucle_on.style.display='none';
 }
@@ -338,5 +395,3 @@ btn_stop.onclick =()=>{
   }
 
 }
-
-
