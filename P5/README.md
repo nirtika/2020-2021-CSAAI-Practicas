@@ -10,7 +10,7 @@ Boton Fuentes OFF: Apagar las cámaras.
 
 Primero hay que encender las cámaras y seleccionar el modo (Manual/Bucle/Automático), luego seleccionar los vídeos para realizar la emisión.
 
-Funcionamiento básico: Modo Manual
+    Funcionamiento básico: Modo Manual
 
 Los vídeos utilizados estan subidos en el Repositorio [ VIDEOS_2020-2021-CSAAI-Practicas ](https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas)
 
