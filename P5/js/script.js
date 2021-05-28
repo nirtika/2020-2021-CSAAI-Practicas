@@ -100,7 +100,7 @@ btn_src_on.onclick = () => {
   video3.src="https://github.com/nirtika/VIDEOS_2020-2021-CSAAI-Practicas/raw/main/video3.mp4";
   img_test.src=TEST_IMAGE_URL;
 
-  //-- Reprodeucimos un vídeo, desde el comienzo
+  //-- Reproducimos un vídeo, desde el comienzo
   video1.currentTime = 0;
   video1.play();
   video2.currentTime = 0;
@@ -133,6 +133,17 @@ for (let i = 0; i < btns.length; i++) {
 
 //-- Botón de FUENTES-OFF
 btn_src_off.onclick = () => {
+  window.clearInterval(loop_video);
+  window.clearInterval(loop_auto);
+  window.clearTimeout(auto_play);
+
+  video1.src=OFF_IMAGE_URL;
+  video2.src=OFF_IMAGE_URL;
+  video3.src=OFF_IMAGE_URL;
+  img_test.src=OFF_IMAGE_URL;
+  directo.src = OFF_IMAGE_URL;
+  directo.poster = OFF_IMAGE_URL;
+
   modo_manual.style.display='none';
   modo_bucle.style.display='none';
   modo_auto.style.display='none';
@@ -146,17 +157,12 @@ btn_src_off.onclick = () => {
   bucle_on.style.display='none';
   modo_manual.classList.remove('active');
   modo_bucle.classList.remove('active');
+  modo_auto.classList.remove('active');
   btn_src_on.disabled=false;
   btn_pause.style.display='none';
   btn_play.style.display = 'none';
   btn_stop.style.display='none';
-
-  video1.src=OFF_IMAGE_URL;
-  video2.src=OFF_IMAGE_URL;
-  video3.src=OFF_IMAGE_URL;
-  directo.src = OFF_IMAGE_URL;
-  directo.poster = OFF_IMAGE_URL;
-
+  
 }
 
 //-- Botón de Test
@@ -223,7 +229,7 @@ btn_video3.onclick = () => {
   vol_off.style.display='';
   btn_pause.style.display='';  
   btn_stop.style.display='';
-  check_modo();
+  //check_modo();
   if(MODO.bucle){
     bucle_off.style.display='';
   }
@@ -246,10 +252,17 @@ modo_manual.onclick = () => {
   check_modo();  
   bucle_on.style.display='none';
   bucle_off.style.display='none';
+  if (MODO.auto== false) {
+    vol_off.style.display='';
+    btn_pause.style.display='';  
+    btn_stop.style.display='';
+  }
 };
 
 //modo bucle
 modo_bucle.onclick =() =>{
+  window.clearTimeout(auto_play);
+  window.clearInterval(loop_auto);
   MODO.bucle = true;
   MODO.manual = false;
   MODO.auto = false;
@@ -257,14 +270,13 @@ modo_bucle.onclick =() =>{
   video1.play();
   video2.play();
   video3.play();
-  window.clearTimeout(auto_play);
-  window.clearInterval(loop_auto);
   inicio = directo.currentTime;
-  loop_video = setInterval( function bucle() {
-                        directo.currentTime = inicio;
-          }, 2000);
+  loop_video = setInterval(bucle, 2000);
   bucle_off.style.display='';
   
+}
+function bucle() {
+  directo.currentTime = inicio;
 }
 
 //modo auto
