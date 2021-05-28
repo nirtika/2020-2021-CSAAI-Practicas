@@ -162,7 +162,7 @@ btn_src_off.onclick = () => {
 //-- Botón de Test
 btn_test.onclick = () => {
     directo.poster = TEST_IMAGE_URL;
-    directo.src = null;
+    //directo.src = '';
 };
 
   //-- Botón de Selección de la cámara 1
