@@ -56,8 +56,8 @@ btn_play.style.display = 'none';
 btn_stop.style.display='none';
 
 //-- Establecer las dimensiones de los vídeos
-directo.width=480;
-directo.height=280;
+directo.width=500;
+directo.height=300;
 video1.width=300;  
 video1.height=150;
 video2.width=300;  
@@ -163,6 +163,9 @@ btn_src_off.onclick = () => {
   btn_play.style.display = 'none';
   btn_stop.style.display='none';
   
+  PLAYING.vUno=false;
+  PLAYING.vDos=false;
+  PLAYING.vTres=false;
 }
 
 //-- Botón de Test
@@ -253,9 +256,11 @@ modo_manual.onclick = () => {
   bucle_on.style.display='none';
   bucle_off.style.display='none';
   if (MODO.auto== false) {
-    vol_off.style.display='';
-    btn_pause.style.display='';  
-    btn_stop.style.display='';
+    if(PLAYING.vUno || PLAYING.vDos ||PLAYING.vTres){
+      vol_off.style.display='';
+      btn_pause.style.display='';  
+      btn_stop.style.display='';
+    }
   }
 };
 

@@ -20,13 +20,12 @@ input[type=button]:disabled {
 }
 .video_directo  video {
     box-shadow: 0px 0px 15px 15px rgba(0, 0, 0, 0.2);
-    padding: 15px;
-    margin-top: 50px;
+    padding: 10px;
+    margin-top: 5px;
 }
 .centrar{
     float: left;
-    border: 1px solid #ccc;
-    width: 25%;
+    width: 20%;
     margin-left: 50px;
 }
 .centrar button{
@@ -52,7 +51,7 @@ button:hover {background-color: #ddd;}
 }
 input[type=button]:active ,button:active{
     box-shadow: 0 3px #82888b;
-    transform: translateX(5px);
+    transform: translateY(5px);
 }
 .video_directo button{
     padding: 8px;
@@ -66,4 +65,8 @@ i{font-size: 25px;}
 .active {
     box-shadow: 0 3px #374249;
     background-color: rgb(131 160 177 / 70%);
+}
+#opciones_video{
+    margin-top: 20px;
+    text-align: center;
 }
